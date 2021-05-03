@@ -4,12 +4,8 @@ namespace Test;
 
 use PHPUnit\Framework\TestCase;
 
-require_once './vendor/autoload.php';
-//require_once './Funzione.php';
-
- function somma($n){
-    return $n+1;
-} 
+//require_once './vendor/autoload.php';
+require_once './Funzione.php';
 
 class ExampleTest extends TestCase
 {
