@@ -1,5 +1,5 @@
 <?php
-    public function somma($n){
+    function somma($n){
         return $n+1;
     }
 ?>
