@@ -2,9 +2,19 @@ name: PHP Composer
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - GiordanoT
+      - GianlucaDM
+      - Federico
+      - DavPalo
   pull_request:
-    branches: [ main ]
+    branches:       
+      - main
+      - GiordanoT
+      - GianlucaDM
+      - Federico
+      - DavPalo
 
 jobs:
   build:
