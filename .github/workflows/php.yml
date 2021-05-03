@@ -6,7 +6,9 @@ on:
       - main
       - GiordanoT
   pull_request:
-    branches: [ main ]
+    branches:       
+      - main
+      - GiordanoT
 
 jobs:
   build:
