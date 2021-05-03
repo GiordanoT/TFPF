@@ -2,9 +2,11 @@ name: PHP Composer
 
 on:
   push:
-    branches: [ all ]
+    branches:
+      - main
+      - GiordanoT
   pull_request:
-    branches: [ all ]
+    branches: [ main ]
 
 jobs:
   build:
