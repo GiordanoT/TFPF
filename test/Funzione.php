@@ -1,5 +1,8 @@
 <?php
- function somma($n){
-    return $n+1;
-} 
+
+	function somma($n){
+    	return $n+1;
+	
+ 	} 
+
 ?>
