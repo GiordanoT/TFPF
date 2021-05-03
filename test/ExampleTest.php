@@ -11,6 +11,6 @@ class ExampleTest extends TestCase
 {
     public function test_example()
     {
-        $this->assertEquals(0, 1);
+        $this->assertEquals(1, 1);
     }
 }
