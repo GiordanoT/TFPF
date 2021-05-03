@@ -15,7 +15,7 @@ class ExampleTest extends TestCase
         //$this->assertEquals(2, 2);
         $this->assertEquals(4, somma(3));
         $this->assertEquals(2, somma(1));
-        $this->assertEquals(3, somma(2));
+        $this->assertEquals(343, somma(2));
         $this->assertEquals(5, somma(4));
 
     }
