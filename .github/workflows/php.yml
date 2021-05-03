@@ -5,10 +5,16 @@ on:
     branches:
       - main
       - GiordanoT
+      - GianlucaDM
+      - Federico
+      - DavPalo
   pull_request:
     branches:       
       - main
       - GiordanoT
+      - GianlucaDM
+      - Federico
+      - DavPalo
 
 jobs:
   build:
