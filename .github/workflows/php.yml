@@ -16,7 +16,6 @@ on:
       - GianlucaDM
       - Federico
       - DavPalo
->>>>>>> main
 
 jobs:
   build:
