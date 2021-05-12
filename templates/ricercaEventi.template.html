@@ -1,0 +1,83 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Ricerca Eventi</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+          <li class="breadcrumb-item active">Ricerca Eventi</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<div class="content">
+  <div class="container-fluid">
+
+    <p><[N_RICERCA]> in "<[RICERCA]>"</p>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 <[CARD_FLAG]>">
+    <[foreach]>
+      <div class="col">
+        <div class="card shadow-sm">
+          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="<[IMMAGINE]>" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
+
+          <div class="card-body">
+            <h4 class="card-text" style="text-transform: uppercase;"><[NOME]></h4>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted">Posti Disponibili: <[DISPONIBILE]></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    <[/foreach]>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="mt-4 row">
+    <form method="POST" action="<[LINK_FORM_PAGE]>" class="col-sm-12">
+      <button class="float-left btn btn-primary px-3 <[FLAG_PREVIOUS]>" name="previous" type="submit"><i class="fa fa-angle-double-left" aria-hidden="true"></i></button>
+      <input class="d-none" type="number" value="<[ID_RICERCA]>" name="indice" readonly>
+      <input class="d-none" type="text" value="<[ID_SEARCH]>" name="id_search" readonly>
+      <button class="float-right btn btn-primary px-3 <[FLAG_NEXT]>"name="next" type="submit"><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+    </form>
+  </div>
+
+
+
+
+
+
+
+
+
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

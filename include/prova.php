@@ -1,6 +1,6 @@
 <?php
   require_once( "dbh.inc.php" );
-  $resultUtente = getData( "SELECT * FROM utente " );
+  $resultUtente = getData( "SELECT * FROM utente" );
   foreach( $resultUtente as $rowUtente ){
     $nome = $rowUtente['nome'];
     $cognome = $rowUtente['cognome'];
