@@ -6,7 +6,8 @@
 -- Creato il: Mag 07, 2021 alle 18:12
 -- Versione del server: 10.4.11-MariaDB
 -- Versione PHP: 7.4.5
-
+create database globex_corporation;
+use globex_corporation;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";

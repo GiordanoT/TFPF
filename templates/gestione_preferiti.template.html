@@ -1,0 +1,54 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0">Preferiti</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Preferiti</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<div class="content">
+  <div class="container-fluid">
+
+    
+    <div class="row">
+
+
+      <[foreach]>
+      <div class=" col-sm ">
+        <div class="info-box">
+          <img class="img-circle" src="<[percorso]>" height="100" width="100">
+          <div class="info-box-content">
+            <h3 class="info-box-text mx-auto"><[nome_categoria]></h3>
+            <span class="info-box-number ">
+              <a type="button" class="btn btn-block btn-<[variabile]> btn-lg" href="include/modifica_preferiti.inc.php?id=<[id_categoria]>&del=<[elimina]>"><[bottone]></a>
+            </span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <[/foreach]>
+      <!-- fix for small devices only -->
+      <div class="clearfix hidden-md-up"></div>
+
+      <!-- /.col -->
+    </div>
+
+
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
