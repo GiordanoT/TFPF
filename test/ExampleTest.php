@@ -15,10 +15,10 @@ class ExampleTest extends TestCase
     public function test_example()
     {
         //$this->assertEquals(2, 2);
-        $this->assertEquals( Array, ricercaEventi("inte").get_class() );
-        $this->assertEquals( Array, ricercaEventi("int").get_class() );
-        $this->assertEquals( Array, ricercaEventi("in").get_class() );
-        $this->assertEquals( Array, ricercaEventi("i").get_class() );
+        $this->assertEquals( Array(), ricercaEventi("inte").get_class() );
+        $this->assertEquals( Array(), ricercaEventi("int").get_class() );
+        $this->assertEquals( Array(), ricercaEventi("in").get_class() );
+        $this->assertEquals( Array(), ricercaEventi("i").get_class() );
 
     }
 }
