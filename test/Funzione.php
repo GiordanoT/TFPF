@@ -1,7 +1,5 @@
 <?php
 
-	require_once("/include/dbh.inc.php");  
-
 	function login($email,$password){
 
 		if($email == '' || $password == ''){
