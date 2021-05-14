@@ -12,11 +12,10 @@ class ExampleTest extends TestCase
 
     public function test_example()
     {
-        //$this->assertEquals(2, 2);
-        $this->assertEquals(4, somma(3));
-        $this->assertEquals(2, somma(1));
-        $this->assertEquals(3, somma(2));
-        $this->assertEquals(5, somma(4));
-
+        $this->assertEquals(true,"gianluca@mail.it","123");
+        $this->assertEquals(false,"margherita@mail.it","125");
+        $this->assertEquals(false,"davide@mail.it","123");
+        $this->assertEquals(false,"","125");
+        $this->assertEquals(false,"gianluca@mail.it","");
     }
 }
