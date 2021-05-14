@@ -11,8 +11,7 @@
   }
   $template -> setContent( "RICERCA", $search );
   $resultEvento = ricercaEventi( $search );
-  if( $resultEvento == "false" ){ echo "ERRORE!"; } //AGGIUNGERE REINDIRIZZAMENTO A ERRORE
-
+  if( $resultEvento == 0 ){ echo "ERRORE!"; exit(); } //AGGIUNGERE REINDIRIZZAMENTO A ERRORE
   if( !isset($_POST['previous']) && !isset($_POST['next']) ) {
     $template -> setContent( "ID_RICERCA", 0 );
     $template -> setContent( "FLAG_PREVIOUS", "d-none" );
