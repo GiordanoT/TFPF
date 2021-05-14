@@ -20,25 +20,28 @@
   else{
     $indicePagina = $_POST['indice'];
   }
-
-  if( isset($_POST['previous'])) { $template -> setContent( "ID_RICERCA", $_POST['indice']-6 ); $indicePagina -= 6; }
-  if( isset($_POST['next'])) { $template -> setContent( "ID_RICERCA", $_POST['indice']+6 ); $indicePagina += 6; }
+  //GESTIONE PAGINAZIONE
+  if( isset($_POST['previous'])) { $template -> setContent( "ID_RICERCA", $_POST['indice']-9 ); $indicePagina -= 9; }
+  if( isset($_POST['next'])) { $template -> setContent( "ID_RICERCA", $_POST['indice']+9 ); $indicePagina += 9; }
   if( $indicePagina == 0 ){ $template -> setContent( "FLAG_PREVIOUS", "d-none" ); }
 
   $i = 0;
-  while( $i < 6 && isset( $resultEvento[$indicePagina] ) ){
+  while( $i < 9 && isset( $resultEvento[$indicePagina] ) ){
+    $template -> setContent( "LINK", "#" );//MODIFICARE LINK CON PAGINA EVENTO
     $template -> setContent( "NOME", $resultEvento[$indicePagina]['nome'] );
+    $template -> setContent( "CITTA", $resultEvento[$indicePagina]['citta'] );
     $posti = $resultEvento[$indicePagina]['posti'];
     $query = "SELECT count(*) as n FROM partecipazione WHERE id_evento={$resultEvento[$indicePagina]['id']}";
     $resultPartecipazioni = getData( $query );
     $posti -= $resultPartecipazioni[0]['n'];
     $template -> setContent( "DISPONIBILE", $posti );
+    $resultCategoria = getData( "SELECT * FROM categoria WHERE id = {$resultEvento[$indicePagina]['id_categoria']}" );
+    $rowCategoria = $resultCategoria[0];
+    $template -> setContent( "CATEGORIA", $rowCategoria['nome'] );
     if( file_exists( $resultEvento[$indicePagina]['immagine'] ) ){
       $template -> setContent( "IMMAGINE", $resultEvento[$indicePagina]['immagine'] );
     }
     else{
-      $resultCategoria = getData( "SELECT * FROM categoria WHERE id = {$resultEvento[$indicePagina]['id_categoria']}" );
-      $rowCategoria = $resultCategoria[0];
       $template -> setContent( "IMMAGINE", $rowCategoria['immagine'] );
     }
     $indicePagina++;
@@ -57,9 +60,6 @@
     if( $resultEvento[0]['n'] <= 0 ){
       $template -> setContent( "CARD_FLAG", "d-none" );
     }
-
-
-
   $template -> close();
 
   function ricercaEventi( $s ){
