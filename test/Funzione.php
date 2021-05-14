@@ -2,7 +2,7 @@
 
 function login($email,$password){
 
-		require_once("../include/dbh.inc.php");  
+		require_once("/include/dbh.inc.php");  
     	
 		if($email == '' || $password == ''){
 			return false;
