@@ -20,3 +20,5 @@ class ExampleTest extends TestCase
         $this->assertEquals(false,login("gianluca@mail.it",""));
     }
 }
+
+?>
