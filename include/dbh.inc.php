@@ -1,6 +1,6 @@
 <?php
   //error_reporting(E_ALL ^ E_ALL);
-  $servername = "localhost";
+  $servername = "127.0.0.1";
   $dBUsername = "root";
   $dBPassword = "";
   $dBName = "globex_corporation";
