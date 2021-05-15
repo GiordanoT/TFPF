@@ -1,6 +1,6 @@
 <?php
   //error_reporting(E_ALL ^ E_ALL);
-  $servername = "localhost";
+  $servername = "	127.0.0.1";
   $dBUsername = "root";
   $dBPassword = "";
   $dBName = "globex_corporation";
@@ -8,14 +8,14 @@
   function getData( $sql ){
     $connection = mysqli_connect( $GLOBALS['servername'], $GLOBALS['dBUsername'], $GLOBALS['dBPassword'], $GLOBALS['dBName'] );
     if( !$connection ){
-      return "false";
+      return 0;
       //header("Location: ../error.php");
 	    //require 'component/error.component.php';
       exit();
     }
     $stmt = mysqli_stmt_init( $connection );
     if( !mysqli_stmt_prepare( $stmt, $sql ) ) {
-      return "false";
+      return 0;
       //header( "Location: ../error.php" );
 	    //require 'component/error.component.php';
       exit();
@@ -33,14 +33,14 @@
   function setData( $sql ){
     $connection = mysqli_connect( $GLOBALS['servername'], $GLOBALS['dBUsername'], $GLOBALS['dBPassword'], $GLOBALS['dBName'] );
     if( !$connection ){
-      return "false";
+      return 0;
       //header( "Location: ../error.php" );
 	    //require 'component/error.component.php';
       exit();
     }
     $stmt = mysqli_stmt_init( $connection );
     if ( !mysqli_stmt_prepare( $stmt, $sql ) ) {
-      return "false";
+      return 0;
       //header( "Location: ../error.php" );
 	    //require 'component/error.component.php';
       exit();
