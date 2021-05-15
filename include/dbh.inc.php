@@ -1,5 +1,5 @@
 <?php
-  //error_reporting(E_ALL ^ E_ALL);
+  error_reporting(E_ALL ^ (E_WARNING | E_NOTICE));
   $servername = "localhost";
   $dBUsername = "root";
   $dBPassword = "";
@@ -46,6 +46,6 @@
       exit();
     }
     mysqli_stmt_execute( $stmt );
-    return true;
+    return 1;
   }
 ?>
