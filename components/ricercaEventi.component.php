@@ -2,7 +2,7 @@
   require_once( "include/dbh.inc.php" );
 	$template = new Template( 'templates/ricercaEventi.template.html' );
   if(isset($_POST['search'])) {
-    $search = $_POST['search'];
+    $search = str_replace(" ", "", $_POST['search']);
     $template -> setContent( "ID_SEARCH", $search );
   }
   else{

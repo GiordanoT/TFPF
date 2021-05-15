@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	//$_SESSION['email']=1;
+	$_SESSION['email']=1;
 	require_once( "include/dbh.inc.php" );
 	$template = new Template( 'templates/navbar.template.html' );
 
@@ -14,11 +14,16 @@
 	if( isset($_SESSION['email']) ){
 		$template -> setContent( "NOME", $_SESSION['nome'] );
 		$template -> setContent( "COGNOME", $_SESSION['cognome'] );
+
 		//CALENDARIO
 		$template -> setContent( "NOME_LINK", "Calendario" );
 		$template -> setContent( "LINK", "#" );
 		$template -> setContent( "ICON", "fa-calendar-alt" );
-		//CALENDARIO
+		//PREFERITI
+		$template -> setContent( "NOME_LINK", "Categorie Preferite" );
+		$template -> setContent( "LINK", "#" );
+		$template -> setContent( "ICON", "fa-heart" );
+		//PROFILO
 		$template -> setContent( "NOME_LINK", "Profilo" );
 		$template -> setContent( "LINK", "#" );
 		$template -> setContent( "ICON", "fa-user" );
