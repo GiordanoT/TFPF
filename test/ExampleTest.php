@@ -14,6 +14,7 @@ class ExampleTest extends TestCase
 
     public function test_example()
     {
+
         $this->assertEquals( 0, ricercaEventi("inter") );
         $this->assertEquals( 0, ricercaEventi("inte") );
         $this->assertEquals( 0, ricercaEventi("int") );

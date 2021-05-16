@@ -9,7 +9,7 @@
 
 
   if(registrazione($email,$password,$_POST["nome"],$_POST["cognome"]) == 1){
-    header('Location: ../gestione_preferiti.php');
+    header('Location: ../gestionePreferiti.php');
     exit();
   }else if(registrazione($email,$password,$_POST["nome"],$_POST["cognome"]) == 0){
     header('Location: ../registrati.php?errore=email');

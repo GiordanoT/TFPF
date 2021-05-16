@@ -24,7 +24,7 @@
 		$template -> setContent( "ICON", "fa-calendar-alt" );
 		//PREFERITI
 		$template -> setContent( "NOME_LINK", "Categorie Preferite" );
-		$template -> setContent( "LINK", "gestione_preferiti.php" );
+		$template -> setContent( "LINK", "gestionePreferiti.php" );
 		$template -> setContent( "ICON", "fa-heart" );
 		//PROFILO
 		$template -> setContent( "NOME_LINK", "Profilo" );

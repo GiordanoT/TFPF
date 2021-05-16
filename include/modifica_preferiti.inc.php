@@ -9,7 +9,7 @@
       
   if (modifica_preferiti($cat,$mail,$del) == 0)
     header('Location: ../error.php');
-  else header('Location: ../gestione_preferiti.php');
+  else header('Location: ../gestionePreferiti.php');
  
   function modifica_preferiti($cat,$mail,$del){
     if(getData("Select * from utente where email='".$mail."'") != 0){
