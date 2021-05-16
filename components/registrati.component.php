@@ -1,7 +1,7 @@
 <?php
 	require_once( "include/dbh.inc.php" );
 	session_start();
-	if( isset($_SESSION['mail']) ){
+	if( isset( $_SESSION['mail']) ){
 		require( "components/error.component.php" );
 		require( "components/footer.component.php" );
 		exit();

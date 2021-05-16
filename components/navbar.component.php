@@ -28,7 +28,7 @@
 		$template -> setContent( "ICON", "fa-heart" );
 		//PROFILO
 		$template -> setContent( "NOME_LINK", "Profilo" );
-		$template -> setContent( "LINK", "#" );
+		$template -> setContent( "LINK", "profilo.php" );
 		$template -> setContent( "ICON", "fa-user" );
 		//LOGOUT
 		$template -> setContent( "NOME_LINK", "Logout" );
@@ -39,7 +39,7 @@
 		$template -> setContent( "FLAG_PROFILO", "d-none" );
 		//ACCEDI
 		$template -> setContent( "NOME_LINK", "Accedi" );
-		$template -> setContent( "LINK", "#" );
+		$template -> setContent( "LINK", "login.php" );
 		$template -> setContent( "ICON", "fa-user-check" );
 		//REGISTRATI
 		$template -> setContent( "NOME_LINK", "Registrati" );

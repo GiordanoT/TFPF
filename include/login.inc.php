@@ -1,34 +1,36 @@
 <?php
-    
-    require_once("dbh.inc.php");  
-    
+
+    require_once("dbh.inc.php");
+
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     $email = addslashes( $email );
     $email = strip_tags( $email );
 
-    $password = addslashes( $password );
-    $password = strip_tags( $password );
-   
-    $query = "SELECT id,nome,cognome,email,password,ruolo FROM utente WHERE email ='".$email."' AND password ='".$password."' ";
 
+    $query = "SELECT * FROM utente WHERE email ='{$email}'";
     $resultUtenti = getData($query);
+    if( $resultUtenti == 0 ){
+      header("Location: error.php");
+    }
 
-    if(count($resultUtenti) != 1)
-        header("Location: ../login.php?error=bad_login");
+    $rowUtente = $resultUtenti[0];
+    if( empty($rowUtente) || !password_verify( $password, $rowUtente['password'] ) ){
+      header( "Location: ../login.php?error=bad_login" );
+      exit();
+    }
     else{
         session_start();
-        foreach($resultUtenti as $rowUtente ){   
-            $_SESSION['id'] = $rowUtente['id'];
-            $_SESSION['nome'] = $rowUtente['nome'];
-            $_SESSION['cognome'] = $rowUtente['cognome'];
-            $_SESSION['mail'] = $rowUtente['email'];
-            $_SESSION['password'] = $password;
-            $_SESSION['ruolo'] = $rowUtente['ruolo'];
-        }
+        $_SESSION['id'] = $rowUtente['id'];
+        $_SESSION['nome'] = $rowUtente['nome'];
+        $_SESSION['cognome'] = $rowUtente['cognome'];
+        $_SESSION['mail'] = $rowUtente['email'];
+        $_SESSION['password'] = $password;
+        $_SESSION['ruolo'] = $rowUtente['ruolo'];
         header("Location: ../home.php");
+        exit();
     }
-    
+
 
 ?>
