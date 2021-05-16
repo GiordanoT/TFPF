@@ -23,7 +23,7 @@ class ExampleTest extends TestCase
         $this->assertEquals( 1, modifica_preferiti('1','margherita@mail.it','1'));
         $this->assertEquals( 0, registrazione('margherita@mail.it','123','prova','prova'));
         $this->assertEquals( 1, registrazione('test@test','123','prova','prova'));
-        
+
         //$this->assertEquals( 2, registrazione('db','db','db','db'));
     }
 }
