@@ -1,11 +1,14 @@
 <?php
 	session_start();
-	$_SESSION['email']=1;
 	require_once( "include/dbh.inc.php" );
 	$template = new Template( 'templates/navbar.template.html' );
 
 
 	$resultCategoria = getData( "SELECT * FROM categoria" );
+		if( $resultCategoria == 0 ){
+			$template -> setContent( "CATEGORIA", "ERRORE !" );
+			$template -> setContent( "LINK_CATEGORIA", "error.php" );
+		}
 	foreach( $resultCategoria as $rowCategoria ){
 		$template -> setContent( "CATEGORIA", $rowCategoria['nome'] );
 		$template -> setContent( "LINK_CATEGORIA", "#" );
@@ -14,11 +17,16 @@
 	if( isset($_SESSION['email']) ){
 		$template -> setContent( "NOME", $_SESSION['nome'] );
 		$template -> setContent( "COGNOME", $_SESSION['cognome'] );
+
 		//CALENDARIO
 		$template -> setContent( "NOME_LINK", "Calendario" );
 		$template -> setContent( "LINK", "#" );
 		$template -> setContent( "ICON", "fa-calendar-alt" );
-		//CALENDARIO
+		//PREFERITI
+		$template -> setContent( "NOME_LINK", "Categorie Preferite" );
+		$template -> setContent( "LINK", "#" );
+		$template -> setContent( "ICON", "fa-heart" );
+		//PROFILO
 		$template -> setContent( "NOME_LINK", "Profilo" );
 		$template -> setContent( "LINK", "#" );
 		$template -> setContent( "ICON", "fa-user" );

@@ -21,19 +21,16 @@
   <div class="container-fluid">
 
     <p><[N_RICERCA]> in "<[RICERCA]>"</p>
-    <div class="row g-3 <[CARD_FLAG]>">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 <[CARD_FLAG]>">
     <[foreach]>
-      <div class="col-sm-4">
+      <div class="col">
         <div class="card shadow-sm">
-          <div class="d-flex">
-            <a href="<[LINK]>">
-              <img class="p-1 img-circle" width="150" height="150" src="<[IMMAGINE]>" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
-            </a>
-            <div class="hidden-text card-body">
-              <h6 class="hidden-text card-text" style="text-transform: uppercase;"><[CATEGORIA]></h6>
-              <h4 class="hidden-text card-text" style="text-transform: uppercase;"><a style="color:black;" href="<[LINK]>"><[NOME]></a></h4>
-                <small class="hidden-text d-block text-muted"><[CITTA]></small>
-                <small class="hidden-text d-block text-muted">Posti Disponibili: <[DISPONIBILE]></small>
+          <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="<[IMMAGINE]>" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
+
+          <div class="card-body">
+            <h4 class="card-text" style="text-transform: uppercase;"><[NOME]></h4>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted">Posti Disponibili: <[DISPONIBILE]></small>
             </div>
           </div>
         </div>
