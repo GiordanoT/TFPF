@@ -15,6 +15,7 @@
 	}
 
 	if( isset($_SESSION['mail']) ){
+		$template -> setContent( "FLAG_PROFILO", "d-flex" );
 		$template -> setContent( "NOME", $_SESSION['nome'] );
 		$template -> setContent( "COGNOME", $_SESSION['cognome'] );
 
