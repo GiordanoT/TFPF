@@ -18,6 +18,5 @@ class ExampleTest extends TestCase
         $this->assertEquals( 0, ricercaEventi("inte") );
         $this->assertEquals( 0, ricercaEventi("int") );
         $this->assertEquals( 0, ricercaEventi("in") );
-        $this->assertEquals( 0, ricercaEventi("i") );
     }
 }
