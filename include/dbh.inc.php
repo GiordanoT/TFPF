@@ -1,5 +1,4 @@
 <?php
-  error_reporting(E_ALL ^ (E_WARNING | E_NOTICE));
   $servername = "localhost";
   $dBUsername = "root";
   $dBPassword = "";
@@ -8,14 +7,14 @@
   function getData( $sql ){
     $connection = mysqli_connect( $GLOBALS['servername'], $GLOBALS['dBUsername'], $GLOBALS['dBPassword'], $GLOBALS['dBName'] );
     if( !$connection ){
-      return 0;
+      return "false";
       //header("Location: ../error.php");
 	    //require 'component/error.component.php';
       exit();
     }
     $stmt = mysqli_stmt_init( $connection );
     if( !mysqli_stmt_prepare( $stmt, $sql ) ) {
-      return 0;
+      return "false";
       //header( "Location: ../error.php" );
 	    //require 'component/error.component.php';
       exit();
@@ -33,19 +32,19 @@
   function setData( $sql ){
     $connection = mysqli_connect( $GLOBALS['servername'], $GLOBALS['dBUsername'], $GLOBALS['dBPassword'], $GLOBALS['dBName'] );
     if( !$connection ){
-      return 0;
+      return "false";
       //header( "Location: ../error.php" );
 	    //require 'component/error.component.php';
       exit();
     }
     $stmt = mysqli_stmt_init( $connection );
     if ( !mysqli_stmt_prepare( $stmt, $sql ) ) {
-      return 0;
+      return "false";
       //header( "Location: ../error.php" );
 	    //require 'component/error.component.php';
       exit();
     }
     mysqli_stmt_execute( $stmt );
-    return 1;
+    return true;
   }
 ?>
