@@ -6,6 +6,10 @@
 
 
 	$resultCategoria = getData( "SELECT * FROM categoria" );
+		if( $resultCategoria == 0 ){
+			$template -> setContent( "CATEGORIA", "ERRORE !" );
+			$template -> setContent( "LINK_CATEGORIA", "error.php" );
+		}
 	foreach( $resultCategoria as $rowCategoria ){
 		$template -> setContent( "CATEGORIA", $rowCategoria['nome'] );
 		$template -> setContent( "LINK_CATEGORIA", "#" );

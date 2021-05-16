@@ -11,7 +11,7 @@
   }
   $template -> setContent( "RICERCA", $search );
   $resultEvento = ricercaEventi( $search );
-  if( $resultEvento == 0 ){ echo "ERRORE!"; exit(); } //AGGIUNGERE REINDIRIZZAMENTO A ERRORE
+  if( $resultEvento == 0 ){ require( "components/error.component.php" ); require( "components/footer.component.php" ); exit(); } //errore con DB
   if( !isset($_POST['previous']) && !isset($_POST['next']) ) {
     $template -> setContent( "ID_RICERCA", 0 );
     $template -> setContent( "FLAG_PREVIOUS", "d-none" );
@@ -33,9 +33,11 @@
     $posti = $resultEvento[$indicePagina]['posti'];
     $query = "SELECT count(*) as n FROM partecipazione WHERE id_evento={$resultEvento[$indicePagina]['id']}";
     $resultPartecipazioni = getData( $query );
+    if( $resultPartecipazioni == 0 ){ header( "Location: error.php" ); exit(); } //errore con DB
     $posti -= $resultPartecipazioni[0]['n'];
     $template -> setContent( "DISPONIBILE", $posti );
     $resultCategoria = getData( "SELECT * FROM categoria WHERE id = {$resultEvento[$indicePagina]['id_categoria']}" );
+    if( $resultCategoria == 0 ){ require( "components/error.component.php" ); require( "components/footer.component.php" ); exit(); } //errore con DB
     $rowCategoria = $resultCategoria[0];
     $template -> setContent( "CATEGORIA", $rowCategoria['nome'] );
     if( file_exists( $resultEvento[$indicePagina]['immagine'] ) ){
@@ -50,6 +52,7 @@
     if( $indicePagina >= count( $resultEvento ) ){ $template -> setContent( "FLAG_NEXT", "d-none" );  }
     $query = "SELECT count(*) as n FROM evento WHERE nome LIKE '%{$search}%'";
     $resultEvento = getData( $query );
+    if( $resultEvento == 0 ){ require( "components/error.component.php" ); require( "components/footer.component.php" ); exit(); } //errore con DB
 
     if( $resultEvento[0]['n'] == 1 ){
       $template -> setContent( "N_RICERCA", $resultEvento[0]['n']." risultato" );
