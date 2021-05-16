@@ -14,7 +14,7 @@
 		$template -> setContent( "LINK_CATEGORIA", "#" );
 	}
 
-	if( isset($_SESSION['email']) ){
+	if( isset($_SESSION['mail']) ){
 		$template -> setContent( "NOME", $_SESSION['nome'] );
 		$template -> setContent( "COGNOME", $_SESSION['cognome'] );
 
@@ -24,7 +24,7 @@
 		$template -> setContent( "ICON", "fa-calendar-alt" );
 		//PREFERITI
 		$template -> setContent( "NOME_LINK", "Categorie Preferite" );
-		$template -> setContent( "LINK", "#" );
+		$template -> setContent( "LINK", "gestione_preferiti.php" );
 		$template -> setContent( "ICON", "fa-heart" );
 		//PROFILO
 		$template -> setContent( "NOME_LINK", "Profilo" );
@@ -43,7 +43,7 @@
 		$template -> setContent( "ICON", "fa-user-check" );
 		//REGISTRATI
 		$template -> setContent( "NOME_LINK", "Registrati" );
-		$template -> setContent( "LINK", "#" );
+		$template -> setContent( "LINK", "registrati.php" );
 		$template -> setContent( "ICON", "fa-user-edit" );
 	}
 	$template -> close();

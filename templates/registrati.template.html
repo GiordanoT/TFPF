@@ -19,16 +19,18 @@
 <!-- Main content -->
 <div class="content">
   <div class="container-fluid">
-  
+
     <div class="row">
       <div class="col-sm-3"></div>
         <div class="card col-sm-6">
           <div class="card-body register-card-body">
             <img src="immagini_categoria/gb.png" height="30%" width="30%" style="text-align: center;  display: block; margin-left: auto; margin-right: auto;">
             <p class="login-box-msg">Registrati come nuovo utente</p>
-      
-            <!-- Errori -->  
-              <i class="nav-icon far fa-circle text-danger" <[hidden]> > <[Messaggio_errore]> </i>
+            <!-- Errori -->
+            <p class="login-box-msg text-danger" <[hidden]> ><b> <[Messaggio_errore]> </b></p>
+
+
+
 
             <form action="include/gestione_registrati.inc.php" method="POST">
               <div class="input-group mb-3">
@@ -79,7 +81,7 @@
                 <!-- /.col -->
               </div>
             </form>
-      
+
             <p >Sei già registrato? <a href="login.php" class="text-center"><b>Clicca qui per accedere</b></a></p>
           </div>
           <!-- /.form-box -->
