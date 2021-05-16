@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	$_SESSION['email']=1;
 	require_once( "include/dbh.inc.php" );
 	$template = new Template( 'templates/navbar.template.html' );
 
