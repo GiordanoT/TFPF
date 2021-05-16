@@ -17,7 +17,7 @@ class ExampleTest extends TestCase
         //registrazione($email,$password,$nome,$cognome)
         //modifica_preferiti($cat,$mail,$del)
         //$this->assertEquals( 0, modifica_preferiti('db','db','db') );
-
+        //wewe
         $this->assertEquals( 1, modifica_preferiti('4','gianluca@mail.it','0'));
         $this->assertEquals( 0, modifica_preferiti('2','gianluca@mail.it','1'));
         $this->assertEquals( 1, modifica_preferiti('1','margherita@mail.it','1'));
