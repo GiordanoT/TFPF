@@ -7,7 +7,7 @@
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="home.php">Home</a></li>
           <li class="breadcrumb-item active">Preferiti</li>
         </ol>
       </div><!-- /.col -->
@@ -20,7 +20,7 @@
 <div class="content">
   <div class="container-fluid">
 
-    
+
     <div class="row">
 
 
@@ -31,7 +31,11 @@
           <div class="info-box-content">
             <h3 class="info-box-text mx-auto"><[nome_categoria]></h3>
             <span class="info-box-number ">
-              <a type="button" class="btn btn-block btn-<[variabile]> btn-lg" href="include/modifica_preferiti.inc.php?id=<[id_categoria]>&del=<[elimina]>"><[bottone]></a>
+              <form method="POST" action="include/modifica_preferiti.inc.php">
+                <button name="preferiti" type="submit" class="btn btn-block btn-<[variabile]> btn-lg"><[bottone]></button>
+                <input class="d-none" name="cat" type="text" value="<[id_categoria]>">
+                <input class="d-none" name="del" type="text" value="<[elimina]>">
+              </form>
             </span>
           </div>
           <!-- /.info-box-content -->

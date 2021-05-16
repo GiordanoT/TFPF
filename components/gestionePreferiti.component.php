@@ -1,7 +1,12 @@
 <?php
 	session_start();
-	$email=$_SESSION["mail"];
+	if( !isset($_SESSION['mail']) ){
+		require( "components/error.component.php" );
+		require( "components/footer.component.php" );
+		exit();
+	}
 
+	$email=$_SESSION["mail"];
 	$template = new Template( 'templates/gestionePreferiti.template.html' );
 
 	$resultCat = getData( " SELECT * FROM categoria " );
