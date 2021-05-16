@@ -15,7 +15,7 @@ class ExampleTest extends TestCase
     {
         //$this->assertEquals(2, 2);
         //modifica_preferiti($cat,$mail,$del)
-        $this->assertEquals( 0, modifica_preferiti('db','db','db') );
+        //$this->assertEquals( 0, modifica_preferiti('db','db','db') );
         $this->assertEquals( 0, modifica_preferiti('1','gianluca@mail.it','0'));
         $this->assertEquals( 0, modifica_preferiti('2','gianluca@mail.it','1'));
         $this->assertEquals( 0, modifica_preferiti('1','margherita@mail.it','1'));
