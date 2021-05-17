@@ -11,7 +11,8 @@ require_once '../include/dbh.inc.php';
 class ExampleTest extends TestCase{
 
     public function test_example(){
-        $this->assertEquals( 1, setData("INSERT INTO categoria (nome,immagine) VALUES (\"rugby\",\"\") ) );
+      $query = 'INSERT INTO categoria (nome,immagine) VALUES ("rugby","") )';
+        $this->assertEquals( 1, setData( $query );
     }
 }
 
