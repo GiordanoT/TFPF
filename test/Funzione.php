@@ -37,7 +37,9 @@ function modifica_preferiti($cat,$mail,$del){
         
       }else return 2;
 
-
     }
+
+    //require "../include/dbh.inc.php";
+    //echo registrazione('giordano@mail.it','123','prova','prova');
 
 ?>
