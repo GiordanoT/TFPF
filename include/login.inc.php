@@ -1,6 +1,10 @@
 <?php
-
     require_once("dbh.inc.php");
+
+    if( !isset($_POST['login']) ){
+      header("Location: ../login.php");
+      exit();
+    }
 
     $email = $_POST['email'];
     $password = $_POST['password'];
