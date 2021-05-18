@@ -1,7 +1,8 @@
 <?php
   function Signin($email,$password,$nome,$cognome){
-    if( getData( "SELECT email FROM utente where email='{$email}'") != 0){
-      $resultEmail = getData( "SELECT email FROM utente where email='{$email}'");
+    $result = getData( "SELECT email FROM utente WHERE email='{$email}'");
+    if( $result != 0){
+      $resultEmail = $result;
       if( !empty($resultEmail) ) {
         return 0;
       }
