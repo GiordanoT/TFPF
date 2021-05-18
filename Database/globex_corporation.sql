@@ -3,10 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 07, 2021 alle 18:12
+-- Creato il: Mag 11, 2021 alle 15:17
 -- Versione del server: 10.4.11-MariaDB
 -- Versione PHP: 7.4.5
-
+create database globex_corporation;
+use globex_corporation;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -29,16 +30,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categoria` (
   `id` int(11) NOT NULL,
-  `nome` varchar(255) NOT NULL
+  `nome` varchar(255) NOT NULL,
+  `immagine` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `categoria`
 --
 
-INSERT INTO `categoria` (`id`, `nome`) VALUES
-(1, 'Calcio'),
-(2, 'Tennis');
+INSERT INTO `categoria` (`id`, `nome`, `immagine`) VALUES
+(1, 'Calcio', ''),
+(2, 'Tennis', '');
 
 -- --------------------------------------------------------
 
@@ -111,17 +113,18 @@ CREATE TABLE `evento` (
   `tipologia` tinyint(1) NOT NULL,
   `posti` int(11) NOT NULL,
   `admin_evento` int(11) NOT NULL,
-  `costo` float NOT NULL
+  `costo` float NOT NULL,
+  `immagine` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `evento`
 --
 
-INSERT INTO `evento` (`id`, `nome`, `descrizione`, `id_categoria`, `tipologia`, `posti`, `admin_evento`, `costo`) VALUES
-(1, 'Inter-Roma', 'Quinta partita di serie A. Si gioca a san Siro.', 1, 1, 60000, 1, 50),
-(2, 'Francavilla-Tollo', 'Sesta Partita di eccellenza. Si gioca a Francavilla', 1, 0, 1000, 1, 0),
-(3, 'Expo Sports', 'La fiera del Tennis', 2, 1, 20000, 1, 100);
+INSERT INTO `evento` (`id`, `nome`, `descrizione`, `id_categoria`, `tipologia`, `posti`, `admin_evento`, `costo`, `immagine`) VALUES
+(1, 'Inter-Roma', 'Quinta partita di serie A. Si gioca a san Siro.', 1, 1, 60000, 1, 50, ''),
+(2, 'Francavilla-Tollo', 'Sesta Partita di eccellenza. Si gioca a Francavilla', 1, 0, 1000, 1, 0, ''),
+(3, 'Expo Sports', 'La fiera del Tennis', 2, 1, 20000, 1, 100, '');
 
 -- --------------------------------------------------------
 
@@ -179,7 +182,6 @@ CREATE TABLE `utente` (
   `cognome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `sesso` tinyint(1) NOT NULL,
   `ruolo` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -187,9 +189,10 @@ CREATE TABLE `utente` (
 -- Dump dei dati per la tabella `utente`
 --
 
-INSERT INTO `utente` (`id`, `nome`, `cognome`, `email`, `password`, `sesso`, `ruolo`) VALUES
-(1, 'Gianluca', 'De Bosis', 'gianluca@mail.it', '123', 0, 1),
-(2, 'Margherita', 'Covagatti', 'margherita@mail.it', '123', 1, 0);
+INSERT INTO `utente` (`id`, `nome`, `cognome`, `email`, `password`, `ruolo`) VALUES
+(1, 'Gianluca', 'De Bosis', 'gianluca@mail.it', '123', 1),
+(2, 'Margherita', 'Covagatti', 'margherita@mail.it', '123', 0),
+(7, '1', '1', '1', '1', 0);
 
 --
 -- Indici per le tabelle scaricate
@@ -318,7 +321,7 @@ ALTER TABLE `preferito`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Limiti per le tabelle scaricate

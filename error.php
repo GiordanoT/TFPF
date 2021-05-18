@@ -5,7 +5,7 @@
   require( 'templates/begin.template.html' );
 
     require( 'components/navbar.component.php' );
-    require( 'components/home.component.php' );
+    require( 'templates/error.template.html' );
     require( 'components/footer.component.php' );
 
   require( 'templates/end.template.html' );

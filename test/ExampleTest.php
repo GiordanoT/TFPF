@@ -5,22 +5,26 @@ namespace Test;
 use PHPUnit\Framework\TestCase;
 
 require_once './vendor/autoload.php';
+require_once 'include/dbh.inc.php';
 
-require_once( "Funzione.php" );
-require_once( "include/dbh.inc.php" );
+require_once 'Login.php';
+require_once 'Signin.php';
+require_once 'CategoriaPreferita.php';
 
-class ExampleTest extends TestCase
-{
+class ExampleTest extends TestCase{
 
-    public function test_example()
-    {
-        $this->assertEquals( 0, ricercaEventi("inter") );
-        $this->assertEquals( 0, ricercaEventi("inte") );
-        $this->assertEquals( 0, ricercaEventi("int") );
-        $this->assertEquals( 0, ricercaEventi("in") );
-        $this->assertEquals( 0, ricercaEventi("i") );
-        $this->assertEquals( 0, ricercaEventi("") );
-        $this->assertEquals( 0, ricercaEventi("mila") );
-        $this->assertEquals( 0, ricercaEventi("juve") );
+    public function test_example(){
+      $this->assertEquals( 2, Login( "ciao@ciao.ciao","123" ) );
+      $this->assertEquals( 2, Login( "prova@errore.com","1828" ) );
+      $this->assertEquals( 1, Login( "mario@mail.it","123" ) );
+      $this->assertEquals( 1, Login( "giordano@mail.it","123" ) );
+
+      $this->assertEquals( 0, Signin( "mario@mail.it","123","Mario", "Rossi" ) );
+      $this->assertEquals( 0, Signin( "giordano@mail.it","123","Luca", "Rossi" ) );
+
+      $this->assertEquals( 1, modifica_preferiti( 0,"prova@mail.it","123",0 ) );
+      $this->assertEquals( 1, modifica_preferiti( 1,"prova@mail.it","123",1 ) );
     }
 }
+
+?>

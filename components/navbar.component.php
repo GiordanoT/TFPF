@@ -14,7 +14,8 @@
 		$template -> setContent( "LINK_CATEGORIA", "#" );
 	}
 
-	if( isset($_SESSION['email']) ){
+	if( isset($_SESSION['mail']) ){
+		$template -> setContent( "FLAG_PROFILO", "d-flex" );
 		$template -> setContent( "NOME", $_SESSION['nome'] );
 		$template -> setContent( "COGNOME", $_SESSION['cognome'] );
 
@@ -24,11 +25,11 @@
 		$template -> setContent( "ICON", "fa-calendar-alt" );
 		//PREFERITI
 		$template -> setContent( "NOME_LINK", "Categorie Preferite" );
-		$template -> setContent( "LINK", "#" );
+		$template -> setContent( "LINK", "gestionePreferiti.php" );
 		$template -> setContent( "ICON", "fa-heart" );
 		//PROFILO
 		$template -> setContent( "NOME_LINK", "Profilo" );
-		$template -> setContent( "LINK", "#" );
+		$template -> setContent( "LINK", "profilo.php" );
 		$template -> setContent( "ICON", "fa-user" );
 		//LOGOUT
 		$template -> setContent( "NOME_LINK", "Logout" );
@@ -39,11 +40,11 @@
 		$template -> setContent( "FLAG_PROFILO", "d-none" );
 		//ACCEDI
 		$template -> setContent( "NOME_LINK", "Accedi" );
-		$template -> setContent( "LINK", "#" );
+		$template -> setContent( "LINK", "login.php" );
 		$template -> setContent( "ICON", "fa-user-check" );
 		//REGISTRATI
 		$template -> setContent( "NOME_LINK", "Registrati" );
-		$template -> setContent( "LINK", "#" );
+		$template -> setContent( "LINK", "registrati.php" );
 		$template -> setContent( "ICON", "fa-user-edit" );
 	}
 	$template -> close();

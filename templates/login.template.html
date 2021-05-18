@@ -1,0 +1,66 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+            <li class="breadcrumb-item active">Login</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="mx-auto col-sm-8">
+          <!-- /.login-logo -->
+          <div class="card rounded">
+            <div class="card-body login-card-body">
+              <img src="image/gbx.jpg" height="10%" width="30%" style="text-align: center;  display: block; margin-left: auto; margin-right: auto;">
+              <h4 class="my-auto hidden-title separator" style="color:rgba(4, 15, 129, 0.815);">ACCEDI</b></h4>
+              <p class="login-box-msg text-danger"><b> <[Messaggio_errore]> </b></p>
+
+              <form action="include/login.inc.php" method="POST">
+                <div class="input-group mb-3 col-sm-8 mx-auto">
+                  <input required type="email" name="email" class="form-control" placeholder="Email">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-envelope"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="input-group mb-3 col-sm-8 mx-auto">
+                  <input required type="password" name="password" class="form-control" placeholder="Password">
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fas fa-lock"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mx-auto">
+                    <button name="login" type="submit" class="btn btn-primary btn-block mx-auto col-10 col-sm-3">Accedi</button>
+                </div>
+              </form>
+
+              <div class="social-auth-links text-center mb-3">
+              </div>
+              <hr class="col-8 mx-auto">
+              <!-- /.social-auth-links -->
+              <p class="mt-2 text-center">Non sei registrato? <a href="registrati.php" class="text-center"><b>Clicca qui</b></a></p>
+            </div>
+            <!-- /.login-card-body -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->

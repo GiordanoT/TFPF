@@ -3,13 +3,17 @@
 	$template = new Template( 'templates/ricercaEventi.template.html' );
   if(isset($_POST['search'])) {
     $search = str_replace(" ", "", $_POST['search']);
+    $search = addslashes( $_POST['search'] );
+    $search = strip_tags( $search );
+    $template -> setContent( "RICERCA", str_replace("\\", "", $search ) );
     $template -> setContent( "ID_SEARCH", $search );
   }
   else{
     $search = $_POST['id_search'];
     $template -> setContent( "ID_SEARCH", $search );
+    $template -> setContent( "RICERCA", str_replace("\\", "", $search ) );
   }
-  $template -> setContent( "RICERCA", $search );
+
   $resultEvento = ricercaEventi( $search );
   if( $resultEvento == 0 ){ require( "components/error.component.php" ); require( "components/footer.component.php" ); exit(); } //errore con DB
   if( !isset($_POST['previous']) && !isset($_POST['next']) ) {
@@ -52,7 +56,11 @@
     if( $indicePagina >= count( $resultEvento ) ){ $template -> setContent( "FLAG_NEXT", "d-none" );  }
     $query = "SELECT count(*) as n FROM evento WHERE nome LIKE '%{$search}%'";
     $resultEvento = getData( $query );
-    if( $resultEvento == 0 ){ require( "components/error.component.php" ); require( "components/footer.component.php" ); exit(); } //errore con DB
+    if( $resultEvento == 0 ){
+      require( "components/error.component.php" );
+      require( "components/footer.component.php" );
+      exit();
+    } //errore con DB
 
     if( $resultEvento[0]['n'] == 1 ){
       $template -> setContent( "N_RICERCA", $resultEvento[0]['n']." risultato" );

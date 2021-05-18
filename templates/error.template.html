@@ -3,12 +3,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Pagina 1</h1>
+        <h1 class="m-0"></h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Pagina 1</li>
+          <li class="breadcrumb-item active">Errore</li>
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -19,16 +19,22 @@
 <!-- Main content -->
 <div class="content">
   <div class="container-fluid">
-    <h3><[TESTO]></h3>
+    <section class="content">
+      <div class="error-page">
+        <h2 class="headline text-warning"> 404</h2>
 
+        <div class="error-content">
+          <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Pagina non trovata.</h3>
 
+          <p>
+            Ops, c'è un errore nella pagine che stai cercando, prova a <a href="home.php">Tornare alla Homepage.</a>
+          </p>
 
-
-
-
-
-
-
+        </div>
+        <!-- /.error-content -->
+      </div>
+      <!-- /.error-page -->
+    </section>
   </div><!-- /.container-fluid -->
 </div>
 <!-- /.content -->
