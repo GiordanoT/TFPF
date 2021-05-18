@@ -1,28 +1,24 @@
 <?php
 
-function modifica_preferiti($cat,$mail,$del){
-    if(getData("Select * from utente where email='".$mail."'") != 0){
-      $resultUtente=getData("Select * from utente where email='".$mail."'");
-      $rowUtente=$resultUtente[0];
-      $id=$rowUtente["id"];
-    }else return 0;
+	function login($email,$password){
 
+		if($email == '' || $password == ''){
+			return false;
+		}
+		else{
+			$query = "SELECT id,nome,cognome,email,password,ruolo FROM utente WHERE email ='".$email."' AND password ='".$password."' ";
 
-    if($del == "0")
-      return setData( "INSERT INTO `categoria_preferita`(`id_utente`, `id_categoria`) VALUES ('".$id."','". $cat."') " );
-    else  
-      return setData( "DELETE FROM `categoria_preferita` WHERE id_categoria = '".$cat."' && id_utente='".$id."'" );
-    
-  }
+			$resultUtenti = getData($query);
 
-  function registrazione($email,$password,$nome,$cognome){
-    if( getData( "SELECT email FROM utente where email='{$email}'") != 0){
-      $resultEmail = getData( "SELECT email FROM utente where email='{$email}'");
-      if( !empty($resultEmail) ) {
-        return 0;
-      }
-    }else return 2;
+			if(count($resultUtenti) != 1)
+				return false;
+			else{
+				return true;
+			}
+		}
+ 	} 
 
+ 	}
 
       //inserimento db
       if(setData( " INSERT INTO utente (nome,cognome,email,password) VALUES ('".$_POST["nome"]."', '".$_POST["cognome"]."', '".$_POST["email"]."', '".$password."') ")){

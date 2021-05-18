@@ -5,7 +5,7 @@
   require( 'templates/begin.template.html' );
 
     require( 'components/navbar.component.php' );
-    require( 'components/gestione_preferiti.component.php' );
+    require( 'components/login.component.php' );
     require( 'components/footer.component.php' );
 
   require( 'templates/end.template.html' );
