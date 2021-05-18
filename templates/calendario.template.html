@@ -1,0 +1,152 @@
+
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Calendar</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Calendar</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-body p-0">
+              <!-- THE CALENDAR -->
+              <div id="calendar" class="fc fc-media-screen fc-direction-ltr fc-theme-bootstrap">
+                <div class="fc-header-toolbar fc-toolbar fc-toolbar-ltr">
+                  <div class="fc-toolbar-chunk mx-auto">
+                    <div class="btn-group">
+                      <form class="row mx-auto" action="calendario.php?<[URL_DATA_CALENDARIO]>" method="post">
+                        <button class="fc-prev-button btn button__page" type="submit" aria-label="prev" name="meno"><span class="fa fa-chevron-left"></span></button>
+                        <h2 class="fc-toolbar-title ml-3 mr-3"><[MESE]> <[ANNO]></h2>
+                        <button class="fc-next-button btn button__page" type="submit" aria-label="next" name="piu"><span class="fa fa-chevron-right"></span></button>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="fc-toolbar-chunk">
+                  </div>
+                </div>
+                <div class="fc-view-harness fc-view-harness-active" style="height: 522.222px;">
+                  <div class="fc-daygrid fc-dayGridMonth-view fc-view">
+                    <table class="fc-scrollgrid table-bordered fc-scrollgrid-liquid">
+                      <thead>
+                        <tr class="fc-scrollgrid-section fc-scrollgrid-section-header ">
+                          <td>
+                            <div class="fc-scroller-harness">
+                              <div class="fc-scroller" style="overflow: hidden;">
+                                <table class="fc-col-header ">
+                                  <colgroup></colgroup>
+                                  <tbody>
+                                    <tr>
+                                      <th class="fc-col-header-cell fc-day fc-day-sun">
+                                        <div class="fc-scrollgrid-sync-inner">
+                                          <a class="fc-col-header-cell-cushion ">Sun</a>
+                                        </div>
+                                      </th>
+                                      <th class="fc-col-header-cell fc-day fc-day-mon">
+                                        <div class="fc-scrollgrid-sync-inner">
+                                          <a class="fc-col-header-cell-cushion ">Mon</a>
+                                        </div>
+                                      </th>
+                                      <th class="fc-col-header-cell fc-day fc-day-tue">
+                                        <div class="fc-scrollgrid-sync-inner">
+                                          <a class="fc-col-header-cell-cushion ">Tue</a>
+                                        </div>
+                                      </th>
+                                      <th class="fc-col-header-cell fc-day fc-day-wed">
+                                        <div class="fc-scrollgrid-sync-inner">
+                                          <a class="fc-col-header-cell-cushion ">Wed</a>
+                                        </div>
+                                      </th>
+                                      <th class="fc-col-header-cell fc-day fc-day-thu">
+                                        <div class="fc-scrollgrid-sync-inner">
+                                          <a class="fc-col-header-cell-cushion ">Thu</a>
+                                        </div>
+                                      </th>
+                                      <th class="fc-col-header-cell fc-day fc-day-fri">
+                                        <div class="fc-scrollgrid-sync-inner">
+                                          <a class="fc-col-header-cell-cushion ">Fri</a>
+                                        </div>
+                                      </th>
+                                      <th class="fc-col-header-cell fc-day fc-day-sat">
+                                        <div class="fc-scrollgrid-sync-inner">
+                                          <a class="fc-col-header-cell-cushion ">Sat</a>
+                                        </div>
+                                      </th>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="fc-scrollgrid-section fc-scrollgrid-section-body  fc-scrollgrid-section-liquid">
+                          <td>
+                            <div class="fc-scroller-harness fc-scroller-harness-liquid">
+                              <div class="fc-scroller fc-scroller-liquid-absolute" style="overflow: hidden auto;">
+                                <div class="fc-daygrid-body fc-daygrid-body-unbalanced ">
+                                  <table class="fc-scrollgrid-sync-table">
+                                    <colgroup></colgroup>
+                                    <tbody>
+                                      <tr>
+                                        <[foreach]>
+                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                              <div class="fc-daygrid-day-top">
+                                                <a class="fc-daygrid-day-number"><[WEEK_1]></a>
+                                              </div>
+                                              <[foreach]>
+                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_1]>">
+                                                  <div class="fc-daygrid-event-harness">
+                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
+                                                      <div class="fc-event-main">
+                                                        <div class="fc-event-main-frame">
+                                                          <div class="fc-event-title-container">
+                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_1]></div>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                    </a>
+                                                  </div>
+                                                </div>
+                                                <[/foreach]>
+                                              <div class="fc-daygrid-day-bg"></div>
+                                            </div>
+                                          </td>
+                                        <[/foreach]>
+                                      </tr>
+                                      <tr>
+
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+  </section>
+</div>
