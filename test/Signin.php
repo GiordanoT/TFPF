@@ -2,7 +2,7 @@
   function Signin($email,$password,$nome,$cognome){
     $resultEmail = getData( "SELECT email FROM utente WHERE email='{$email}'");
     if( $resultEmail != 0){
-      if( !empty($resultEmail[0]) ) { return 0;}
+      if( !empty($resultEmail) ) { return 0;}
     }else return 2;
     //inserimento db
     if( setData( " INSERT INTO utente (nome,cognome,email,password) VALUES ( '{$nome}','{$cognome}','{$email}','{$password}') ")){
