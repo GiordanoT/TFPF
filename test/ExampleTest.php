@@ -22,7 +22,7 @@ class ExampleTest extends TestCase{
       $this->assertEquals( 0, Signin( "mario@mail.it","123","Mario", "Rossi" ) );
       $this->assertEquals( 0, Signin( "giordano@mail.it","123","Luca", "Rossi" ) );
 
-      $this->assertEquals( 0, modifica_preferiti( 0,"prova@mail.it","123",0 ) );
+      $this->assertEquals( 1, modifica_preferiti( 0,"prova@mail.it","123",0 ) );
       $this->assertEquals( 1, modifica_preferiti( 1,"prova@mail.it","123",1 ) );
 
 
