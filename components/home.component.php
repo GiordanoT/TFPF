@@ -40,13 +40,19 @@
 	}
 
 
-	$result = getData("SELECT * FROM categoria ORDER BY nome LIMIT 3");
+	$result = getData("SELECT DISTINCT c.* FROM categoria c RIGHT JOIN evento e ON (c.id = e.id_categoria) ORDER BY c.nome LIMIT 3");
 	if($result == 0){
 		require( "components/error.component.php" );
 		require( "components/footer.component.php" );
 		exit();
 	}
 	foreach( $result as $row ){
+		$result_eventi = getData("SELECT * FROM evento e WHERE e.id_categoria =' ".$row["id"]."' ORDER BY e.costo LIMIT 10");
+		if($result_eventi == 0){
+			require( "components/error.component.php" );
+			require( "components/footer.component.php" );
+			exit();
+		}
 		$template -> setContent( "CATEGORIA", strtoupper($row['nome']) );
 		if( file_exists($row['immagine']) ){
 			$template -> setContent( "CATEGORIA_IMMAGINE", $row['immagine'] );
