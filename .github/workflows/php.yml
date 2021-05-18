@@ -10,7 +10,7 @@ on:
       - Federico
       - DavPalo
   pull_request:
-    branches:       
+    branches:
       - main
       - GiordanoT
       - GianlucaDM
@@ -26,8 +26,16 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
+<<<<<<< HEAD
           MYSQL_ROOT_PASSWORD: 
           MYSQL_DATABASE: globex_corporation
+=======
+          MYSQL_ROOT_PASSWORD:
+          MYSQL_DATABASE: globex_corporation
+          MYSQL_USER: localhost
+          MYSQL_PASSWORD:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+>>>>>>> main
         ports:
           - 33306:3306
         #options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
