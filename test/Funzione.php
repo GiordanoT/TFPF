@@ -11,9 +11,9 @@
 			$resultUtenti = getData($query);
 
 			if(count($resultUtenti) != 1)
-				return false;
+				return 0;
 			else{
-				return true;
+				return 1;
 			}
 		}
  	} 
