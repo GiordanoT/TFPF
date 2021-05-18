@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once("dbh.inc.php");
     require_once("../test/Login.php"); // richiamo la funzione di Login
     if( !isset($_POST['login']) ){

@@ -11,7 +11,6 @@
       $rowUtente = $resultUtenti[0];
       if( !password_verify( $password, $rowUtente['password'] ) ) { return 2; }
       else{
-        session_start();
         $_SESSION['id'] = $rowUtente['id'];
         $_SESSION['nome'] = $rowUtente['nome'];
         $_SESSION['cognome'] = $rowUtente['cognome'];
