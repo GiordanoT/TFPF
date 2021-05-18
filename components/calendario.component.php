@@ -1,6 +1,7 @@
 <?php
   error_reporting(E_ALL ^ (E_WARNING | E_NOTICE));
 
+
 	require_once('include\dbh.inc.php');
 	$template = new Template( 'templates/calendario.template.html' );
   date_default_timezone_set("Europe/Rome");
@@ -12,6 +13,11 @@
   else {
     $anno = $_GET["anno"];
     $monthNumber = $_GET["mese"];
+    if( $monthNumber < 0 || $monthNumber > 11 ){
+      require( "components/error.component.php" );
+      require( "components/footer.component.php" );
+      exit();
+    }
   }
   if(isset($_POST["meno"])){
     if($monthNumber == 0){
@@ -27,7 +33,7 @@
        $monthNumber = 0;
     } else {
       $monthNumber = ($monthNumber+1)%12;
-    
+
     }
 
   }
@@ -101,31 +107,132 @@
    $template -> setContent("MESE",$mese);
    $template -> setContent("ANNO",$anno);
 
-  $template -> setContent("WEEK_1","1");
-  $template -> setContent("FLAG_WEEK_1","d-none");
-  $template -> setContent("EVENTO_WEEK_1","");
-  $template -> setContent("WEEK_1","2");
-  $template -> setContent("FLAG_WEEK_1","d-none");
-  $template -> setContent("EVENTO_WEEK_1","");
-  $template -> setContent("WEEK_1","3");
-  $template -> setContent("FLAG_WEEK_1","d-none");
-  $template -> setContent("EVENTO_WEEK_1","");
-  $template -> setContent("WEEK_1","4");
-  $template -> setContent("FLAG_WEEK_1","d-none");
-  $template -> setContent("EVENTO_WEEK_1","");
-  $template -> setContent("WEEK_1","5");
-  $template -> setContent("EVENTO_WEEK_1","Inter-Milan");
-  $template -> setContent("FLAG_WEEK_1","");
-  $template -> setContent("WEEK_1","6");
-  $template -> setContent("FLAG_WEEK_1","d-none");
-  $template -> setContent("EVENTO_WEEK_1","");
-  $template -> setContent("WEEK_1","7");
-  $template -> setContent("EVENTO_WEEK_1","Roma-Lazio");
-  $template -> setContent("EVENTO_WEEK_1","Roma-Lazio");
-  $template -> setContent("EVENTO_WEEK_1","Roma-Lazio");
 
-  $template -> setContent("EVENTO_WEEK_1","Roma-Lazio");
+  $firstDay = strtotime( $meseTitle." 1 ".$anno);
+  $firstDay= date("D", $firstDay);
+  switch ($firstDay) {
+    case 'Mon':
+      for( $i=1; $i<$endMonth+1; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, $i );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+      for( $i=$endMonth+1; $i<43; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, "" );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+    break;
 
-  $template -> setContent("FLAG_WEEK_1","");
+    case 'Tue':
+      $template -> setContent( 'WEEK_1', "" );
+      $template -> setContent( 'EVENTO_WEEK_1', "" );
+      $template -> setContent( 'FLAG_WEEK_1', "d-none" );
+      for( $i=2; $i<$endMonth+2; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, $i-1 );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+      for( $i=$endMonth+1; $i<43; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, "" );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+    break;
+
+    case 'Wed':
+      for( $i=1; $i<3; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, "" );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+      for( $i=3; $i<$endMonth+3; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, $i-2 );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+      for( $i=$endMonth+1; $i<43; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, "" );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+    break;
+
+    case 'Thu':
+      for( $i=1; $i<4; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, "" );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+      for( $i=4; $i<$endMonth+4; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, $i-3 );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+      for( $i=$endMonth+1; $i<43; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, "" );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+    break;
+
+    case 'Fri':
+      for( $i=1; $i<5; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, "" );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+      for( $i=5; $i<$endMonth+5; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, $i-4 );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+      for( $i=$endMonth+1; $i<43; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, "" );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+    break;
+
+    case 'Sat':
+      for( $i=1; $i<6; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, "" );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+      for( $i=6; $i<$endMonth+6; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, $i-5 );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+      for( $i=$endMonth+1; $i<43; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, "" );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+    break;
+
+    case 'Sun':
+      for( $i=1; $i<7; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, "" );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+      for( $i=7; $i<$endMonth+7; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, $i-6 );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+      for( $i=$endMonth+1; $i<43; $i++ ){
+        $template -> setContent( 'WEEK_'.$i, "" );
+        $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
+        $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
+      }
+    break;
+}
+
+
+
+
 	$template -> close();
 ?>
