@@ -4,10 +4,10 @@
     $resultUtenti = getData( $query );
     if( $resultUtenti == 0 ){
       return 0;
-    }    
+    }
+    $rowUtente = $resultUtenti[0];
     if( empty($rowUtente) ){ return 2; }
-    else{
-      $rowUtente = $resultUtenti[0];
+    else{      
       if( !password_verify( $password, $rowUtente['password'] ) ) { return 2; }
       else{
         session_start();
