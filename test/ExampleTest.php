@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 require_once './vendor/autoload.php';
 
-require_once 'include/login.inc.php';
+require_once 'Login.php'
 
 class ExampleTest extends TestCase{
 
