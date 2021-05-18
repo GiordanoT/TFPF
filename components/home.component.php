@@ -5,6 +5,15 @@
 	$template = new Template( 'templates/home.template.html' );
 	$template -> setContent( "IMMAGINE_CAROUSEL","immagini_categoria/carousel.jpg" );
 
+	function alert($msg) {
+		echo "<script type='text/javascript'>alert('$msg');</script>";
+	}
+
+	if($_GET["popup"]=="true")
+		alert("Ora sei in modalità admin");
+	elseif($_GET["popup"]=="false")
+		alert("Ora sei in modalità utente");
+
 	$result_recenti = getData("SELECT DISTINCT e.citta, e.immagine as immagine_e, e.nome as nome_e, e.posti, e.costo, c.nome as nome_c, c.immagine as immagine_c FROM evento e JOIN data_evento d ON (e.id = d.id_evento) JOIN categoria c ON (c.id = e.id_categoria) ORDER BY d.data ASC LIMIT 10");
 	if($result_recenti == 0){
 		require( "components/error.component.php" );
