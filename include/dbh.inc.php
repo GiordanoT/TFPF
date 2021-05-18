@@ -1,9 +1,17 @@
 <?php
-  //error_reporting(E_ALL ^ (E_NOTICE | E_WARNING) );
+  error_reporting(E_ALL ^ (E_NOTICE | E_WARNING) );
+
+  //DB ONLINE
   $servername = "sql11.freesqldatabase.com";
   $dBUsername = "sql11413202";
   $dBPassword = "LvmyzpynAQ";
   $dBName = "sql11413202";
+  
+  //DB LOCALE
+  //$servername = "localhost";
+  //$dBUsername = "root";
+  //$dBPassword = "";
+  //$dBName = "globex_corporation";
 
   function getData( $sql ){
     $connection = mysqli_connect( $GLOBALS['servername'], $GLOBALS['dBUsername'], $GLOBALS['dBPassword'], $GLOBALS['dBName'] );

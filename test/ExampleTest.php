@@ -9,7 +9,7 @@ require_once 'include/dbh.inc.php';
 
 require_once 'Login.php';
 require_once 'Signin.php';
-require_once 'categoriaPreferiti.php';
+require_once 'categoriaPreferita.php';
 
 class ExampleTest extends TestCase{
 
