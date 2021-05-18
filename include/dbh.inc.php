@@ -7,7 +7,7 @@
 
   function getData( $sql ){
     //$connection = mysqli_connect( $GLOBALS['servername'], $GLOBALS['dBUsername'], $GLOBALS['dBPassword'], $GLOBALS['dBName'] );
-    $connection = mysqli_connect('127.0.0.1', 'root', '', 'globex_corporation', 3306);
+    $connection = mysqli_connect('127.0.0.1', 'root', '', 'globex_corporation');
     if( !$connection ){
       return 0;
     }
