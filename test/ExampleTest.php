@@ -5,27 +5,28 @@ namespace Test;
 use PHPUnit\Framework\TestCase;
 
 require_once './vendor/autoload.php';
-require_once 'Funzione.php';
-require_once '../include/dbh.inc.php';
+require_once 'include/dbh.inc.php';
 
-class ExampleTest extends TestCase
-{
+require_once 'Login.php';
+require_once 'Signin.php';
+require_once 'CategoriaPreferita.php';
+
+class ExampleTest extends TestCase{
 
     public function test_example(){
+      $this->assertEquals( 2, Login( "ciao@ciao.ciao","123" ) );
+      $this->assertEquals( 2, Login( "prova@errore.com","1828" ) );
+      $this->assertEquals( 1, Login( "mario@mail.it","123" ) );
+      $this->assertEquals( 1, Login( "giordano@mail.it","123" ) );
 
-        //$this->assertEquals(2, 2);
-        //registrazione($email,$password,$nome,$cognome)
-        //modifica_preferiti($cat,$mail,$del)
+      $this->assertEquals( 0, Signin( "mario@mail.it","123","Mario", "Rossi" ) );
+      $this->assertEquals( 0, Signin( "giordano@mail.it","123","Luca", "Rossi" ) );
 
-        //$this->assertEquals( 2, modifica_preferiti('db','db','db') );
-        $this->assertEquals( 1, modifica_preferiti('2','giordano@mail.it','0'));
-        $this->assertEquals( 1, modifica_preferiti('2','giordano@mail.it','1'));
-        $this->assertEquals( 0, modifica_preferiti('1','giordano@mail.it','1'));
-        $this->assertEquals( 0, registrazione('giordano@mail.it','123','prova','prova'));
-        $this->assertEquals( 1, registrazione('test@test','123','prova','prova'));
-        //$this->assertEquals( 2, registrazione('db','db','db','db'));
-    
-    
+      $this->assertEquals( 1, modifica_preferiti( 0,"prova@mail.it","123",0 ) );
+      $this->assertEquals( 1, modifica_preferiti( 1,"prova@mail.it","123",1 ) );
+
+
+
     }
 }
 
