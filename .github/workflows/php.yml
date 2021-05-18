@@ -23,30 +23,14 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-  	db:
-    		image: mysql
-    		restart: always
-    		environment:
-      			- MYSQL_DATABASE=mgsv
-      			- MYSQL_USER=mgsv_user
-      			- MYSQL_PASSWORD=mgsvpass
-      			- MYSQL_ROOT_PASSWORD=mysql123
-    		volumes:
-      			- ./mysql:/docker-entrypoint-initdb.d
-    		networks:
-      			- web-db-net
-
-  	www:
-    		build: ./mGSV 
-    		restart: always
-    		ports:
-      			- 8080:80
-    		networks:
-      			- web-db-net
-
-	networks:
-    		web-db-net:
-
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: globex_corporation
+        ports:
+          - 33306:3306
+        #options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
     - uses: actions/checkout@v2
 
