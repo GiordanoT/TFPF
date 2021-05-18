@@ -3,6 +3,7 @@
 	require_once( "include/dbh.inc.php" );
 	$template = new Template( 'templates/navbar.template.html' );
 
+
 	$resultCategoria = getData( "SELECT * FROM categoria" );
 		if( $resultCategoria == 0 ){
 			$template -> setContent( "CATEGORIA", "ERRORE !" );
