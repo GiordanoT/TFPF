@@ -6,8 +6,7 @@
   $dBName = "globex_corporation";
 
   function getData( $sql ){
-    //$connection = mysqli_connect( $GLOBALS['servername'], $GLOBALS['dBUsername'], $GLOBALS['dBPassword'], $GLOBALS['dBName'] );
-    $connection = mysqli_connect('127.0.0.1', 'root', '', 'globex_corporation');
+    $connection = mysqli_connect( $GLOBALS['servername'], $GLOBALS['dBUsername'], $GLOBALS['dBPassword'], $GLOBALS['dBName'] );
     if( !$connection ){
       return 0;
     }
@@ -29,7 +28,6 @@
     $connection = mysqli_connect( $GLOBALS['servername'], $GLOBALS['dBUsername'], $GLOBALS['dBPassword'], $GLOBALS['dBName'] );
     if( !$connection ){
       return 0;
-      exit();
     }
     $stmt = mysqli_stmt_init( $connection );
     if ( !mysqli_stmt_prepare( $stmt, $sql ) ) {
