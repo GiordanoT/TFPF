@@ -12,6 +12,7 @@ class ExampleTest extends TestCase{
     public function test_example(){
       $query = "INSERT INTO categoria (nome,immagine) VALUES ('rugby','rugby')";
       $this->assertEquals( 1, setData( $query ) );
+      $this->assertEquals( 1, setData( $query ) );
     }
 }
 
