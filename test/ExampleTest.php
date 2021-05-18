@@ -16,8 +16,8 @@ class ExampleTest extends TestCase{
       $this->assertEquals( 2, Login( "ciao@ciao.ciao","123" ) );
       $this->assertEquals( 2, Login( "prova@errore.com","1828" ) );
       $this->assertEquals( 1, Login( "mario@mail.it","123" ) );
-      //$this->assertEquals( 0, Signin( "giordano@mail.it","123","Luca","Rossi" ) );
-      //$this->assertEquals( 0, Signin( "mario@mail.it","123","Mario", "Rossi" ) );
+      $this->assertEquals( 0, Signin( "mario@mail.it","123","Mario", "Rossi" ) );
+      $this->assertEquals( 0, Signin( "prova@mail.it","123","Mario", "Rossi" ) );
 
     }
 }
