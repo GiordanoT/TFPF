@@ -8,9 +8,12 @@
     if( setData( " INSERT INTO utente (nome,cognome,email,password) VALUES ( '{$nome}','{$cognome}','{$email}','{$password}') ")){
       $resultUtente=getData("Select * from utente order by id DESC limit 1");
       $rowUtente=$resultUtente[0];
-      $_SESSION["nome"] = $rowUtente["nome"];
-      $_SESSION["cognome"] = $rowUtente["cognome"];
-      $_SESSION["mail"] = $rowUtente["email"];
+      $_SESSION['id'] = $rowUtente['id'];
+      $_SESSION['nome'] = $rowUtente['nome'];
+      $_SESSION['cognome'] = $rowUtente['cognome'];
+      $_SESSION['mail'] = $rowUtente['email'];
+      $_SESSION['password'] = $password;
+      $_SESSION['ruolo'] = $rowUtente['ruolo'];
       return 1;
     }else return 2;
   }

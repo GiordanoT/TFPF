@@ -1,5 +1,6 @@
 <?php
   require_once( "include/dbh.inc.php" );
+  require_once("test/RicercaEventi.php");
 	$template = new Template( 'templates/ricercaEventi.template.html' );
   if(isset($_POST['search'])) {
     $search = str_replace(" ", "", $_POST['search']);
@@ -12,6 +13,12 @@
     $search = $_POST['id_search'];
     $template -> setContent( "ID_SEARCH", $search );
     $template -> setContent( "RICERCA", str_replace("\\", "", $search ) );
+  }
+
+  if( $search == "" ){
+    require( "components/error.component.php" );
+    require( "components/footer.component.php" );
+    exit();
   }
 
   $resultEvento = ricercaEventi( $search );
@@ -29,6 +36,7 @@
   if( isset($_POST['next'])) { $template -> setContent( "ID_RICERCA", $_POST['indice']+9 ); $indicePagina += 9; }
   if( $indicePagina == 0 ){ $template -> setContent( "FLAG_PREVIOUS", "d-none" ); }
 
+  $resultEvento = $resultEvento[1];
   $i = 0;
   while( $i < 9 && isset( $resultEvento[$indicePagina] ) ){
     $template -> setContent( "LINK", "#" );//MODIFICARE LINK CON PAGINA EVENTO
@@ -73,9 +81,5 @@
     }
   $template -> close();
 
-  function ricercaEventi( $s ){
-    $query = "SELECT * FROM evento WHERE nome LIKE '%{$s}%'";
-    $resultEvento = getData( $query );
-    return $resultEvento;
-  }
+
 ?>
