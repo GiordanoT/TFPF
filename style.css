@@ -4,6 +4,10 @@
     position: relative;
     min-height: 80px !important;
 }
+.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
+    position: relative;
+    min-height: 0em !important; 
+}
 .separator {
     display: flex;
     align-items: center;

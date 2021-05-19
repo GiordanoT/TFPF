@@ -11,6 +11,8 @@ require_once 'Login.php';
 require_once 'Signin.php';
 require_once 'CategoriaPreferita.php';
 require_once 'RicercaEventi.php';
+require_once 'EventiCalendarioPref.php';
+require_once 'EventiCalendarioPar.php';
 
 class ExampleTest extends TestCase{
 
@@ -30,6 +32,19 @@ class ExampleTest extends TestCase{
       $this->assertEquals( 1, $result[0]  );
       $result = ricercaEventi("roma");
       $this->assertEquals( 1, $result[0]  );
+
+      $result = EventiCalendarioPref( "1900-06-19", 19 );
+      $this->assertEquals( 0, $result[0]  );
+      $result = EventiCalendarioPref( "2021-05-19", 19 );
+      $this->assertEquals( 1, $result[0]  );
+
+      $result = EventiCalendarioPar( "1900-06-19", 19 );
+      $this->assertEquals( 0, $result[0]  );
+      $result = EventiCalendarioPar( "1981-06-19", 19 );
+      $this->assertEquals( 0, $result[0]  );
+
+
+
     }
 }
 
