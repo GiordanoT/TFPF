@@ -6,7 +6,7 @@
   $dBUsername = "sql11413202";
   $dBPassword = "LvmyzpynAQ";
   $dBName = "sql11413202";
-  
+
   //DB LOCALE
   //$servername = "localhost";
   //$dBUsername = "root";
