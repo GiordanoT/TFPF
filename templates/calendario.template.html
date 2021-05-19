@@ -4,12 +4,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Calendar</h1>
+          <h1>Calendario</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Calendar</li>
+            <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+            <li class="breadcrumb-item active">Calendario</li>
           </ol>
         </div>
       </div>
@@ -36,14 +36,14 @@
                   <div class="fc-toolbar-chunk">
                   </div>
                 </div>
-                <div class="fc-view-harness fc-view-harness-active" style="height: 520px;">
+                <div class="fc-view-harness fc-view-harness-active" style="height: 30em;">
                   <div class="fc-daygrid fc-dayGridMonth-view fc-view">
                     <table class="fc-scrollgrid table-bordered fc-scrollgrid-liquid">
                       <thead>
                         <tr class="fc-scrollgrid-section fc-scrollgrid-section-header ">
                           <td>
                             <div class="fc-scroller-harness">
-                              <div class="fc-scroller" style="overflow: hidden;">
+                              <div class="fc-scroller" style="overflow: hidden auto;">
                                 <table class="fc-col-header ">
                                   <colgroup></colgroup>
                                   <tbody>
@@ -91,40 +91,41 @@
                           </td>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr class="fc-scrollgrid-section fc-scrollgrid-section-body  fc-scrollgrid-section-liquid">
+                      <tbody>   
+                        <tr class="fc-scrollgrid-section fc-scrollgrid-section-body fc-scrollgrid-section-liquid" >
                           <td>
                             <div class="fc-scroller-harness fc-scroller-harness-liquid">
-                              <div class="fc-scroller fc-scroller-liquid-absolute" style="overflow: hidden auto;">
-                                <div class="fc-daygrid-body fc-daygrid-body-unbalanced ">
+                              <div class="fc-scroller fc-scroller-liquid-absolute hideScrollbar" style="overflow: hidden auto;" >
+                                <div class="fc-daygrid-body fc-daygrid-body-unbalanced  ">
                                   <table class="fc-scrollgrid-sync-table">
                                     <colgroup></colgroup>
                                     <tbody>
                                       <tr style="heigth:100px;">
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_1]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_1]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_1]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_1]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_1]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_1]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_1]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_1]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_1]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                            <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
                                           <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
                                             <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
@@ -134,19 +135,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_2]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_2]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_2]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_2]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_2]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_2]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -159,19 +161,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_3]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_3]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_3]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_3]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_3]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_3]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -184,19 +187,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_4]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_4]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_4]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_4]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_4]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_4]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -209,19 +213,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_5]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_5]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_5]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_5]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_5]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_5]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -234,19 +239,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_6]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_6]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_6]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_6]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_6]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_6]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -259,48 +265,50 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_7]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_7]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_7]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_7]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_7]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_7]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
                                       </tr>
                                       <tr>
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_8]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_8]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_8]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_8]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_8]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_8]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_8]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_8]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_8]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                            <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
                                           <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
                                             <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
@@ -310,19 +318,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_9]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_9]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_9]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_9]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_9]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_9]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -335,19 +344,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_10]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_10]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_10]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_10]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_10]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_10]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -360,19 +370,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_11]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_11]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_11]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_11]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_11]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_11]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -385,19 +396,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_12]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_12]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_12]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_12]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_12]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_12]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -410,19 +422,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_13]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_13]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_13]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_13]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_13]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_13]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -435,49 +448,51 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_14]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_14]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_14]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_14]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_14]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_14]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
                                       </tr>
 
                                       <tr>
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_15]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_15]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_15]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_15]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_15]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_15]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_15]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_15]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_15]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                            <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
                                           <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
                                             <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
@@ -487,19 +502,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_16]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_16]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_16]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_16]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_16]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_16]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -512,19 +528,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_17]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_17]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_17]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_17]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_17]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_17]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -537,19 +554,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_18]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="<[EVENTO_BACKGROUND_18]>">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_18]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_18]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_18]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_18]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_18]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -562,19 +580,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_19]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="<[EVENTO_BACKGROUND_19]>">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_19]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_19]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_19]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_19]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_19]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -587,16 +606,17 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_20]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="<[EVENTO_BACKGROUND_20]>">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_20]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_20]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_20]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_20]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_20]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
                                                 <[/foreach]>
@@ -612,49 +632,51 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_21]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_21]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_21]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_21]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_21]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_21]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
                                       </tr>
 
                                       <tr>
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_22]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_22]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_22]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_22]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_22]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_22]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_22]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_22]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_22]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                            <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
                                           <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
                                             <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
@@ -664,19 +686,20 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_23]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_23]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_23]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_23]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_23]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_23]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
-                                                <[/foreach]>
+                                              <[/foreach]>
                                               <div class="fc-daygrid-day-bg"></div>
                                             </div>
                                           </td>
@@ -689,19 +712,17 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_24]>">
                                                   <div class="fc-daygrid-event-harness">
-
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <a class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today" style="">
-                                                              <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_24]>;"></div>
-                                                              <div class="fc-event-title"><[EVENTO_WEEK_24]></div>
-                                                            </a>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_24]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_24]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_24]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_24]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
                                                 <[/foreach]>
@@ -717,16 +738,17 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_25]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_25]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_25]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_25]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_25]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_25]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
                                                 <[/foreach]>
@@ -742,16 +764,17 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_26]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_26]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_26]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_26]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_26]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_26]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
                                                 <[/foreach]>
@@ -767,16 +790,17 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_27]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_27]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_27]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_27]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_27]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_27]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
                                                 <[/foreach]>
@@ -792,16 +816,17 @@
                                               <[foreach]>
                                                 <div class="fc-daygrid-day-events <[FLAG_WEEK_28]>">
                                                   <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_28]></div>
-                                                          </div>
+                                                    <div class="fc-event-main">
+                                                      <div class="fc-event-main-frame">
+                                                        <div class="fc-event-title-container">
+                                                          <a href="<[LINK_WEEK_28]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_28]>">
+                                                            <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_28]>;"></div>
+                                                            <div class="fc-event-title"><[EVENTO_WEEK_28]></div>
+                                                          </a>
                                                         </div>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
+                                                    <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                   </div>
                                                 </div>
                                                 <[/foreach]>
@@ -811,360 +836,372 @@
                                       </tr>
 
                                       <tr>
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_29]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_29]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_29]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_29]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_29]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_29]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_29]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_29]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_29]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                              <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_30]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_30]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_30]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_30]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_30]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_30]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_30]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_30]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_30]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                              <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_31]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_31]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_31]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_31]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_31]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_31]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_31]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_31]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_31]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                              <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_32]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_32]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_32]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_32]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_32]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_32]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_32]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_32]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_32]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                              <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_33]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_33]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_33]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_33]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_33]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_33]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_33]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_33]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_33]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                              <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_34]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_34]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_34]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_34]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_34]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_34]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_34]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_34]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_34]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                              <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_35]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_35]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_35]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_35]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_35]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_35]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_35]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_35]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_35]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                              <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
                                       </tr>
 
                                       <tr>
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_36]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_36]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_36]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_36]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_36]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_36]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_36]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_36]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_36]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                              <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_37]></a>
+                                            </div>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_37]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_37]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_37]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_37]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_37]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                              <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_37]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_37]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_37]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_38]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_38]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_38]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_38]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_38]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_38]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                              <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_38]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_38]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_38]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_39]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_39]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_39]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_39]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_39]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_39]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                              <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_39]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_39]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_39]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_40]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_40]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_40]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_40]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_40]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_40]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                              <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_40]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_40]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_40]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_41]></a>
                                             </div>
-                                          </td>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_41]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_41]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_41]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_41]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_41]></div>
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
+                                                </div>
+                                              </div>
+                                              <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
 
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_41]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_41]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_41]></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
-                                                  </div>
-                                                </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
+                                        <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
+                                          <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
+                                            <div class="fc-daygrid-day-top">
+                                              <a class="fc-daygrid-day-number"><[WEEK_42]></a>
                                             </div>
-                                          </td>
-
-                                          <td class="fc-daygrid-day fc-day fc-day-sat fc-day-past">
-                                            <div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner">
-                                              <div class="fc-daygrid-day-top">
-                                                <a class="fc-daygrid-day-number"><[WEEK_42]></a>
-                                              </div>
-                                              <[foreach]>
-                                                <div class="fc-daygrid-day-events <[FLAG_WEEK_42]>">
-                                                  <div class="fc-daygrid-event-harness">
-                                                    <a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-past" style="border-color: rgb(245, 105, 84); background-color: rgb(245, 105, 84);">
-                                                      <div class="fc-event-main">
-                                                        <div class="fc-event-main-frame">
-                                                          <div class="fc-event-title-container">
-                                                            <div class="fc-event-title fc-sticky"><[EVENTO_WEEK_42]></div>
-                                                          </div>
-                                                        </div>
+                                            <[foreach]>
+                                              <div class="fc-daygrid-day-events <[FLAG_WEEK_42]>">
+                                                <div class="fc-daygrid-event-harness">
+                                                  <div class="fc-event-main">
+                                                    <div class="fc-event-main-frame">
+                                                      <div class="fc-event-title-container">
+                                                        <a href="<[LINK_WEEK_42]>"class="fc-daygrid-event fc-daygrid-dot-event fc-event fc-event-draggable fc-event-resizable fc-event-start fc-event-end fc-event-today a_black" style="<[EVENTO_BACKGROUND_42]>">
+                                                          <div class="fc-daygrid-event-dot" style="border-color: <[DOT_COLOR_42]>;"></div>
+                                                          <div class="fc-event-title"><[EVENTO_WEEK_42]></div>
+                                                        </a>
                                                       </div>
-                                                      <div class="fc-event-resizer fc-event-resizer-end"></div>
-                                                    </a>
+                                                    </div>
                                                   </div>
+                                                  <div class="fc-event-resizer fc-event-resizer-end"></div>
                                                 </div>
-                                                <[/foreach]>
-                                              <div class="fc-daygrid-day-bg"></div>
-                                            </div>
-                                          </td>
+                                              </div>
+                                              <[/foreach]>
+                                            <div class="fc-daygrid-day-bg"></div>
+                                          </div>
+                                        </td>
                                       </tr>
                                       <tr></tr>
-
                                     </tbody>
                                   </table>
                                 </div>
@@ -1181,6 +1218,12 @@
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
+          <div class="row mt-3 ml-3">
+            <div class="fc-daygrid-event-dot mt-2" style="border-color: #28a745;"></div><div>Eventi a cui partecipi</div>
+          </div>
+          <div class="row mt-3 ml-3">
+            <div class="fc-daygrid-event-dot mt-2" style="border-color: #dc3545;"></div><div>Eventi preferiti</div>
+          </div>
         </div>
   </section>
 </div>

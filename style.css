@@ -64,3 +64,10 @@
 
 
 .day { height:5em; width: 7em;}
+
+
+.hideScrollbar::-webkit-scrollbar{
+  display: none; 
+ }
+
+.a_black { text-decoration: none; color: black;}

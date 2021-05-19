@@ -177,11 +177,13 @@ while( $i < $endMonth ){
     $eventiPar = $eventiPar[1];
     foreach( $eventiPar as $eventoPar ){
       $template -> setContent( 'EVENTO_WEEK_'.$i, $eventoPar['nome'] );
+      $template -> setContent( 'LINK_WEEK_'.$i, "evento.php?id=".$eventoPar['id'] );
       $template -> setContent( 'DOT_COLOR_'.$i, "#28a745" );
     }
     $eventiPref = $eventiPref[1];
     foreach( $eventiPref as $eventoPref ){
       $template -> setContent( 'EVENTO_WEEK_'.$i, $eventoPref['nome'] );
+      $template -> setContent( 'LINK_WEEK_'.$i, "evento.php?id=".$eventoPref['id'] );
       $template -> setContent( 'DOT_COLOR_'.$i, "#dc3545" );
     }
   }
@@ -192,10 +194,6 @@ for( $i=$endMonth; $i<43; $i++ ){
   $template -> setContent( 'EVENTO_WEEK_'.$i, "" );
   $template -> setContent( 'FLAG_WEEK_'.$i, "d-none" );
 }
-
-
-
-
 
 
 	$template -> close();
