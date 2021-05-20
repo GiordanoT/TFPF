@@ -21,7 +21,7 @@
 
 		//CALENDARIO
 		$template -> setContent( "NOME_LINK", "Calendario" );
-		$template -> setContent( "LINK", "#" );
+		$template -> setContent( "LINK", "calendario.php" );
 		$template -> setContent( "ICON", "fa-calendar-alt" );
 		//PREFERITI
 		$template -> setContent( "NOME_LINK", "Categorie Preferite" );
