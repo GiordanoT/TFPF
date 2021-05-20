@@ -33,14 +33,14 @@ class ExampleTest extends TestCase{
       $result = ricercaEventi("roma");
       $this->assertEquals( 1, $result[0]  );
 
-      $result = EventiCalendarioPref( "1900-06-19", 19 );
+      $result = EventiCalendarioPref( "1900-06-19", 15 );
       $this->assertEquals( 0, $result[0]  );
-      $result = EventiCalendarioPref( "2021-05-19", 19 );
+      $result = EventiCalendarioPref( "2021-05-19", 15 );
       $this->assertEquals( 1, $result[0]  );
 
-      $result = EventiCalendarioPar( "1900-06-19", 19 );
+      $result = EventiCalendarioPar( "1900-06-19", 15 );
       $this->assertEquals( 0, $result[0]  );
-      $result = EventiCalendarioPar( "1981-06-19", 19 );
+      $result = EventiCalendarioPar( "1981-06-19", 15 );
       $this->assertEquals( 0, $result[0]  );
 
 
