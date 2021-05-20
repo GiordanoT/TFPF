@@ -22,9 +22,9 @@
         <[foreach]>
           <div class="carousel-cell text-center ml-3 mr-3 mt-2" style="width:11em;">
 
-            <a href="#" id="evento_img"><img src="<[EVENTO_IMMAGINE_PREF]>" class="card-img-top" style=" height: 10em; border-radius: 50%;" alt="Evento immagine"></a>
+            <a href="<[LINK_EVENTO_PREF]>" id="evento_img"><img src="<[EVENTO_IMMAGINE_PREF]>" class="card-img-top" style=" height: 10em; border-radius: 50%;" alt="Evento immagine"></a>
             <div class="card-body">
-              <a href="#" style="color:rgba(4, 15, 129, 0.815);"><h5 class="hidden-title"><b><nobr><[EVENTO_NOME_PREF]></nobr></b></h5></a>
+              <a href="<[LINK_EVENTO_PREF]>" style="color:rgba(4, 15, 129, 0.815);"><h5 class="hidden-title"><b><nobr><[EVENTO_NOME_PREF]></nobr></b></h5></a>
               <hr>
               <b><[CATEGORIA_EVENTO_PREF]></b>
               <p class="card-text hidden-title"><[EVENTO_CITTA_PREF]></p>
@@ -48,9 +48,9 @@
         <[foreach]>
           <div class="carousel-cell text-center ml-3 mr-3 mt-2" style="width:11em;">
 
-            <a href="#" id="evento_img"><img src="<[EVENTO_IMMAGINE_RECENTE]>" class="card-img-top" style=" height: 10em; border-radius: 50%;" alt="Evento immagine"></a>
+            <a href="<[LINK_EVENTO_RECENTE]>" id="evento_img"><img src="<[EVENTO_IMMAGINE_RECENTE]>" class="card-img-top" style=" height: 10em; border-radius: 50%;" alt="Evento immagine"></a>
             <div class="card-body">
-              <a href="#" style="color:rgba(4, 15, 129, 0.815);" ><h5 class="hidden-title"><b><nobr><[EVENTO_NOME_RECENTE]></nobr></b></h5></a>
+              <a href="<[LINK_EVENTO_RECENTE]>" style="color:rgba(4, 15, 129, 0.815);" ><h5 class="hidden-title"><b><nobr><[EVENTO_NOME_RECENTE]></nobr></b></h5></a>
               <hr>
               <b><[CATEGORIA_EVENTO_RECENTE]></b>
               <p class="card-text hidden-title"><[EVENTO_CITTA_RECENTE]></p>
@@ -63,19 +63,19 @@
 
       </div> 
       <[foreach]>
-          <div class="separator">
-            <img class="img-circle elevation-2 mr-3" src="<[CATEGORIA_IMMAGINE]>" alt="CATEGORIA_IMMAGINE" style="width: 5em; height: 5em;">
-            <h2 class="my-auto hidden-title"><[CATEGORIA]></b></h2>
+          <div class="separator <[FLAG_CAT]>">
+            <img class="img-circle elevation-2 mr-3 <[FLAG_CAT]>" src="<[CATEGORIA_IMMAGINE]>" alt="CATEGORIA_IMMAGINE" style="width: 5em; height: 5em;">
+            <h2 class="my-auto hidden-title <[FLAG_CAT]>"><[CATEGORIA]></b></h2>
           </div>
 
-        <div class="main-carousel col-10 mx-auto mt-3" data-flickity='{ "cellAlign": "left", "contain": true }'>
+        <div class="main-carousel col-10 mx-auto mt-3 <[FLAG_CAT]>" data-flickity='{ "cellAlign": "left", "contain": true }'>
         
           <[foreach]>
               <div class="carousel-cell text-center ml-3 mr-3 mt-2" style="width:11em;">
 
-                <a href="#" id="evento_img"><img src="<[EVENTO_IMMAGINE]>" class="card-img-top" style=" height: 10em; border-radius: 50%;" alt="Evento immagine"></a>
+                <a href="<[LINK_EVENTO]>" id="evento_img"><img src="<[EVENTO_IMMAGINE]>" class="card-img-top" style=" height: 10em; border-radius: 50%;" alt="Evento immagine"></a>
                 <div class="card-body">
-                  <a href="#" style="color:rgba(4, 15, 129, 0.815);"><h5 class="hidden-title"><b><nobr><[EVENTO_NOME]></nobr></b></h5></a>
+                  <a href="<[LINK_EVENTO]>" style="color:rgba(4, 15, 129, 0.815);"><h5 class="hidden-title"><b><nobr><[EVENTO_NOME]></nobr></b></h5></a>
                   <hr>
                   <b><[CATEGORIA_EVENTO]></b>
                   <p class="card-text hidden-title"><[EVENTO_CITTA]></p>
