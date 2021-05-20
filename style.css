@@ -1,6 +1,13 @@
 .hidden-title{overflow: hidden !important; white-space: nowrap !important; text-overflow: ellipsis !important;}
 .hidden-text{overflow: hidden !important; white-space: nowrap !important; text-overflow: ellipsis !important;}
-
+.fc .fc-daygrid-day-frame {
+    position: relative;
+    min-height: 80px !important;
+}
+.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
+    position: relative;
+    min-height: 0em !important; 
+}
 .separator {
     display: flex;
     align-items: center;
@@ -54,3 +61,13 @@
   .button__page:hover{
     color: white;
   }
+
+
+.day { height:5em; width: 7em;}
+
+
+.hideScrollbar::-webkit-scrollbar{
+  display: none; 
+ }
+
+.a_black { text-decoration: none; color: black;}
