@@ -39,7 +39,7 @@
   $resultEvento = $resultEvento[1];
   $i = 0;
   while( $i < 9 && isset( $resultEvento[$indicePagina] ) ){
-    $template -> setContent( "LINK", "#" );//MODIFICARE LINK CON PAGINA EVENTO
+    $template -> setContent( "LINK", "evento.php?id={$resultEvento[$indicePagina]['id']}" );//MODIFICARE LINK CON PAGINA EVENTO
     $template -> setContent( "NOME", $resultEvento[$indicePagina]['nome'] );
     $template -> setContent( "CITTA", $resultEvento[$indicePagina]['citta'] );
     $posti = $resultEvento[$indicePagina]['posti'];
@@ -62,7 +62,7 @@
     $i++;
   }
     if( $indicePagina >= count( $resultEvento ) ){ $template -> setContent( "FLAG_NEXT", "d-none" );  }
-    $query = "SELECT count(*) as n FROM evento WHERE nome LIKE '%{$search}%'";
+    $query = "SELECT count(*) as n FROM evento WHERE concluso=0 AND nome LIKE '%{$search}%'";
     $resultEvento = getData( $query );
     if( $resultEvento == 0 ){
       require( "components/error.component.php" );
