@@ -10,6 +10,7 @@ require_once 'include/dbh.inc.php';
 require_once 'Login.php';
 require_once 'Signin.php';
 require_once 'CategoriaPreferita.php';
+require_once 'CreaEvento.php';
 
 class ExampleTest extends TestCase{
 
@@ -25,7 +26,9 @@ class ExampleTest extends TestCase{
       $this->assertEquals( 1, modifica_preferiti( 0,"prova@mail.it","123",0 ) );
       $this->assertEquals( 1, modifica_preferiti( 1,"prova@mail.it","123",1 ) );
 
-
+      $this->assertEquals( 1, creaEvento( "Gran Premio di Monaco","F1 - GP di Monaco",1,2,12000,13,150.00,"foto.jpg",0) );
+      $this->assertEquals( 0, creaEvento( "Gran Premio di Monaco","F1 - GP di Monaco",1,2,0,13,150.00,"foto.jpg",0) );
+      $this->assertEquals( 0, creaEvento( "Gran Premio di Monaco","F1 - GP di Monaco",1,2,12000,13,-150.00,"foto.jpg",0) );
 
     }
 }

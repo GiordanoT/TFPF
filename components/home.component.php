@@ -1,7 +1,7 @@
 <?php
   error_reporting(E_ALL ^ (E_WARNING | E_NOTICE));
 
-	require_once('include\dbh.inc.php');
+	require_once('include/dbh.inc.php');
 	$template = new Template( 'templates/home.template.html' );
 	$template -> setContent( "IMMAGINE_CAROUSEL","immagini_categoria/carousel.jpg" );
 

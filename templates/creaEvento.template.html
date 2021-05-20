@@ -1,0 +1,95 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+                    <li class="breadcrumb-item active">Crea evento</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="mx-auto col-sm-8">
+                <!-- /.login-logo -->
+                <div class="card rounded">
+                    <div class="card-body login-card-body">
+                        <h4 class="my-auto hidden-title separator" style="color:rgba(4, 15, 129, 0.815);">CREA EVENTO</b>
+                        </h4>
+                        <p class="login-box-msg text-danger"><b> <[Messaggio_errore]> </b></p>
+                        <form action="include/crea_evento.inc.php" method="POST" enctype="multipart/form-data">
+                            <div class="form-group mb-3 col-sm-8 mx-auto">
+                                <label>Nome</label>
+                                <input required type="text" name="nome" class="form-control">
+                            </div>
+                            <div class="form-group mb-3 col-sm-8 mx-auto">
+                                <label>Descrizione</label>
+                                <textarea required rows="3" class="form-control" cols="63" style="resize: none; border: 1px solid #ebebeb;
+                                background: none;" name="descrizione"></textarea>
+                            </div>
+                            <div class="form-group mb-3 col-sm-8 mx-auto">
+                                <label>Tipologia</label>
+                                <select name="tipologia" class="form-control">
+                                    <option value="0">Amatoriale</option>
+                                    <option value="1">Professionale</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3 col-sm-8 mx-auto">
+                                <label>Categoria dell'evento</label>
+                                <select name="categoria" class="form-control">
+                                    <[foreach]>
+                                     <option value="<[categoria_value]>"><[categoria]></option>
+                                    <[/foreach]>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3 col-sm-8 mx-auto">
+                                <label>Durata dell'evento</label>
+                                <select name="durata" class="form-control">
+                                    <option value="1">1 giorno</option>
+                                    <option value="2">2 giorni</option>
+                                    <option value="3">3 giorni</option>
+                                    <option value="4">4 giorni</option>
+                                    <option value="5">5 giorni</option>
+                                    <option value="6">6 giorni</option>
+                                    <option value="7">7 giorni</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3 col-sm-8 mx-auto">
+                                <label>Città</label>
+                                <input required type="text" name="citta" class="form-control">
+                            </div>
+                            <div class="form-group mb-3 col-sm-8 mx-auto">
+                                <label>Posti disponibili</label>
+                                <input required type="text" name="posti" class="form-control">
+                            </div>
+                            <div class="form-group mb-3 col-sm-8 mx-auto">
+                                <label>Costo dell'ingresso (€)</label>
+                                <input required type="text" name="costo" class="form-control">
+                            </div>
+                            <div class="form-group mb-3 col-sm-8 mx-auto">
+                                <label>Immagine dell'evento</label>
+                                <input required type="file" name="immagine" id="immagine" accept=".jpg, .png">
+                            </div>
+                            <div class="row mx-auto">
+                                <button name="crea" type="submit"
+                                    class="btn btn-primary btn-block mx-auto col-10 col-sm-5">Continua e scegli le date</button>
+                            </div>
+                        </form>
+                        <!-- /.social-auth-links -->
+                    </div>
+                    <!-- /.login-card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
