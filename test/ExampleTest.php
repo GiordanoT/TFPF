@@ -43,8 +43,6 @@ class ExampleTest extends TestCase{
       $result = EventiCalendarioPar( "1981-06-19", 15 );
       $this->assertEquals( 0, $result[0]  );
 
-
-
     }
 }
 
