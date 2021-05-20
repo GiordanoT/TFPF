@@ -10,13 +10,11 @@ require_once 'include/dbh.inc.php';
 require_once 'Login.php';
 require_once 'Signin.php';
 require_once 'CategoriaPreferita.php';
-<<<<<<< HEAD
-require_once 'CreaEvento.php';
-=======
 require_once 'RicercaEventi.php';
 require_once 'EventiCalendarioPref.php';
 require_once 'EventiCalendarioPar.php';
->>>>>>> d8cb50fac0e1d53f8f7779bde63b875d494b8dd2
+require_once 'CreaEvento.php';
+
 
 class ExampleTest extends TestCase{
 
@@ -32,11 +30,6 @@ class ExampleTest extends TestCase{
       $this->assertEquals( 1, modifica_preferiti( 0,"prova@mail.it","123",0 ) );
       $this->assertEquals( 1, modifica_preferiti( 1,"prova@mail.it","123",1 ) );
 
-<<<<<<< HEAD
-      $this->assertEquals( 1, creaEvento( "Gran Premio di Monaco","F1 - GP di Monaco",1,2,12000,13,150.00,"foto.jpg",0) );
-      $this->assertEquals( 0, creaEvento( "Gran Premio di Monaco","F1 - GP di Monaco",1,2,0,13,150.00,"foto.jpg",0) );
-      $this->assertEquals( 0, creaEvento( "Gran Premio di Monaco","F1 - GP di Monaco",1,2,12000,13,-150.00,"foto.jpg",0) );
-=======
       $result = ricercaEventi("inter");
       $this->assertEquals( 1, $result[0]  );
       $result = ricercaEventi("roma");
@@ -51,7 +44,10 @@ class ExampleTest extends TestCase{
       $this->assertEquals( 0, $result[0]  );
       $result = EventiCalendarioPar( "1981-06-19", 15 );
       $this->assertEquals( 0, $result[0]  );
->>>>>>> d8cb50fac0e1d53f8f7779bde63b875d494b8dd2
+
+      $this->assertEquals( 1, creaEvento("Gran Premio di Monaco","F1 - GP di Monaco",1,2,12000,13,150.00,"foto.jpg",0) );
+      $this->assertEquals( 0, creaEvento("Gran Premio di Monaco","F1 - GP di Monaco",1,2,0,13,150.00,"foto.jpg",0) );
+      $this->assertEquals( 0, creaEvento("Gran Premio di Monaco","F1 - GP di Monaco",1,2,12000,13,-150.00,"foto.jpg",0) );
 
     }
 }
