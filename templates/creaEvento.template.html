@@ -47,14 +47,14 @@
                                 <label>Categoria dell'evento</label>
                                 <select name="categoria" class="form-control">
                                     <[foreach]>
-                                     <option value="<[categoria_value]>"><[categoria]></option>
+                                     <option <[selected]> value="<[categoria_value]>"><[categoria]></option>
                                     <[/foreach]>
                                 </select>
                             </div>
                             <div class="form-group mb-3 col-sm-8 mx-auto">
                                 <label>Durata dell'evento</label>
                                 <select name="durata" class="form-control">
-                                    <option value="1">1 giorno</option>
+                                    <option selected value="1">1 giorno</option>
                                     <option value="2">2 giorni</option>
                                     <option value="3">3 giorni</option>
                                     <option value="4">4 giorni</option>

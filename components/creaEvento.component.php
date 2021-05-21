@@ -15,9 +15,13 @@
 
 		$result_categorie = getData("SELECT id,nome FROM categoria");
 
+		$count = 0;
 		foreach($result_categorie as $row_categoria){
+			if($count == 0)
+				$template -> setContent("selected", "selected");
 			$template -> setContent("categoria_value", $row_categoria['id']);
 			$template -> setContent("categoria", $row_categoria['nome']);
+			$count++;
 		}
 		$template -> close();
 	}

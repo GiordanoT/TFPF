@@ -46,7 +46,7 @@ class ExampleTest extends TestCase{
       $result = EventiCalendarioPar( "1981-06-19", 15 );
       $this->assertEquals( 0, $result[0]  );
 
-      $this->assertEquals( 1, creaEvento("Gran Premio di Monaco","F1 - GP di Monaco",1,2,12000,13,150.00,"foto.jpg",0) );
+      $this->assertEquals( 1, creaEvento("Gran Premio di Monaco","F1 - GP di Monaco",0,2,12000,13,150.00,"foto.jpg",0) );
       $this->assertEquals( 0, creaEvento("Gran Premio di Monaco","F1 - GP di Monaco",1,2,0,13,150.00,"foto.jpg",0) );
       $this->assertEquals( 0, creaEvento("Gran Premio di Monaco","F1 - GP di Monaco",1,2,12000,13,-150.00,"foto.jpg",0) );
 
