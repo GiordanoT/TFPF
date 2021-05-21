@@ -5,7 +5,7 @@
             return 0;
         
         $query = "INSERT INTO evento (nome,descrizione,id_categoria,tipologia,posti,admin_evento,costo,immagine,citta,concluso) 
-                  VALUES ( '{$nome}','{$descrizione}','{$tipologia}','{$categoria}','{$posti}','{$admin}','{$costo}','{$path_immagine}','{$citta}',0); ";
+                  VALUES ( '{$nome}','{$descrizione}','{$categoria}','{$tipologia}','{$posti}','{$admin}','{$costo}','{$path_immagine}','{$citta}',0); ";
   
         $result = setData($query);
         

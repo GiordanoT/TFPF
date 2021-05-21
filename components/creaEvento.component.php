@@ -4,6 +4,8 @@
 		
 		require_once('include/dbh.inc.php');
 
+		session_start();
+
 		$template = new Template( 'templates/creaEvento.template.html' );
 
 		if( isset($_GET['error'])){
@@ -13,15 +15,25 @@
 				$template -> setContent("Messaggio_errore", "Errore durante l'operazione, riprovare");
 		}
 
+		if($_SESSION['pagina_visitata'] == 1){
+			$_SESSION['pagina_visitata'] = 0;
+
+			$result_id_evento = getData("SELECT MAX(id) AS id_evento FROM evento");
+
+            if(!$result_id_evento)
+                return 2;
+            
+            $row_evento = $result_id_evento[0];
+            $id_evento = $row_evento['id_evento'];
+
+			$result = setData("DELETE FROM evento WHERE id ='{$id_evento}'");
+		}
+
 		$result_categorie = getData("SELECT id,nome FROM categoria");
 
-		$count = 0;
 		foreach($result_categorie as $row_categoria){
-			if($count == 0)
-				$template -> setContent("selected", "selected");
 			$template -> setContent("categoria_value", $row_categoria['id']);
 			$template -> setContent("categoria", $row_categoria['nome']);
-			$count++;
 		}
 		$template -> close();
 	}

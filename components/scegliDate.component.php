@@ -15,6 +15,8 @@
                 $template -> setContent("Messaggio_errore", "Errore durante l'operazione, riprovare");
         }
 
+        $_SESSION['pagina_visitata'] = 1;
+
         for($i = 1; $i <= $giorni; $i++){
             $template -> setContent("numero_data",$i);
             $template -> setContent("data", "data_".$i);
