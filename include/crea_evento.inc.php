@@ -9,6 +9,8 @@
         exit();
     }
     
+    $_SESSION['giorni'] = $_POST['durata'];
+
     $admin = $_SESSION['id'];
     $nome = $_POST['nome'];
     $nome = addslashes( $nome );
@@ -28,7 +30,7 @@
     $posti = $_POST['posti'];
    
     $immagine = $_FILES['immagine']['name'];
-    $path_immagine = "image/".basename($immagine);
+    $path_immagine = "image/evento/".basename($immagine);
 
     $result = creaEvento($nome,$descrizione,$tipologia,$categoria,$posti,$admin,$costo,$path_immagine,0);
 
@@ -42,6 +44,6 @@
     }
     else{
         move_uploaded_file($_FILES['immagine']['tmp_name'], "../".$path_immagine);
-        header("Location: ../home.php");
+        header("Location: ../scegliDate.php");
     }
 ?>
