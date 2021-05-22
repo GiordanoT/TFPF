@@ -7,7 +7,7 @@
     $_SESSION['pagina_visitata'] = 0;
 
     $durata = $_POST['num_giorni'];
-
+    
     $giorni = array();
     $ora_inizio = array();
     $ora_fine = array();
