@@ -4,6 +4,8 @@
     require_once("../test/ScegliDate.php");
     session_start();
 
+    $_SESSION['pagina_visitata'] = 0;
+
     $durata = $_POST['num_giorni'];
 
     $giorni = array();
