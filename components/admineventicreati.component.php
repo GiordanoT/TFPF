@@ -6,8 +6,10 @@
 	$resultEventiCreati = getData("SELECT e.nome as nome, e.descrizione as descrizione, c.nome as catnome, e.tipologia, e.posti as posti, e.costo as costo, e.immagine, e.citta as citta, c.immagine 
 									FROM evento as e JOIN utente as u on(u.id = e.admin_evento ) JOIN categoria as c on(e.id_categoria = c.id) where u.email = '{$_SESSION['mail']}'");
 	
-	if($resultEventiCreati == 0){
+	if(!($resultEventiCreati)){
 		$template -> setContent( "hidden", "" );
+		$template -> setContent( "flag", "d-none" );
+
 	}else{
 		$template -> setContent( "hidden", "hidden" );
 		foreach($resultEventiCreati as $rowEventiCreati){

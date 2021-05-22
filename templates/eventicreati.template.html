@@ -18,9 +18,11 @@
 
 <!-- Main content -->
 <div class="row">
-  <p <[hidden]> > Nessun Evento Creato </p>
+  <div class="col-sm-12">
+    <p class="h4 text-center" <[hidden]>  > Nessun Evento Creato. Clicca <a href="#"> qui</a> per crearne uno. </p>
+  </div>
   <div class="col-sm-3"></div>
-  <div class="col-sm-6">
+  <div class="col-sm-6 <[flag]>">
     <[foreach]>
       <div class="card">
         <div class="card-header">
@@ -32,7 +34,7 @@
         <div class="card-body widget-user-header">
             <a href="#" id="evento_img" class="float-left mr-3"><img src="<[EVENTO_IMMAGINE]>"  style=" height: 12em; border-radius: 100%;" alt="Evento immagine"></a>
             <p class="mx-auto ">Categoria: <b><[CATEGORIA]></b></p>
-            <p class="mx-auto">Descrizione: <[DESCRIZIONE]></p>
+            <p class="mx-auto text-truncate">Descrizione: <[DESCRIZIONE]></p>
             <p class="mx-auto">Posti: <[POSTI]></p>
             <p class="mx-auto <[variabile]>"><[COSTO]></p>
             <p class="mx-auto">Città: <[CITTA]></p>
