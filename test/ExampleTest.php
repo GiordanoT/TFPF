@@ -46,17 +46,14 @@ class ExampleTest extends TestCase{
       $result = EventiCalendarioPar( "1981-06-19", 15 );
       $this->assertEquals( 0, $result[0]  );
 
-      $this->assertEquals( 1, creaEvento("Evento Test","descrizione",0,2,12000,13,150.00,"foto.jpg",0) );
-      $this->assertEquals( 0, creaEvento("Evento Test","descrizione",1,2,0,13,150.00,"foto.jpg",0) );
-      $this->assertEquals( 0, creaEvento("Evento Test","descrizione",1,2,12000,13,-150.00,"foto.jpg",0) );
+      $this->assertEquals( 1, creaEvento("Gran Premio di Monaco","F1 - GP di Monaco",0,2,12000,13,150.00,"foto.jpg",0) );
+      $this->assertEquals( 0, creaEvento("Gran Premio di Monaco","F1 - GP di Monaco",1,2,0,13,150.00,"foto.jpg",0) );
+      $this->assertEquals( 0, creaEvento("Gran Premio di Monaco","F1 - GP di Monaco",1,2,12000,13,-150.00,"foto.jpg",0) );
 
       $this->assertEquals( 1, scegliDate(2,array(0,"2021-05-22","2021-05-23"),array(0,"12:00","15:00"),array(0,"13:00","16:00")) );
       $this->assertEquals( 0, scegliDate(2,array(0,"2021-05-20","2021-05-23"),array(0,"12:00","15:00"),array(0,"13:00","16:00")) );
       $this->assertEquals( 0, scegliDate(2,array(0,"2021-05-22","2021-05-23"),array(0,"12:00","15:00"),array(0,"10:00","16:00")) );
       $this->assertEquals( 0, scegliDate(2,array(0,"2021-05-22","2021-05-22"),array(0,"12:00","15:00"),array(0,"13:00","16:00")) );
-
-      $query = "DELETE FROM evento WHERE nome='Evento Test'";
-      $this->assertEquals( 1, setData( $query ) );
 
     }
 }
