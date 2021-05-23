@@ -18,7 +18,7 @@
   else {
     $anno = $_GET["anno"];
     $monthNumber = $_GET["mese"];
-    if( $monthNumber < 0 || $monthNumber > 11 ){
+    if( $monthNumber < 0 || $monthNumber > 11 || $anno > 2999 || $anno < 2000 || !is_numeric( $anno ) || !is_numeric( $monthNumber ) ){
       require( "components/error.component.php" );
       require( "components/footer.component.php" );
       exit();
