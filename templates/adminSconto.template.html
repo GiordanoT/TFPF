@@ -1,0 +1,58 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0"></h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+            <li class="breadcrumb-item active">Sconti</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="mx-auto col-sm-8">
+          <!-- /.login-logo -->
+          <div class="card rounded">
+            <div class="card-body login-card-body">
+              <p class="login-box-msg text-danger"><b> <[messaggio_errore]> </b></p>
+
+              <form action="include/adminSconto.inc.php" method="POST" enctype="multipart/form-data">
+                  <div class="form-group mb-3 col-sm-8 mx-auto">
+                      <label>Categoria dell'evento</label>
+                      <select name="categoria" class="form-control" <[disabled]> >
+                          <[foreach]>
+                           <option value="<[categoria_value]>"><[categoria]></option>
+                          <[/foreach]>
+                      </select>
+                  </div>
+                  <div class="form-group mb-3 col-sm-8 mx-auto">
+                      <label>Sconto (%)</label>
+                      <input required type="number" <[disabled]> min="1" max="100" name="percentuale" class="form-control">
+                  </div>
+
+                  <div class="row mx-auto">
+                      <button <[disabled]> name="sconto" type="submit" class="btn btn-primary btn-block mx-auto col-10 col-sm-5">Applica</button>
+                  </div>
+              </form>
+
+              <div class="social-auth-links text-center mb-3"></div>
+            </div>
+            <!-- /.login-card-body -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->

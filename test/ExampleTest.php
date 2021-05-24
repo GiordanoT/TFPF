@@ -15,6 +15,7 @@ require_once 'EventiCalendarioPref.php';
 require_once 'EventiCalendarioPar.php';
 require_once 'CreaEvento.php';
 require_once 'ScegliDate.php';
+require_once 'Functions/AdminSconto.php';
 
 
 class ExampleTest extends TestCase{
@@ -56,6 +57,9 @@ class ExampleTest extends TestCase{
 
       $query = "DELETE FROM evento WHERE nome='Evento Test'";
       $this->assertEquals( 1, setData( $query ) );
+
+      $this->assertEquals( 1, AdminSconto( "1", "30" ) );
+      $this->assertEquals( 1, AdminSconto( "1", "0" ) );
 
     }
 }
