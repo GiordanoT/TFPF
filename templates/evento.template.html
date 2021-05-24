@@ -1,0 +1,123 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0"></h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+          <li class="breadcrumb-item active">Evento</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+
+<!-- Immagine/Descrizione -->
+<div class="row">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-12 col-lg-6 col-xl-4 mx-auto">
+        <div class="card mb-2 bg-gradient-dark">
+          <img class="card-img-top" src="<[IMMAGINE_EVENTO]>" alt="Dist Photo 1" style="opacity: 0,4;">
+          <div class="card-img-overlay d-flex flex-column justify-content-end">
+            <h5 class="card-title text-primary text-white"><[TITOLO_EVENTO]></h5>
+            <p class="card-text text-white pb-2 pt-1"><[DATA_EVENTO_INIZIO_FINE]></p>
+            <p class="text-white"><[NUMERO_EVENTI]></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contatori e Calendario -->
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="card col-md-10">
+    <div class="card-header">
+      <h3 class="card-title"><[NUMERO_EVENTI_BARRA]></h3>
+      <div class="card-tools">
+        <a href="#" type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+          <i class="fas fa-calendar-alt"></i>
+        </a>   
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Eventi -->
+<[foreach]>
+  <div class="row">
+    <div class="col-sm-1"></div>
+      <div class="card col-sm-10">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-2 ">
+              <p class="h2 text-center"> <[GIORNO_DATA]> </p> <br>
+              <p class="text-center"> <[MESE_DATA]> <[ANNO_DATA]> </p> 
+            </div>
+            <div class="col-sm-6" >
+              <p> Luogo: <[LUOGO_DATA]> </p> <br>
+              <p> Posti: <[POSTI_DATA]> </p> <br>
+            </div>
+            <div class="col-sm-4">
+              <p class="h4 text-center"> <[PREZZO]> </p> <br>
+              <a href="#" type="button" class="btn btn-block btn-primary"> <[BOTTONE]> </a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+<[/foreach]>
+<!-- Info Evento -->
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <h2> 
+      Info evento:
+    </h2>
+    <p>
+      <[DESCRIZIONE_EVENTO]>
+    </p>
+  </div>
+</div>
+
+<!-- Eventi simili-->
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <h2> 
+      Eventi simili:
+    </h2>
+    
+    <div class="main-carousel col-10 mx-auto mt-3 <[FLAG-PR]>" data-flickity='{ "cellAlign": "left", "contain": true }'>
+        
+      <[foreach]>
+        <div class="carousel-cell text-center ml-3 mr-3 mt-2" style="width:11em;">
+
+          <a href="#" id="evento_img"><img src="<[EVENTO_IMMAGINE_SIMILI]>" class="card-img-top" style=" height: 10em; border-radius: 50%;" alt="Evento immagine"></a>
+          <div class="card-body">
+            <a href="#" style="color:rgba(4, 15, 129, 0.815);"><h5 class="hidden-title"><b><nobr><[EVENTO_NOME_SIMILI]></nobr></b></h5></a>
+            <hr>
+            <b><[CATEGORIA_EVENTO_SIMILI]></b>
+            <p class="card-text hidden-title"><[EVENTO_CITTA_SIMILI]></p>
+            <p class="card-text hidden-title">Posti: <[EVENTO_POSTI_SIMILI]></p>
+            <p class="card-text hidden-title <[FLAG_PR]>"><b style="color: rgba(2, 8, 68, 0.815);" ><[EVENTO_COSTO_SIMILI]>€</b></p>
+            <p class="card-text <[FLAG_PR1]>"><b style="color: red;">GRATIS!</b></p>
+          </div>
+        </div>
+        <[/foreach]>  
+
+    </div> 
+  </div>
+</div>
+
+
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

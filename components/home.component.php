@@ -6,6 +6,16 @@
 	$template -> setContent( "IMMAGINE_CAROUSEL","image/carousel.jpg" );
 
 	$result_recenti = getData("SELECT DISTINCT e.id as evento_id, e.citta, e.immagine as immagine_e, e.nome as nome_e, e.posti, e.costo, c.nome as nome_c, c.immagine as immagine_c FROM evento e JOIN data_evento d ON (e.id = d.id_evento) JOIN categoria c ON (c.id = e.id_categoria) WHERE e.concluso=0 ORDER BY d.data ASC LIMIT 10");
+	
+	function alert($msg) {
+		echo "<script type='text/javascript'>alert('$msg');</script>";
+	}
+
+	if($_GET["popup"]=="true")
+		alert("Ora sei in modalità admin");
+	elseif($_GET["popup"]=="false")
+		alert("Ora sei in modalità utente");
+		
 	if($result_recenti == 0){
 		require( "components/error.component.php" );
 		require( "components/footer.component.php" );
