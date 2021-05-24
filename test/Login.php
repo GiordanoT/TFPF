@@ -17,6 +17,7 @@
         $_SESSION['mail'] = $rowUtente['email'];
         $_SESSION['password'] = $password;
         $_SESSION['ruolo'] = $rowUtente['ruolo'];
+        $_SESSION['admin'] = 0;
         return 1;
       }
     }
