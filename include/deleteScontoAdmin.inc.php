@@ -10,7 +10,7 @@
     }
 
     $categoria = $_GET['id'];
-    $result = AdminSconto( $categoria, 0,);
+    $result = AdminSconto( $categoria, 0 );
     if( $result == 1 ){
       header( "Location: ../elencoScontiAdmin.php" ); exit();
     }

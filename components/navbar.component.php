@@ -33,7 +33,7 @@
 					}
 				foreach( $resultCategoria as $rowCategoria ){
 					$template -> setContent( "CATEGORIA", $rowCategoria['nome'] );
-					$template -> setContent( "LINK_CATEGORIA", "#" );
+					$template -> setContent( "LINK_CATEGORIA", "ricercaEventiCategoria.php?id={$rowCategoria['id']}" );
 				}
 				//CALENDARIO
 				$template -> setContent( "NOME_LINK", "Calendario" );
@@ -62,6 +62,14 @@
 				$template -> setContent( "NOME_LINK", "Eventi creati" );
 				$template -> setContent( "LINK", "eventicreati.php" );
 				$template -> setContent( "ICON", "fas fa-list" );
+				//AGGIUNGI SCONTO
+				$template -> setContent( "NOME_LINK", "Sconti" );
+				$template -> setContent( "LINK", "utenteSconto.php" );
+				$template -> setContent( "ICON", "fa-tag" );
+				//ELENCO SCONTI
+				$template -> setContent( "NOME_LINK", "Elenco Sconti" );
+				$template -> setContent( "LINK", "elencoScontiUtente.php" );
+				$template -> setContent( "ICON", "fa-tag" );
 				//PROFILO
 				$template -> setContent( "NOME_LINK", "Profilo" );
 				$template -> setContent( "LINK", "profilo.php" );

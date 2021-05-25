@@ -1,18 +1,18 @@
 <?php
 	require_once( "include/dbh.inc.php" );
 	session_start();
-	$template = new Template( 'templates/adminSconto.template.html' );
-	if($_SESSION['ruolo'] != 1){
+	$template = new Template( 'templates/utenteSconto.template.html' );
+	if( !isset( $_SESSION['mail'] ) || $_SESSION['ruolo'] == 1 ){
 		require( "components/error.component.php" );
 		require( "components/footer.component.php" );
 		exit();
 	}
-	$result = getData( "SELECT * FROM categoria WHERE sconto = 0" );
+	$result = getData( "SELECT * FROM evento WHERE sconto = 0 AND admin_evento={$_SESSION['id']}" );
 	foreach( $result as $row ){
-		$template -> setContent( "categoria", $row['nome'] );
-		$template -> setContent( "categoria_value", $row['id'] );
+		$template -> setContent( "evento", $row['nome'] );
+		$template -> setContent( "evento_value", $row['id'] );
 	}
-	if( empty( $result || $result == 0 ) ){
+	if( empty( $result ) ){
 		$template -> setContent( "disabled", "disabled" );
 		$template -> setContent( "messaggio_errore", "NON È POSSIBILE APPLICARE NESSUNO SCONTO" );
 	}

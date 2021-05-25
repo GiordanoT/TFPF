@@ -16,6 +16,7 @@ require_once 'EventiCalendarioPar.php';
 require_once 'CreaEvento.php';
 require_once 'ScegliDate.php';
 require_once 'Functions/AdminSconto.php';
+require_once 'Functions/UtenteSconto.php';
 
 
 class ExampleTest extends TestCase{
@@ -60,6 +61,9 @@ class ExampleTest extends TestCase{
 
       $this->assertEquals( 1, AdminSconto( "1", "30" ) );
       $this->assertEquals( 1, AdminSconto( "1", "0" ) );
+
+      $this->assertEquals( 1, UtenteSconto( "19", "30" ) );
+      $this->assertEquals( 1, UtenteSconto( "19", "0" ) );
 
     }
 }
