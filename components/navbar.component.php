@@ -24,7 +24,7 @@
 		}
 		else{
 			// GESTIONE ADMIN EVENTO
-			if( $_SESSION['admin'] == 0){
+			if( $_SESSION['admin'] == 0 ){
 				$template -> setContent( "NAVBAR_EVENTI_FLAG", "" );
 				$resultCategoria = getData( "SELECT * FROM categoria" );
 					if( $resultCategoria == 0 ){
@@ -87,6 +87,16 @@
 	}
 	else{
 		$template -> setContent( "FLAG_PROFILO", "d-none" );
+		$template -> setContent( "NAVBAR_EVENTI_FLAG", "" );
+		$resultCategoria = getData( "SELECT * FROM categoria" );
+			if( $resultCategoria == 0 ){
+				$template -> setContent( "CATEGORIA", "ERRORE !" );
+				$template -> setContent( "LINK_CATEGORIA", "error.php" );
+			}
+		foreach( $resultCategoria as $rowCategoria ){
+			$template -> setContent( "CATEGORIA", $rowCategoria['nome'] );
+			$template -> setContent( "LINK_CATEGORIA", "ricercaEventiCategoria.php?id={$rowCategoria['id']}" );
+		}
 		//ACCEDI
 		$template -> setContent( "NOME_LINK", "Accedi" );
 		$template -> setContent( "LINK", "login.php" );
