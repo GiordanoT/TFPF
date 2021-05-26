@@ -3,6 +3,7 @@
 	
 	$evento=$_GET["id"];
 
+	
 	$risultatoEvento = getData("SELECT e.id_categoria as idcat, e.immagine as eveimmagine, c.immagine as catimmagine, e.nome as titolo, e.citta as citta, e.costo as prezzo,
 								e.posti as posti, e.descrizione as descrizione FROM evento as e join categoria as c on (e.id_categoria = c.id ) where e.id ='{$evento}' ");
 	$rowEvento = $risultatoEvento[0];
@@ -92,6 +93,7 @@
 		require( "components/footer.component.php" );
 		exit();
 	}
+	
 	foreach( $result_simili as $row_simili ){
 		if( file_exists($row_simili['immagine_e']) ){
 			$template -> setContent( "EVENTO_IMMAGINE_SIMILI", $row_simili['immagine_e'] );
@@ -118,9 +120,25 @@
 			$template -> setContent("FLAG_PR", "d-none");
 			$template -> setContent( "FLAG_PR1", "");
 		}
-	}
-	
+	}	
 
+	//SEZIONE COMMENTI
+
+	$result_commenti = getData(" SELECT c.testo, c.data, u.nome, u.cognome FROM commento as c JOIN utente as u on (u.id = c.id_utente) WHERE id_evento = {$evento} ORDER BY c.data ");
+
+	if($result_commenti == 0){
+		$template -> setContent("COMMENTO_NO", "Nessun commento disponibile per questo evento");
+	}
+
+	
+	foreach( $result_commenti as $row_commenti ){
+
+		$template -> setContent("COMMENTO_NOME", $row_commenti["u.nome"]);
+		$template -> setContent("COMMENTO_COGNOME", $row_commenti["u.cognome"]);
+		$template -> setContent("COMMENTO_TESTO", $row_commenti["c.testo"]);
+		$template -> setContent("COMMENTO_DATA", $row_commenti["c.data"]);
+		
+	}
 
 
 	$template -> close();

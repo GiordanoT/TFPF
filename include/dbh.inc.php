@@ -4,9 +4,9 @@
   if( $db == 1 ){
     //DB ONLINE
     $servername = "sql11.freesqldatabase.com";
-    $dBUsername = "sql11413202";
-    $dBPassword = "LvmyzpynAQ";
-    $dBName = "sql11413202";
+    $dBUsername = "sql11414764";
+    $dBPassword = "upJtnWXz89";
+    $dBName = "sql11414764";
   } else {
     //DB LOCALE
     $servername = "localhost";
