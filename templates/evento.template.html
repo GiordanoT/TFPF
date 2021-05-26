@@ -54,7 +54,7 @@
                   <li>
                     <input type="checkbox" id="<[ID_DATA]>" name="<[ID]>" value="<[ID_DATA]>">           
                     <label for="<[DATA]>"><[PREZZO]></label>
-                    <a href="inserimentoPreferiti.include.php?id=<[ID]>" type="button" class="btn pref" style="border-radius: 100%;" ><b><i class="<[CUORE]>" style="color: <[COLORE]>"></i></b></a>
+                    <a href="include/inserimentoPreferiti.include.php?id=<[ID_DATA]>&op=<[OPERAZIONE]>" type="button" class="btn pref" style="border-radius: 100%;" ><b><i class="<[CUORE]>" style="color: <[COLORE]>"></i></b></a>
                   </li>
                 </ul>
               </div>
@@ -128,10 +128,11 @@
           
           
           <div class="card-footer mt-2 <[FLAG_S]>">
-            <form action="#" method="post">
+            <form action="include/inserisciCommento.inc.php" method="POST">
               <img class="img-fluid img-circle img-sm" src="<[IMMAGINE_SESSIONE]>" alt="Alt Text">
               <div class="input-group col-sm-6 col-10">
-                <input type="text" name="message" placeholder="Inserisci un commento..." class="form-control rounded">
+                <input type="hidden" id="id" name="id" value="<[ID_EVENTO]>">
+                <input type="text" name="message" placeholder="Inserisci un commento..." class="form-control rounded" required>
                 <span class="input-group-append">
                   <button type="submit" class="btn rounded ml-3" style="background-color: #900909; color: white">Invia</button>
                 </span>

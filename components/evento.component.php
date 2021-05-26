@@ -1,6 +1,15 @@
 <?php
+	session_start();
+
 	$template = new Template( 'templates/evento.template.html' );
 	
+	function alert($msg) {
+		echo "<script type='text/javascript'>alert('$msg');</script>";
+	}
+
+	if($_GET["login"]=="no")
+		alert("Per inserire un evento nei preferiti devi prima accedere");
+
 	$evento=$_GET["id"];
 	if( ! is_numeric($evento) ){
 		require( "components/error.component.php" );
@@ -8,7 +17,7 @@
 		exit();
 	} else {
 
-		$risultatoEvento = getData("SELECT e.id_categoria as idcat, e.immagine as eveimmagine, c.immagine as catimmagine, e.nome as titolo, e.citta as citta, e.costo as prezzo,
+		$risultatoEvento = getData("SELECT e.id as idevento, e.id_categoria as idcat, e.immagine as eveimmagine, c.immagine as catimmagine, e.nome as titolo, e.citta as citta, e.costo as prezzo,
 		e.posti as posti, e.descrizione as descrizione, c.nome as nomecat FROM evento as e join categoria as c on (e.id_categoria = c.id ) where e.id ='{$evento}' ");
 		$rowEvento = $risultatoEvento[0];
 
@@ -21,6 +30,7 @@
 				$template -> setContent( "IMMAGINE_EVENTO","image/error.png");
 			}
 		}
+		$template -> setContent("ID_EVENTO", $rowEvento["idevento"]);
 		$template -> setContent("TITOLO_EVENTO", $rowEvento["titolo"]);
 		$template -> setContent("NOME_CATEGORIA", strtoupper($rowEvento["nomecat"]) );
 		$template -> setContent("DESCRIZIONE_EVENTO", $rowEvento["descrizione"]);
@@ -86,14 +96,18 @@
 //QUESTO PER IL BOTTONE DEI PREFERITI MA LO DEVI MODIFICARE
 
 
-			$resultPref= getData("SELECT * FROM preferito p WHERE p.id_data = {$data}");
+			$resultPref= getData("SELECT * FROM preferito p WHERE p.id_utente={$_SESSION["id"]} AND p.id_data = {$rowDateEvento["id"]}");
 			$rowPref = $resultPref[0];
-			if( $rowPref == null ) {
-				$template -> setContent("CUORE", "far fa-heart");
-			} else {
-				$template -> setContent("CUORE", "fas fa-heart");
-			}
-		
+
+				if( $rowPref == null) {
+					$template -> setContent("CUORE", "far fa-heart");
+					$template -> setContent("OPERAZIONE", "agg");
+				} else {
+					
+					$template -> setContent("CUORE", "fas fa-heart");
+					$template -> setContent("OPERAZIONE", "del");
+				}
+
 //FIN QUA		
 		}
 		if( $i > 1){
