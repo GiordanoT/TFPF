@@ -47,7 +47,7 @@ class ExampleTest extends TestCase{
       $this->assertEquals( 0, $result[0]  );
 
       $this->assertEquals( 1, creaEvento("Evento Test","F1 - GP di Monaco",0,2,12000,13,150.00,"foto.jpg","Monaco",0,2) );
-      $this->assertEquals( 0, creaEvento("Evento Test","F1 - GP di Monaco",1,2,0,13,150.00,"foto.jpg","Monaco"0,2) );
+      $this->assertEquals( 0, creaEvento("Evento Test","F1 - GP di Monaco",1,2,0,13,150.00,"foto.jpg","Monaco",0,2) );
       $this->assertEquals( 0, creaEvento("Evento Test","F1 - GP di Monaco",1,2,12000,13,-150.00,"foto.jpg","Monaco",0,2) );
 
       $this->assertEquals( 1, scegliDate(2,array(0,"2021-08-20","2021-08-23"),array(0,"12:00","15:00"),array(0,"13:00","16:00"),array(0,75,75),120) );
