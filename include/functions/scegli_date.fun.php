@@ -14,10 +14,18 @@
                 return 0;
             }
 
+            if((float)$prezzo_data[$i] < 0){
+                return 0;
+            }
+
             $oggi_ora = date("h:i");
             //echo var_dump($oggi_ora);
             if($giorno[$i] == $oggi && $ora_inizio[$i] < $oggi_ora)
                 return 0;
+        }
+
+        if((float)$prezzo_totale < 0){
+            return 0;
         }
 
         for($i = 1; $i <= (int)$durata; $i++){
