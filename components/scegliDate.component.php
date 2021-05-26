@@ -22,7 +22,20 @@
             $template -> setContent("data", "data_".$i);
             $template -> setContent("inizio", "inizio_".$i);
             $template -> setContent("fine", "fine_".$i);
+            $template -> setContent("prezzo", "prezzo_".$i);
+
         }
+
+        if($giorni == 1){
+            $template -> setContent("label_hidden", "hidden");
+            $template -> setContent("input_hidden", "hidden");
+            $template -> setContent("label_prezzo", "Prezzo del biglietto:");
+        }
+        else{
+            $template -> setContent("required", "required");
+            $template -> setContent("label_prezzo", "Prezzo del pacchetto completo:");
+        }
+        
         $template -> setContent("num_giorni", $giorni);
 
 

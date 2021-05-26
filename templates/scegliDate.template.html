@@ -29,7 +29,6 @@
                                 <div style="padding-bottom: 10px;" class="form-group mb-3 col-sm-10 mx-auto">
                                     <h5 class="my-auto hidden-title separator" style="color:rgba(4, 15, 129, 0.815); padding-bottom: 15px;"><[numero_data]>° Data</b></h5>  
                                     <div class="row">
-                                        <div class="col-1"></div>
                                         <div class="col-4">
                                             <label>Giorno</label>
                                             <input required type="date" name="<[data]>" class="form-control" style="width: 170px;">
@@ -42,9 +41,19 @@
                                             <label >Ora fine</label>
                                             <input required type="time" name="<[fine]>" class="form-control" style="width: 100px;">
                                         </div>
+                                        <div>
+                                            <label <[label_hidden]>>Prezzo</label>
+                                            <input <[input_hidden]> placeholder="0 €" <[required]> type="number" name="<[prezzo]>" class="form-control" style="width: 100px;">
+                                        </div>
                                     </div>
                                 </div>
                             <[/foreach]>
+                            <hr class="col-10 mx-auto">
+                            <div class="row">
+                                <div class="col-1"></div>
+                                    <label style="padding-left:5 px; padding-right: 10px;"><[label_prezzo]></label>
+                                    <input placeholder="0 €" required type="number" name="prezzo_totale" class="form-control" style="width: 100px;">
+                            </div>
                             <hr class="col-10 mx-auto">
                             <div class="row mx-auto">
                                 <button name="num_giorni" value="<[num_giorni]>" type="submit" class="btn btn-primary btn-block mx-auto col-10 col-sm-3">Conferma</button>

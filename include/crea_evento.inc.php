@@ -1,7 +1,7 @@
 <?php
     
     require_once("dbh.inc.php");
-    require_once("../test/CreaEvento.php");
+    require_once("functions/crea_evento.fun.php");
     session_start();
     
     if( !isset($_POST['crea']) ){
@@ -26,13 +26,12 @@
 
     $tipologia = $_POST['tipologia'];
     $categoria = $_POST['categoria'];
-    $costo = $_POST['costo'];
     $posti = $_POST['posti'];
    
     $immagine = $_FILES['immagine']['name'];
     $path_immagine = "image/evento/".basename($immagine);
 
-    $result = creaEvento($nome,$descrizione,$tipologia,$categoria,$posti,$admin,$costo,$path_immagine,0);
+    $result = creaEvento($nome,$descrizione,$tipologia,$categoria,$posti,$admin,0,$path_immagine,$citta,0,2);
 
     if($result == 0){
         header("Location: ../creaEvento.php?error=bad_data");

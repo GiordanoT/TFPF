@@ -13,8 +13,8 @@ require_once 'CategoriaPreferita.php';
 require_once 'RicercaEventi.php';
 require_once 'EventiCalendarioPref.php';
 require_once 'EventiCalendarioPar.php';
-require_once 'CreaEvento.php';
-require_once 'ScegliDate.php';
+require_once 'include/functions/crea_evento.fun.php';
+require_once 'include/functions/scegli_date.fun.php';
 
 
 class ExampleTest extends TestCase{
