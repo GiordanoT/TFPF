@@ -2,21 +2,10 @@
 	$template = new Template( 'templates/evento.template.html' );
 	
 	$evento=$_GET["id"];
-<<<<<<< HEAD
-
-	
-	$risultatoEvento = getData("SELECT e.id_categoria as idcat, e.immagine as eveimmagine, c.immagine as catimmagine, e.nome as titolo, e.citta as citta, e.costo as prezzo,
-								e.posti as posti, e.descrizione as descrizione FROM evento as e join categoria as c on (e.id_categoria = c.id ) where e.id ='{$evento}' ");
-	$rowEvento = $risultatoEvento[0];
-	
-	if( file_exists($rowEvento['eveimmagine']) ){
-		$template -> setContent( "IMMAGINE_EVENTO", $rowEvento['eveimmagine'] );
-=======
 	if( ! is_numeric($evento) ){
 		require( "components/error.component.php" );
 		require( "components/footer.component.php" );
 		exit();
->>>>>>> GianlucaDM
 	} else {
 
 		$risultatoEvento = getData("SELECT e.id_categoria as idcat, e.immagine as eveimmagine, c.immagine as catimmagine, e.nome as titolo, e.citta as citta, e.costo as prezzo,
