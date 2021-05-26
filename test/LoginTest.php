@@ -10,8 +10,7 @@ require_once 'include/dbh.inc.php';
 require_once 'Login.php';
 
 class LoginTest extends TestCase{
-
-    public function login_test(){
+    public function test_example(){
       $this->assertEquals( 2, Login( "ciao@ciao.ciao","123" ) );
       $this->assertEquals( 2, Login( "prova@errore.com","1828" ) );
       $this->assertEquals( 1, Login( "mario@mail.it","123" ) );
