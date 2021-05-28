@@ -17,34 +17,69 @@
 <!-- /.content-header -->
 
 <!-- Main content -->
-<div class="row">
+<div class="row <[hidden]>">
   <div class="col-sm-12">
-    <p class="h4 text-center" <[hidden]>  > Nessun Evento Creato. Clicca <a href="creaEvento.php"> qui</a> per crearne uno. </p>
-  </div>
-  <div class="col-sm-3"></div>
-  <div class="col-sm-6 <[flag]>">
-    <[foreach]>
-      <div class="card">
-        <div class="card-header">
-          <span class="h4 "><b><[TITOLO]></b></span>
-          <div class="card-tools">
-            <a href="#" type="button" class="btn btn-tool" data-card-widget="modifica" title="Modifica"><i class="fas fa-pen"></i></a>
-          </div>
-        </div>
-        <div class="card-body widget-user-header">
-            <a href="<[LINK]>" id="evento_img" class="float-left mr-3"><img src="<[EVENTO_IMMAGINE]>"  style=" height: 12em; border-radius: 100%;" alt="Evento immagine"></a>
-            <p class="mx-auto ">Categoria: <b><[CATEGORIA]></b></p>
-            <p class="mx-auto text-truncate">Descrizione: <[DESCRIZIONE]></p>
-            <p class="mx-auto">Posti: <[POSTI]></p>
-            <p class="mx-auto <[variabile]>"><[COSTO]></p>
-            <p class="mx-auto">Città: <[CITTA]></p>
-        </div>
-        <!-- /.card-body -->
-      </div>
-    <[/foreach]>
+    <p class="h4 text-center"> Nessun Evento Creato. Clicca <a href="creaEvento.php"> qui</a> per crearne uno. </p>
   </div>
 </div>
+ 
+
+
+
+<!-- Main content -->
+<div class="content">
+  <div class="container-fluid">
+    <div class="row col-11 mx-auto g-3 <[flag]>">
+      <[foreach]>
+        <div class="col-sm-4">
+          <div class="card shadow-sm">
+            <div class="card-header pb-0">
+              <div class="row">
+                <div class="col-11">
+                  <h4 class="hidden-text card-text" style="text-transform: uppercase;"><a style="color:black;" href="<[LINK]>"><[TITOLO]></a></h4>
+                  <p class="hidden-text" style="text-transform: uppercase;"><b><[CATEGORIA]></b></p>
+                </div>
+                <div class="card-tools col-1 float-right <[hidden_modifica]>" >
+                  <a href="<[LINK_MODIFICA_EVENTO]>" type="button" class="btn btn-tool" data-card-widget="modifica" title="Modifica"><i class="fas fa-pen"></i></a>
+                </div>
+              </div>
+
+            </div>
+            <div class="d-flex">
+              <a href="<[LINK]>" id="evento_img">
+                <img class="p-2 m-2 img-circle" style="width: 10em; height: 10em;" src="<[EVENTO_IMMAGINE]>" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
+              </a>
+              
+              <div class="hidden-text card-body">
+                <p class="hidden-text d-block"><[DESCRIZIONE]></p>
+                <p class="hidden-text d-block"><[CITTA]></p>
+                <p class="hidden-text d-block">Posti Disponibili: <[POSTI]></p>
+                <p class="mx-auto <[variabile]> hidden-text"><b><[COSTO]> €</b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <[/foreach]>
+    </div>
+
+    <div class="mt-4 row">
+      <form method="POST" action="<[LINK_FORM_PAGE]>" class="col-sm-12">
+        <button class="button__page float-left btn btn px-3 py-2 <[FLAG_PREVIOUS]>" name="previous" type="submit"><i class="fa fa-angle-double-left" aria-hidden="true"></i></button>
+        <input class="d-none" type="number" value="<[ID_RICERCA]>" name="indice" readonly>
+        <input class="d-none" type="text" value="<[ID_SEARCH]>" name="id_search" readonly>
+        <button class="button__page float-right btn btn px-3 py-2 <[FLAG_NEXT]>"name="next" type="submit"><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+      </form>
+    </div>
+
+  </div><!-- /.container-fluid -->
+</div>
+
 
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+
+
+
+

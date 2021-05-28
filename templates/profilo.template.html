@@ -19,40 +19,239 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="card col-sm-7">
-          <div class="card-body">
-              <div class="tab-content">
-              <div class="tab-pane active" id="settings">
-                  <form class="form-horizontal">
-                  <div class="form-group row">
-                      <label for="inputName" class="col-sm-2 col-form-label">Nome</label>
-                      <div class="col-sm-10">
-                      <input disabled type="text" name="nome" class="form-control" value="<[nome]>" style="color:black;">
-                      </div>
-                  </div>
-                  <div class="form-group row">
-                      <label for="inputEmail" class="col-sm-2 col-form-label">Cognome</label>
-                      <div class="col-sm-10">
-                      <input disabled name="cognome" type="text" class="form-control" value="<[cognome]>" style="color:black;" >
-                      </div>
-                  </div>
-                  <div class="form-group row">
-                      <label for="inputName2" class="col-sm-2 col-form-label">Email</label>
-                      <div class="col-sm-10">
-                      <input disabled name="email" type="text" class="form-control" value="<[email]>" style="color:black;">
-                      </div>
-                  </div>
-                  </form>
+        <div class="col-11 mx-auto">
+          <!-- Widget: user widget style 1 -->
+          <div class="card card-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header text-white"
+                 style="background: url('image/carousel.jpg') center center;">
+
+            </div>
+            <div class="widget-user-image">
+              <img class="img-circle bg-white elevation-2" src="<[PROFILO_IMMAGINE]>" alt="User Avatar">
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <h2 class="mx-auto"><[nome]><[cognome]></h2>
               </div>
-              <!-- /.tab-pane -->
+              <div class="row">
+                <small class="mx-auto"><b><[email]></b></small>
               </div>
-              <!-- /.tab-content -->
+              <!-- /.row -->
+            </div>
+          
+          
+            <div class="col-sm-12">
+                <div class="card-header p-2">
+                  <ul class="nav nav-pills">
+                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Storico eventi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Commenti</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Metodi di pagamento</a></li>
+                  </ul>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                  <div class="tab-content">
+                    <div class="active tab-pane" id="activity">
+                        <div class="row col-11 mx-auto g-3 <[flag]>">
+                          <h2 class="mx-auto <[FLAG_EVENTI]>">NON HAI PARTECIPATO A NESSUN EVENTO!</h2>
+                          <[foreach]>
+                            <div class="col-sm-4 <[FLAG_EVENTI_PRESENTI]>">
+                              <div class="card shadow-sm">
+                                <div class="card-header pb-0">
+                                  <div class="row">
+                                    <div class="col-11">
+                                      <h4 class="hidden-text card-text" style="text-transform: uppercase;"><a style="color:black;" href="<[LINK]>"><[TITOLO]></a></h4>
+                                      <p class="hidden-text" style="text-transform: uppercase;"><b><[CATEGORIA]></b></p>
+                                    </div>
+                                  </div>
+                    
+                                </div>
+                                <div class="d-flex">
+                                  <a href="<[LINK]>" id="evento_img">
+                                    <img class="p-2 m-2 img-circle" style="width: 10em; height: 10em;" src="<[EVENTO_IMMAGINE]>" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
+                                  </a>
+                                  
+                                  <div class="hidden-text card-body">
+                                    <p class="hidden-text d-block"><[DESCRIZIONE]></p>
+                                    <p class="hidden-text d-block"><[CITTA]></p>
+                                    <p class="hidden-text d-block">Posti Disponibili: <[POSTI]></p>
+                                    <p class="mx-auto <[variabile]> hidden-text"><b><[COSTO]> €</b></p>
+                                    <p class="mx-auto <[FLAG_TERMINATO]> hidden-text" style="color: red;"><b>TERMINATO</b></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          <[/foreach]>
+                        </div>
+                    
+                    
+
+
+
+
+
+
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="timeline">
+                      <!-- The timeline -->
+                      <div class="timeline timeline-inverse">
+                        <!-- timeline time label -->
+                        <div class="time-label">
+                          <span class="bg-danger">
+                            10 Feb. 2014
+                          </span>
+                        </div>
+                        <!-- /.timeline-label -->
+                        <!-- timeline item -->
+                        <div>
+                          <i class="fas fa-envelope bg-primary"></i>
+      
+                          <div class="timeline-item">
+                            <span class="time"><i class="far fa-clock"></i> 12:05</span>
+      
+                            <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+      
+                            <div class="timeline-body">
+                              Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                              weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                              jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                              quora plaxo ideeli hulu weebly balihoo...
+                            </div>
+                            <div class="timeline-footer">
+                              <a href="#" class="btn btn-primary btn-sm">Read more</a>
+                              <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- END timeline item -->
+                        <!-- timeline item -->
+                        <div>
+                          <i class="fas fa-user bg-info"></i>
+      
+                          <div class="timeline-item">
+                            <span class="time"><i class="far fa-clock"></i> 5 mins ago</span>
+      
+                            <h3 class="timeline-header border-0"><a href="#">Sarah Young</a> accepted your friend request
+                            </h3>
+                          </div>
+                        </div>
+                        <!-- END timeline item -->
+                        <!-- timeline item -->
+                        <div>
+                          <i class="fas fa-comments bg-warning"></i>
+      
+                          <div class="timeline-item">
+                            <span class="time"><i class="far fa-clock"></i> 27 mins ago</span>
+      
+                            <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
+      
+                            <div class="timeline-body">
+                              Take me to your leader!
+                              Switzerland is small and neutral!
+                              We are more like Germany, ambitious and misunderstood!
+                            </div>
+                            <div class="timeline-footer">
+                              <a href="#" class="btn btn-warning btn-flat btn-sm">View comment</a>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- END timeline item -->
+                        <!-- timeline time label -->
+                        <div class="time-label">
+                          <span class="bg-success">
+                            3 Jan. 2014
+                          </span>
+                        </div>
+                        <!-- /.timeline-label -->
+                        <!-- timeline item -->
+                        <div>
+                          <i class="fas fa-camera bg-purple"></i>
+      
+                          <div class="timeline-item">
+                            <span class="time"><i class="far fa-clock"></i> 2 days ago</span>
+      
+                            <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
+      
+                            <div class="timeline-body">
+                              <img src="https://placehold.it/150x100" alt="...">
+                              <img src="https://placehold.it/150x100" alt="...">
+                              <img src="https://placehold.it/150x100" alt="...">
+                              <img src="https://placehold.it/150x100" alt="...">
+                            </div>
+                          </div>
+                        </div>
+                        <!-- END timeline item -->
+                        <div>
+                          <i class="far fa-clock bg-gray"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /.tab-pane -->
+      
+                    <div class="tab-pane" id="settings">
+                      <form class="form-horizontal">
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                          <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputName" placeholder="Name">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                          <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
+                          <div class="col-sm-10">
+                            <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="offset-sm-2 col-sm-10">
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="offset-sm-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <!-- /.tab-pane -->
+                  </div>
+                  <!-- /.tab-content -->
+                </div><!-- /.card-body -->
+            </div>
+            <!-- /.col -->
+          </div>
+          
+
 
           </div>
+          <!-- /.widget-user -->
         </div>
-        <div class="col-sm-2"></div>
-      </div>
+        <!-- /.col -->
+
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content -->
