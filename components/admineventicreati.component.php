@@ -15,6 +15,28 @@
 		foreach($resultEventiCreati as $rowEventiCreati){
 
 			$template -> setContent( "TITOLO", $rowEventiCreati["nome"]);
+
+			$query = "SELECT data,ora_inizio FROM data_evento,evento WHERE id_evento = '{$rowEventiCreati['e_id']}' AND admin_evento = '{$_SESSION['id']}' AND data_evento.id_evento = evento.id";
+			$resultDateEvento = getData($query);
+			$data_odierna = date("Y-m-d");
+			$ora_odierna = date("h:i");
+			$sem = 0;
+
+			foreach($resultDateEvento as $rowDataEvento){
+				$data_limite = date('Y-m-d', strtotime('-1 day', strtotime((string)$rowDataEvento['data'])));
+				
+				if(($data_odierna < $data_limite) || ($data_odierna == $data_limite && $ora_odierna <= $rowDataEvento['ora_inizio']) )
+					$sem = 1;
+			}
+
+			if($sem == 0){
+				$template -> setContent("hidden_modifica","hidden");
+			}
+			else{
+				$template -> setContent("LINK_MODIFICA_EVENTO","modificaEvento.php?id_evento=".$rowEventiCreati['e_id']);
+				$template -> setContent("hidden_modifica","");
+			}
+
 			if( file_exists($rowEventiCreati["e_immagine"]) ){
 				$template -> setContent( "EVENTO_IMMAGINE", $rowEventiCreati["e_immagine"]);
 			}else if(file_exists($rowEventiCreati["c_immagine"])){
@@ -22,20 +44,19 @@
 			}else
 				$template -> setContent( "EVENTO_IMMAGINE", "image/error.png");
 
-	$template -> setContent( "DESCRIZIONE", $rowEventiCreati["descrizione"]);
-	$template -> setContent( "POSTI", $rowEventiCreati["posti"]);
-	$template -> setContent( "CATEGORIA", $rowEventiCreati["catnome"]);
-	$template -> setContent( "LINK", "evento.php?id={$rowEventiCreati['e_id']}");
+			$template -> setContent( "DESCRIZIONE", $rowEventiCreati["descrizione"]);
+			$template -> setContent( "POSTI", $rowEventiCreati["posti"]);
+			$template -> setContent( "CATEGORIA", $rowEventiCreati["catnome"]);
+			$template -> setContent( "LINK", "evento.php?id={$rowEventiCreati['e_id']}");
 
-	if($rowEventiCreati["costo"] != "0"){
-		$template -> setContent( "COSTO", "Costo: ".$rowEventiCreati["costo"]);
-		$template -> setContent( "variabile", "");
-	}else{
-		$template -> setContent( "COSTO", "GRATIS");
-		$template -> setContent( "variabile", "text-danger mt-2");
-	}
-	$template -> setContent( "CITTA", $rowEventiCreati["citta"]);
-
+			if($rowEventiCreati["costo"] != "0"){
+				$template -> setContent( "COSTO", "Costo: ".$rowEventiCreati["costo"]);
+				$template -> setContent( "variabile", "");
+			}else{
+				$template -> setContent( "COSTO", "GRATIS");
+				$template -> setContent( "variabile", "text-danger mt-2");
+			}
+			$template -> setContent( "CITTA", $rowEventiCreati["citta"]);
 		}
 	}
 
