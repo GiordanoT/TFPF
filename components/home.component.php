@@ -5,8 +5,6 @@
 	$template = new Template( 'templates/home.template.html' );
 	$template -> setContent( "IMMAGINE_CAROUSEL","image/carousel.jpg" );
 
-	$result_recenti = getData("SELECT DISTINCT e.id as evento_id, e.citta, e.immagine as immagine_e, e.nome as nome_e, e.posti, e.costo, c.nome as nome_c, c.immagine as immagine_c FROM evento e JOIN data_evento d ON (e.id = d.id_evento) JOIN categoria c ON (c.id = e.id_categoria) WHERE e.concluso=0 ORDER BY d.data ASC LIMIT 10");
-	
 	function alert($msg) {
 		echo "<script type='text/javascript'>alert('$msg');</script>";
 	}
@@ -15,12 +13,16 @@
 		alert("Ora sei in modalità admin");
 	elseif($_GET["popup"]=="false")
 		alert("Ora sei in modalità utente");
-		
+	
+
+	//EVENTI RECENTI	
+	$result_recenti = getData("SELECT DISTINCT e.id as evento_id, e.citta, e.immagine as immagine_e, e.nome as nome_e, e.posti, e.costo, c.nome as nome_c, c.immagine as immagine_c FROM evento e JOIN data_evento d ON (e.id = d.id_evento) JOIN categoria c ON (c.id = e.id_categoria) WHERE e.concluso=0 ORDER BY d.data ASC LIMIT 10");
 	if($result_recenti == 0){
 		require( "components/error.component.php" );
 		require( "components/footer.component.php" );
 		exit();
 	}
+
 	foreach( $result_recenti as $row_recenti ){
 		if( file_exists($row_recenti['immagine_e']) ){
 			$template -> setContent( "EVENTO_IMMAGINE_RECENTE", $row_recenti['immagine_e'] );
@@ -36,34 +38,40 @@
 		$template -> setContent( "CATEGORIA_EVENTO_RECENTE", $row_recenti['nome_c'] );
 		$template -> setContent( "EVENTO_CITTA_RECENTE", $row_recenti['citta'] );
 		$posti = $row_recenti['posti'];
-		$query = "SELECT count(*) as n FROM partecipazione WHERE id_evento={$row_recenti['id']}";
-		$resultPartecipazioni = getData( $query );
-		$posti -= $resultPartecipazioni[0]['n'];
-		$template -> setContent("EVENTO_POSTI_RECENTE", $posti);
-		if( isset($row_recenti['costo']) && (strcmp($row_recenti['costo'],0))){
-			$template -> setContent( "EVENTO_COSTO_RECENTE", $row_recenti['costo'] );
-			$template -> setContent("FLAG_R", "");
-			$template -> setContent("FLAG_R1", "d-none" );
-		} else {
-			$template -> setContent("FLAG_R", "d-none");
-			$template -> setContent( "FLAG_R1", "");
+		$queryData = getData("SELECT * FROM data_evento d WHERE d.id_evento = {$row_recenti['evento_id']} ");
+		$count = 0;
+		foreach( $queryData as $rowData ){
+			$query = "SELECT count(*) as n FROM partecipazione p WHERE p.id_data = {$rowData['id']} ";
+			$resultPartecipazioni = getData( $query );
+			if($resultPartecipazioni == 0){
+				require( "components/error.component.php" );
+				require( "components/footer.component.php" );
+				exit();
+			}
+			$count += $resultPartecipazioni[0]['n'];
 		}
+		$posti -= $count;
+		$template -> setContent("EVENTO_POSTI_RECENTE", $posti);
 	}
 
-
-	$result = getData("SELECT DISTINCT c.* FROM categoria c RIGHT JOIN evento e ON (c.id = e.id_categoria) ORDER BY c.nome LIMIT 3");
+	//EVENTI PER CATEGORIA
+	$result = getData("SELECT DISTINCT c.* FROM categoria c JOIN evento e ON (c.id = e.id_categoria) ORDER BY c.nome LIMIT 3");
 	if($result == 0){
 		require( "components/error.component.php" );
 		require( "components/footer.component.php" );
 		exit();
 	}
+	if( empty($result) ){
+		$template -> setContent("FLAG_CAT","d-none");
+	}
 	foreach( $result as $row ){
-		$result_eventi = getData("SELECT * FROM evento e WHERE e.id_categoria =' ".$row["id"]."' AND e.concluso=0 ORDER BY e.costo LIMIT 10");
+		$result_eventi = getData("SELECT * FROM evento e WHERE e.id_categoria = {$row["id"]} AND e.concluso=0 ORDER BY e.costo LIMIT 10");
 		if($result_eventi == 0){
 			require( "components/error.component.php" );
 			require( "components/footer.component.php" );
 			exit();
 		}
+
 		$template -> setContent( "CATEGORIA", strtoupper($row['nome']) );
 		if( file_exists($row['immagine']) ){
 			$template -> setContent( "CATEGORIA_IMMAGINE", $row['immagine'] );
@@ -86,28 +94,29 @@
 			$template -> setContent( "EVENTO_NOME", $row_eventi['nome'] );
 
 			$posti = $row_eventi['posti'];
-				$query = "SELECT count(*) as n FROM partecipazione WHERE id_evento={$row_eventi['id']}";
-    			$resultPartecipazioni = getData( $query );
+			$queryData = getData("SELECT * FROM data_evento d WHERE d.id_evento = {$row_eventi['id']} ");
+			$count = 0;
+			foreach( $queryData as $rowData ){
+				$query = "SELECT count(*) as n FROM partecipazione p WHERE p.id_data = {$rowData['id']} ";
+				$resultPartecipazioni = getData( $query );
 				if($resultPartecipazioni == 0){
 					require( "components/error.component.php" );
 					require( "components/footer.component.php" );
 					exit();
 				}
-				$posti -= $resultPartecipazioni[0]['n'];
-				$template -> setContent("EVENTO_POSTI", $posti);
-			if( isset($row_eventi['costo']) && (strcmp($row_eventi['costo'],0))){
-				$template -> setContent( "EVENTO_COSTO", $row_eventi['costo'] );
-				$template -> setContent("FLAG", " ");
-				$template -> setContent("FLAG_1", "d-none" );
-			} else {
-				$template -> setContent("FLAG", "d-none");
-				$template -> setContent( "FLAG_1", " ");
+				$count += $resultPartecipazioni[0]['n'];
 			}
+			$posti -= $count;	
+			$template -> setContent("EVENTO_POSTI", $posti);
 
 			$template -> setContent( "CATEGORIA_EVENTO", $row['nome'] );
 		}
 	}
-	if(isset($_SESSION["mail"]) ){
+
+
+	//EVENTI SCELTI PER L'UTENTE
+
+	if(isset($_SESSION["id"]) ){
 		$result_pref = getData( "SELECT c.immagine, c.id FROM categoria_preferita cp JOIN categoria c ON (cp.id_categoria = c.id) JOIN utente u ON (u.id = cp.id_utente) WHERE u.email = '{$_SESSION["mail"]}' " );
 		if($result_pref == 0){
 			require( "components/error.component.php" );
@@ -115,16 +124,19 @@
 			exit();
 		}
 		if(empty($result_pref)){
-			$template -> setContent("FLAG-PR","d-none");
+			$template -> setContent("FLAG_PR","d-none");
 		}
 		foreach( $result_pref as $row_pref ){
-			$result_eventi = getData(" SELECT * FROM evento e WHERE e.id_categoria = {$row_pref["id"]} AND e.concluso=0 ORDER BY rand() LIMIT 3 ");
-			if($result_eventi == 0){
+			$result_eventi_pref = getData(" SELECT * FROM evento e WHERE e.id_categoria = {$row_pref["id"]} AND e.concluso=0 ORDER BY rand() LIMIT 8 ");
+			if($result_eventi_pref == 0){
 				require( "components/error.component.php" );
 				require( "components/footer.component.php" );
 				exit();
 			}
-			foreach( $result_eventi as $row_eventi_pref ){
+			if( empty($result_eventi_pref) ){
+				$template -> setContent("FLAG_EVENTI_PR","d-none");
+			}
+			foreach( $result_eventi_pref as $row_eventi_pref ){
 				if( file_exists($row_eventi_pref['immagine']) ){
 					$template -> setContent( "EVENTO_IMMAGINE_PREF", $row_eventi_pref['immagine'] );
 				} else {
@@ -139,27 +151,24 @@
 				$template -> setContent("EVENTO_CITTA_PREF", $row_eventi_pref["citta"]);
 
 				$posti = $row_eventi_pref['posti'];
-				$query = "SELECT count(*) as n FROM partecipazione WHERE id_evento={$row_eventi_pref['id']}";
-				$resultPartecipazioni = getData( $query );
-				if($resultPartecipazioni == 0){
-					require( "components/error.component.php" );
-					require( "components/footer.component.php" );
-					exit(); 
+				$queryDataPref = getData("SELECT * FROM data_evento d WHERE d.id_evento = {$row_eventi_pref['id']} ");
+				$count = 0;
+				foreach($queryDataPref as $rowDataPref){
+					$queryPref = "SELECT count(*) as n FROM partecipazione p WHERE p.id_data = {$rowDataPref['id']} ";
+					$resultPartecipazioniPref = getData( $queryPref );
+					if($resultPartecipazioniPref == 0){
+						require( "components/error.component.php" );
+						require( "components/footer.component.php" );
+						exit();
+					}
+					$count += $resultPartecipazioniPref[0]['n'];
 				}
-				$posti -= $resultPartecipazioni[0]['n'];
+				$posti -= $count;	
 				$template -> setContent("EVENTO_POSTI_PREF", $posti);
-				if( isset($row_eventi_pref['costo']) && (strcmp($row_eventi_pref['costo'],0))){
-					$template -> setContent( "EVENTO_COSTO_PREF", $row_eventi_pref['costo'] );
-					$template -> setContent("FLAG_PR", " ");
-					$template -> setContent("FLAG_PR1", "d-none" );
-				} else {
-					$template -> setContent("FLAG_PR", "d-none");
-					$template -> setContent( "FLAG_PR1", " ");
-				}
 			}
 		}
 	} else	{
-		$template -> setContent("FLAG-PR","d-none");
+		$template -> setContent("FLAG_PR","d-none");
 	}
 
 

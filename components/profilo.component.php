@@ -12,7 +12,7 @@
     $template -> setContent("cognome", $_SESSION['cognome']);
     $template -> setContent("email", $_SESSION['mail']);
 
-	$resultEventi = getData("SELECT e.citta as citta_e, e.costo as costo_e, c.nome as catnome, e.posti as posti_e, e.descrizione as descrizione_e, e.nome as nome_e, e.immagine as immagine_e FROM evento e JOIN data_evento d ON (d.id_evento = e.id) JOIN partecipazione p ON (p.id_evento = e.id) JOIN categoria c ON (c.id = e.id_categoria) WHERE p.id_utente = ".$_SESSION['id']);
+	$resultEventi = getData("SELECT d.data as data_e, e.citta as citta_e, e.costo as costo_e, c.nome as catnome, e.posti as posti_e, e.descrizione as descrizione_e, e.nome as nome_e, e.immagine as immagine_e FROM evento e JOIN data_evento d ON (d.id_evento = e.id) JOIN partecipazione p ON (p.id_data = d.id) JOIN categoria c ON (c.id = e.id_categoria) WHERE p.id_utente = ".$_SESSION['id']);
 	if( $resultEventi == 0 ){ require( "components/error.component.php" ); require( "components/footer.component.php" ); exit(); } //errore con DB
 
 	if( empty($resultEventi) ){
@@ -25,6 +25,7 @@
 		foreach($resultEventi as $rowEventi){
 
 			$template -> setContent( "TITOLO", $rowEventi["nome_e"]);
+			$template -> setContent("DATA_EVENTO",$rowEventi['data_e']);
 
 			if( file_exists($rowEventi["immagine_e"]) ){
 				$template -> setContent( "EVENTO_IMMAGINE", $rowEventi["immagine_e"]);
@@ -50,6 +51,21 @@
 		}
 	}
 
-
+	$resultCommenti = getData("SELECT e.id as id_e, e.nome as nome_e, c.data as data_c, c.testo as testo_c, e.immagine as immagine_e FROM commento c JOIN evento e ON (e.id = c.id_evento) WHERE c.id_utente = {$_SESSION['id']}");
+	if($resultCommenti == 0){ "components/error.component.php"; require( "components/footer.component.php" ); exit(); }
+	if(empty($resultCommenti)){
+		$template -> setContent("FLAG_COMMENTI","");
+		$template -> setContent("FLAG_COMMENTI_PRESENTI","d-none");
+	} else {
+		foreach($resultCommenti as $rowCommenti){
+			$template -> setContent("FLAG_COMMENTI","d-none");
+			$template -> setContent("FLAG_COMMENTI_PRESENTI","");
+			$template -> setContent("NOME_EVENTO",$rowCommenti['nome_e']);
+			$template -> setContent("LINK_EVENTO", "evento.php?id={$rowCommenti['id_e']}");
+			$template -> setContent("DATA_COMMENTO",$rowCommenti['data_c']);
+			$template -> setContent("TESTO_COMMENTO",$rowCommenti['testo_c']);
+			$template -> setContent("IMMAGINE_EVENTO",$rowCommenti['immagine_e']);
+		}
+	}
 	$template -> close();
 ?>
