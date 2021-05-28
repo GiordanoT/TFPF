@@ -16,7 +16,7 @@
 			//ELENCO SCONTI
 			$template -> setContent( "NOME_LINK", "Elenco Sconti" );
 			$template -> setContent( "LINK", "elencoScontiAdmin.php" );
-			$template -> setContent( "ICON", "fa-tag" );
+			$template -> setContent( "ICON", "fa-tags" );
 			//PROFILO
 			$template -> setContent( "NOME_LINK", "Profilo" );
 			$template -> setContent( "LINK", "profilo.php" );
@@ -69,7 +69,7 @@
 				//ELENCO SCONTI
 				$template -> setContent( "NOME_LINK", "Elenco Sconti" );
 				$template -> setContent( "LINK", "elencoScontiUtente.php" );
-				$template -> setContent( "ICON", "fa-tag" );
+				$template -> setContent( "ICON", "fa-tags" );
 				//PROFILO
 				$template -> setContent( "NOME_LINK", "Profilo" );
 				$template -> setContent( "LINK", "profilo.php" );
