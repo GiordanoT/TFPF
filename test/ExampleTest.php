@@ -14,6 +14,10 @@ require_once 'RicercaEventi.php';
 require_once 'RicercaEventiCategoria.php';
 require_once 'EventiCalendarioPref.php';
 require_once 'EventiCalendarioPar.php';
+require_once 'include/functions/crea_evento.fun.php';
+require_once 'include/functions/scegli_date.fun.php';
+require_once 'Functions/AdminSconto.php';
+require_once 'Functions/UtenteSconto.php';
 
 class ExampleTest extends TestCase{
 
