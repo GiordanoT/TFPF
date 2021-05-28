@@ -9,6 +9,7 @@
     $evento = $_SESSION['query_evento']; //query per la modifica delle informazioni per l'evento
     $date_vecchie = $_SESSION['date_vecchie']; //date dell'evento prima delle modifiche fatte dall'utente alla form per le date
     $id_evento = $_SESSION['id_evento'];
+    $date_passate = $_SESSION['date_passate']; //numero di date che si sono già svolte
 
     //date,orari e prezzi dell'evento nuovi
     $giorni = array(); 
@@ -30,7 +31,7 @@
             array_push($prezzo_data, $_POST['prezzo_'.$i]);
     }    
     
-    $result = ModificaEvento($id_evento,$evento,$date_vecchie,$durata,$giorni,$ora_inizio,$ora_fine,$prezzo_data, $prezzo_totale);
+    $result = ModificaEvento($id_evento,$evento,$date_passate,$date_vecchie,$durata,$giorni,$ora_inizio,$ora_fine,$prezzo_data, $prezzo_totale);
 
     if($result == 0){
         header("Location: ../modificaDate.php?error=bad_data");

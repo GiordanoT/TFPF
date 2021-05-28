@@ -1,6 +1,6 @@
 <?php
 
-    function ModificaEvento($id_evento, $evento, $date_vecchie, $durata, $giorno, $ora_inizio, $ora_fine, $prezzo_data, $prezzo_totale){
+    function ModificaEvento($id_evento, $evento, $date_passate, $date_vecchie, $durata, $giorno, $ora_inizio, $ora_fine, $prezzo_data, $prezzo_totale){
   
         $result_durata_prec= getData("SELECT COUNT(id) AS 'durata' FROM data_evento WHERE id_evento = '{$id_evento}'");
         $durata_precedente = $result_durata_prec[0]['durata']; //numero di date precedenti alla modifica
@@ -32,7 +32,7 @@
             if(!$modifica_dati_evento){
                 return 2;
             }
-            if($durata == $_SESSION['date_passate']){ //se vengono cancellate tutte le date future, setto a concluso l'evento
+            if($durata == $date_passate){ //se vengono cancellate tutte le date future, setto a concluso l'evento
                 $setta_concluso = setData("UPDATE evento SET concluso = 1 WHERE id = {$id_evento}");
                 if(!$setta_concluso){
                     return 2;
@@ -43,7 +43,7 @@
         else { //se l'utente vuole aggiungere nuove date
 
             //------- Controllo validità dei dati ----------
-            for($i = (int)$_SESSION['date_passate']+1; $i <= (int)$durata; $i++){
+            for($i = $date_passate+1; $i <= (int)$durata; $i++){
                 for($k = $i+1; $k <=(int)$durata; $k++){
                     if($giorno[$i] == $giorno[$k])
                         return 0;
@@ -64,7 +64,7 @@
             }
             //------- Fine controllo ---------------
 
-            for($i = (int)$_SESSION['date_passate']+1; $i <= $durata; $i++){ //inizio a ciclare dalle date ancora non passate
+            for($i = $date_passate+1; $i <= $durata; $i++){ //inizio a ciclare dalle date ancora non passate
                 
                 if($i <= $durata_precedente){ //se la data è una di quelle già registrate
 
@@ -90,7 +90,7 @@
                 }
             }
 
-            if($_SESSION['date_passate'] == 0){ //se l'evento non ha date che sono già passate
+            if($date_passate == 0){ //se l'evento non ha date che sono già passate
 
                 //aggiorno eventualemente il prezzo complessivo che comprende tutte le date, nel caso sia stato modificato dall'utente
                 $result_nuovo_prezzo = setData("UPDATE evento SET costo = '{$prezzo_totale}' WHERE id = {$id_evento}");
