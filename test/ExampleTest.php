@@ -14,10 +14,15 @@ require_once 'RicercaEventi.php';
 require_once 'RicercaEventiCategoria.php';
 require_once 'EventiCalendarioPref.php';
 require_once 'EventiCalendarioPar.php';
+<<<<<<< HEAD
 require_once 'CreaEvento.php';
 require_once 'ScegliDate.php';
 require_once 'Functions/AdminSconto.php';
 require_once 'Functions/UtenteSconto.php';
+=======
+require_once 'include/functions/crea_evento.fun.php';
+require_once 'include/functions/scegli_date.fun.php';
+>>>>>>> 44538b8605e5d51332437bf48cd2654c97236c46
 
 
 class ExampleTest extends TestCase{
@@ -54,13 +59,13 @@ class ExampleTest extends TestCase{
       $result = EventiCalendarioPar( "1981-06-19", 15 );
       $this->assertEquals( 0, $result[0]  );
 
-      $this->assertEquals( 1, creaEvento("Evento Test","F1 - GP di Monaco",0,2,12000,13,150.00,"foto.jpg",0) );
-      $this->assertEquals( 0, creaEvento("Evento Test","F1 - GP di Monaco",1,2,0,13,150.00,"foto.jpg",0) );
-      $this->assertEquals( 0, creaEvento("Evento Test","F1 - GP di Monaco",1,2,12000,13,-150.00,"foto.jpg",0) );
+      $this->assertEquals( 1, creaEvento("Evento Test","F1 - GP di Monaco",0,2,12000,13,150.00,"foto.jpg","Monaco",0,2) );
+      $this->assertEquals( 0, creaEvento("Evento Test","F1 - GP di Monaco",1,2,0,13,150.00,"foto.jpg","Monaco",0,2) );
+      $this->assertEquals( 0, creaEvento("Evento Test","F1 - GP di Monaco",1,2,12000,13,-150.00,"foto.jpg","Monaco",0,2) );
 
-      $this->assertEquals( 0, scegliDate(2,array(0,"2021-05-20","2021-05-23"),array(0,"12:00","15:00"),array(0,"13:00","16:00")) );
-      $this->assertEquals( 0, scegliDate(2,array(0,"2021-05-22","2021-05-23"),array(0,"12:00","15:00"),array(0,"10:00","16:00")) );
-      $this->assertEquals( 0, scegliDate(2,array(0,"2021-05-22","2021-05-22"),array(0,"12:00","15:00"),array(0,"13:00","16:00")) );
+      $this->assertEquals( 1, scegliDate(2,array(0,"2021-08-20","2021-08-23"),array(0,"12:00","15:00"),array(0,"13:00","16:00"),array(0,75,75),120) );
+      $this->assertEquals( 0, scegliDate(2,array(0,"2021-08-22","2021-08-23"),array(0,"12:00","15:00"),array(0,"10:00","16:00"),array(0,75,75),120) );
+      $this->assertEquals( 0, scegliDate(2,array(0,"2021-08-22","2021-08-22"),array(0,"12:00","15:00"),array(0,"13:00","16:00"),array(0,75,75),120) );
 
       $query = "DELETE FROM evento WHERE nome='Evento Test'";
       $this->assertEquals( 1, setData( $query ) );
