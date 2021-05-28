@@ -11,11 +11,6 @@ require_once 'include/functions/modifica_evento.fun.php';
 
 class CreaEventoTest extends TestCase{
 
-    "UPDATE evento  
-                  SET nome = '{$nome}', descrizione = '{$descrizione}', tipologia = '{$tipologia}', id_categoria = '{$categoria}', 
-                  posti = '{$posti}', immagine = '{$path_immagine}', citta = '{$citta}' 
-                  WHERE id = '{$id_evento}' "
-
     public function test_example(){
         
         $query_evento_1 = "UPDATE evento  
