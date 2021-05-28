@@ -9,7 +9,7 @@ require_once 'include/dbh.inc.php';
 
 require_once 'include/functions/modifica_evento.fun.php';
 
-class CreaEventoTest extends TestCase{
+class ModificaEventoTest extends TestCase{
 
     public function test_example(){
         
