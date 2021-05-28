@@ -1,12 +1,14 @@
 <?php
 
     require_once("dbh.inc.php");
-    require_once("functions/modifica_evento_date.fun.php");
+    require_once("functions/modifica_evento.fun.php");
     session_start();
 
     $durata = $_POST['num_giorni'];
     $prezzo_totale = $_POST['prezzo_totale'];
     $evento = $_SESSION['query_evento']; //query per la modifica delle informazioni per l'evento
+    $date_vecchie = $_SESSION['date_vecchie']; //date dell'evento prima delle modifiche fatte dall'utente alla form per le date
+    $id_evento = $_SESSION['id_evento'];
 
     //date,orari e prezzi dell'evento nuovi
     $giorni = array(); 
@@ -28,7 +30,7 @@
             array_push($prezzo_data, $_POST['prezzo_'.$i]);
     }    
     
-    $result = ModificaEventoDate($evento,$durata,$giorni,$ora_inizio,$ora_fine,$prezzo_data, $prezzo_totale);
+    $result = ModificaEvento($id_evento,$evento,$date_vecchie,$durata,$giorni,$ora_inizio,$ora_fine,$prezzo_data, $prezzo_totale);
 
     if($result == 0){
         header("Location: ../modificaDate.php?error=bad_data");
