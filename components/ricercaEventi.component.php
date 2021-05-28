@@ -43,7 +43,7 @@
     $template -> setContent( "NOME", $resultEvento[$indicePagina]['nome'] );
     $template -> setContent( "CITTA", $resultEvento[$indicePagina]['citta'] );
     $posti = $resultEvento[$indicePagina]['posti'];
-    $query = "SELECT count(*) as n FROM partecipazione WHERE id_evento={$resultEvento[$indicePagina]['id']}";
+    $query = "SELECT count(*) as n FROM partecipazione,data_evento WHERE partecipazione.id_data = data_evento.id AND id_evento={$resultEvento[$indicePagina]['id']}";
     $resultPartecipazioni = getData( $query );
     if( $resultPartecipazioni == 0 ){ header( "Location: error.php" ); exit(); } //errore con DB
     $posti -= $resultPartecipazioni[0]['n'];
