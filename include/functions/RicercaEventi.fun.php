@@ -7,4 +7,5 @@
     array_push( $result, 1, $resultEvento );
     return $result;
   }
+  
 ?>
