@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once("dbh.inc.php");
-    require_once("../test/Login.php");
+    require_once("functions/Login.fun.php");
     if( !isset($_POST['login']) ){
       header("Location: ../login.php");
       exit();

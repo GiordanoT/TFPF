@@ -5,9 +5,9 @@
     require( "components/footer.component.php" );
     exit();
   }
-	require_once('include\dbh.inc.php');
-  require_once( 'test/EventiCalendarioPref.php' );
-  require_once( 'test/EventiCalendarioPar.php' );
+	require_once('include/dbh.inc.php');
+  require_once( 'include/functions/EventiCalendarioPref.fun.php' );
+  require_once( 'include/functions/EventiCalendarioPar.fun.php' );
 	$template = new Template( 'templates/calendario.template.html' );
   date_default_timezone_set("Europe/Rome");
   if(!isset($_GET["mese"]) || !isset($_GET["anno"]) ){

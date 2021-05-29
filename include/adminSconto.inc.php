@@ -1,7 +1,7 @@
 <?php
 
     require_once("dbh.inc.php");
-    require_once("../Functions/AdminSconto.php");
+    require_once("functions/AdminSconto.fun.php");
     session_start();
 
     if( !isset($_POST['sconto']) ){

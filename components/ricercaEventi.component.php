@@ -1,6 +1,6 @@
 <?php
   require_once( "include/dbh.inc.php" );
-  require_once("test/RicercaEventi.php");
+  require_once("include/functions/RicercaEventi.fun.php");
 	$template = new Template( 'templates/ricercaEventi.template.html' );
   if(isset($_POST['search'])) {
     $search = str_replace(" ", "", $_POST['search']);

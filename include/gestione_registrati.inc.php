@@ -1,7 +1,7 @@
 <?php
   session_start();
   require_once( "dbh.inc.php" );
-  require_once("../test/Signin.php");
+  require_once("functions/Signin.fun.php");
   if( !isset($_POST['registrati']) ){
     header("Location: ../registrati.php");
     exit();

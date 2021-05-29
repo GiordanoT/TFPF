@@ -1,7 +1,7 @@
 <?php
 
     require_once("dbh.inc.php");
-    require_once("../Functions/UtenteSconto.php");
+    require_once("functions/UtenteSconto.fun.php");
     session_start();
 
     if( !isset($_POST['sconto']) ){

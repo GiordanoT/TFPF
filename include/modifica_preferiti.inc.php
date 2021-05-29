@@ -1,7 +1,7 @@
 <?php
   session_start();
   require_once( "dbh.inc.php" );
-  require_once( "../test/CategoriaPreferita.php" );
+  require_once( "functions/CategoriaPreferita.fun.php" );
 
   if( !isset($_POST['preferiti']) ){
     header("Location: ../gestionePreferiti.php");

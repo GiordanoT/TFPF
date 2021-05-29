@@ -1,6 +1,6 @@
 <?php
   require_once( "include/dbh.inc.php" );
-  require_once("test/RicercaEventiCategoria.php");
+  require_once("include/functions/RicercaEventiCategoria.fun.php");
 	$template = new Template( 'templates/ricercaEventiCategoria.template.html' );
   if( !isset( $_GET['id'] ) ){ require( "components/error.component.php" ); require( "components/footer.component.php" ); }
   $resultCategoria = getData( "SELECT * FROM categoria WHERE id = {$_GET['id']}" );
