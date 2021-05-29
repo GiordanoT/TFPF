@@ -1,6 +1,7 @@
 <?php
 
     require_once( "dbh.inc.php" );
+    require_once("functions/InserimentoCommento.fun.php");
     session_start();
 
     if( ! isset($_SESSION["id"]) ){
@@ -14,11 +15,12 @@
     $testo = addslashes( $testo );
     $testo = strip_tags( $testo );
 
-    $now = new DateTime();
-
-    $resultData = setData( "INSERT INTO `commento`(`testo`, `id_evento`, `id_utente`, `data`) VALUES ('{$testo}','{$idevento}','{$idutente}','{$now->format('Y-m-d H:i:s')}')" );
-
-    echo $resultData;
-
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    $result = InserimentoCommento($idutente, $idevento, $testo);
+    if( $result == 1 ){
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit();
+    }else{
+        header('Location: ../error.php ');
+        exit();
+    }
 ?>

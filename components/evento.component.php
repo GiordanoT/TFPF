@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	require_once("include/functions/VisualizzazioneEvento.fun.php");
 
 	$template = new Template( 'templates/evento.template.html' );
 	
@@ -7,7 +8,8 @@
 		echo "<script type='text/javascript'>alert('$msg');</script>";
 	}
 
-	if($_GET["login"]=="no")
+	$accesso = $_GET["login"];
+	if($accesso == "no")
 		alert("Per inserire un evento nei preferiti devi prima accedere");
 
 	$evento=$_GET["id"];
@@ -17,9 +19,13 @@
 		exit();
 	} else {
 
-		$risultatoEvento = getData("SELECT e.id as idevento, e.id_categoria as idcat, e.immagine as eveimmagine, c.immagine as catimmagine, e.nome as titolo, e.citta as citta, e.costo as prezzo,
-		e.posti as posti, e.descrizione as descrizione, c.nome as nomecat FROM evento as e join categoria as c on (e.id_categoria = c.id ) where e.id ='{$evento}' ");
-		$rowEvento = $risultatoEvento[0];
+		$rowEvento = VisualizzazioneEvento($evento);
+		
+		if($rowEvento == 0){
+			require( "components/error.component.php" );
+			require( "components/footer.component.php" );
+			exit();
+		}
 
 		if( file_exists($rowEvento['eveimmagine']) ){
 			$template -> setContent( "IMMAGINE_EVENTO", $rowEvento['eveimmagine'] );
@@ -86,14 +92,26 @@
 			$id++;
 			$template -> setContent("DATA", $rowDateEvento['data']);
 			$template -> setContent("LUOGO_DATA", $rowEvento["citta"]);
-			if($rowEvento["prezzo"]==0){
-				$template -> setContent("PREZZO", "GRATIS");
+			$now = date("Y-m-d");
+			if($data > $now){
+				if($rowDateEvento["costo"]==0){
+					$template -> setContent("PREZZO", "GRATIS");
+					$template -> setContent("readonly", "");
+					$template -> setContent("hiddenpref", "");
+				}else{
+					
+						$template -> setContent("PREZZO", "{$rowDateEvento["costo"]} €");
+						$template -> setContent("readonly", "");
+						$template -> setContent("hiddenpref", "");
+					
+				}	
 			}else{
-				$template -> setContent("PREZZO", "{$rowEvento["prezzo"]} €");
+				$template -> setContent("PREZZO", "Non Disponibile");
+				$template -> setContent("readonly", "disabled");
+				$template -> setContent("hiddenpref", "d-none");
 			}
-	
 
-//QUESTO PER IL BOTTONE DEI PREFERITI MA LO DEVI MODIFICARE
+//BOTTONE PREFERITI
 
 
 			$resultPref= getData("SELECT * FROM preferito p WHERE p.id_utente={$_SESSION["id"]} AND p.id_data = {$rowDateEvento["id"]}");
@@ -102,8 +120,7 @@
 				if( $rowPref == null) {
 					$template -> setContent("CUORE", "far fa-heart");
 					$template -> setContent("OPERAZIONE", "agg");
-				} else {
-					
+				} else {					
 					$template -> setContent("CUORE", "fas fa-heart");
 					$template -> setContent("OPERAZIONE", "del");
 				}
@@ -115,6 +132,12 @@
 		} else {
 			$template -> setContent("FLAG", "d-none");
 		}
+
+// SE L'EVENTO E' VECCHIO DISABILITO I BOTTONI
+		$resultFine= getData("SELECT max(data) as fine FROM data_evento where id_evento='{$evento}'");
+		$rowFine = $resultFine[0];
+		if($rowFine["fine"] < date("Y-m-d"))
+			$template -> setContent("disabled", "disabled");
 
 		//COMMENTI 
 		$resultCommenti = getData("SELECT * FROM commento c JOIN utente u ON (c.id_utente = u.id) WHERE c.id_evento={$evento} ORDER BY data ASC LIMIT 5");
