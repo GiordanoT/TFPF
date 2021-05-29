@@ -31,9 +31,11 @@
             array_push($prezzo_data, $_POST['prezzo_'.$i]);
     }   
     
+   // echo var_dump($id_evento,$evento,$date_passate,$date_vecchie,$durata,$giorni,$ora_inizio,$ora_fine,$prezzo_data, $prezzo_totale);
+    
     $result = ModificaEvento($id_evento,$evento,$date_passate,$date_vecchie,$durata,$giorni,$ora_inizio,$ora_fine,$prezzo_data, $prezzo_totale);
 
-    ($result == 0){
+    if($result == 0){
         header("Location: ../modificaDate.php?error=bad_data");
         exit();
     }
