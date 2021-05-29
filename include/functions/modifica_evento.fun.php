@@ -18,6 +18,7 @@
             if((float)$prezzo_data[$i] < 0){
                 return 0;
             }
+            date_default_timezone_set('Europe/Rome');
             $oggi_ora = date("h:i");
             if($giorno[$i] == $oggi && $ora_inizio[$i] < $oggi_ora)
                 return 0;
