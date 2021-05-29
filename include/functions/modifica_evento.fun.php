@@ -23,14 +23,14 @@
                                               ora_fine = '{$ora_fine[$i]}', costo = '{$prezzo_data[$i]}' WHERE id = {$rowDataEvento['id']}  ");
                     
                     if(!$modifica_data)
-                        return 2;
+                        return 0;
                 }
                 $i++;
             }
             
             $modifica_dati_evento = setData($evento); //aggiorno i dati dell'evento, nel caso siano stati cambiati dall'utente
             if(!$modifica_dati_evento){
-                return 2;
+                return 0;
             }
             if($durata == $date_passate){ //se vengono cancellate tutte le date future, setto a concluso l'evento
                 $setta_concluso = setData("UPDATE evento SET concluso = 1 WHERE id = {$id_evento}");
@@ -77,7 +77,7 @@
                                               ora_fine = '{$ora_fine[$i]}', costo = '{$prezzo_data[$i]}' WHERE id = {$id_data}  ");
 
                     if(!$modifica_data)
-                        return 2;
+                        return 0;
                 }
                 else{ //se invece la data è del tutto nuova
 
@@ -86,7 +86,7 @@
                     VALUES ('{$id_evento}','{$giorno[$i]}','{$ora_inizio[$i]}','{$ora_fine[$i]}', '{$prezzo_data[$i]}')");
 
                     if(!$nuova_data)
-                        return 2;
+                        return 0;
                 }
             }
 
@@ -96,13 +96,13 @@
                 $result_nuovo_prezzo = setData("UPDATE evento SET costo = '{$prezzo_totale}' WHERE id = {$id_evento}");
 
                 if(!$result_nuovo_prezzo)
-                    return 2;
+                    return 0;
             }
 
 
             $modifica_dati_evento = setData($evento); //aggiorno i dati dell'evento, nel caso siano stati modificati dall'utente
             if(!$modifica_dati_evento){
-                return 2;
+                return 0;
             }
 
             return 1;
