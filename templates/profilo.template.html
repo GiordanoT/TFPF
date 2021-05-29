@@ -115,10 +115,18 @@
                 <!-- /.tab-pane -->
               </div>
               <!-- /.tab-content -->
+              <div class="mt-4 row m-2 mb-4">
+                <form method="POST" action="<[LINK_FORM_PAGE]>" class="col-sm-12">
+                  <button class="button__page float-left btn btn px-3 py-2 <[FLAG_PREVIOUS]>" name="previous" type="submit"><i class="fa fa-angle-double-left" aria-hidden="true"></i></button>
+                  <input class="d-none" type="number" value="<[ID_RICERCA]>" name="indice" readonly>
+                  <button class="button__page float-right btn btn px-3 py-2 <[FLAG_NEXT]>"name="next" type="submit"><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+                </form>
+                </div>
+            </div>
             </div><!-- /.card-body -->
+          
           </div>
           <!-- /.col -->
-        </div>
       </div>
       <!-- /.widget-user -->
     </div>

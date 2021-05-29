@@ -12,8 +12,22 @@
     $template -> setContent("cognome", $_SESSION['cognome']);
     $template -> setContent("email", $_SESSION['mail']);
 
-	$resultEventi = getData("SELECT d.data as data_e, e.citta as citta_e, e.costo as costo_e, c.nome as catnome, e.posti as posti_e, e.descrizione as descrizione_e, e.nome as nome_e, e.immagine as immagine_e FROM evento e JOIN data_evento d ON (d.id_evento = e.id) JOIN partecipazione p ON (p.id_data = d.id) JOIN categoria c ON (c.id = e.id_categoria) WHERE p.id_utente = ".$_SESSION['id']);
+	//STORICO EVENTI
+
+	$resultEventi = getData("SELECT d.data as data_e, e.citta as citta_e, e.costo as costo_e, c.nome as catnome, e.posti as posti_e, e.descrizione as descrizione_e, e.nome as nome_e, e.immagine as immagine_e FROM evento e JOIN data_evento d ON (d.id_evento = e.id) JOIN partecipazione p ON (p.id_data = d.id) JOIN categoria c ON (c.id = e.id_categoria) WHERE p.id_utente = ".$_SESSION['id']." ORDER BY e.id");
+	if( !isset($_POST['previous']) && !isset($_POST['next']) ) {
+		$template -> setContent( "ID_RICERCA", 0 );
+		$template -> setContent( "FLAG_PREVIOUS", "d-none" );
+		$indicePagina = 0;
+	}
+	else{
+		$indicePagina = $_POST['indice'];
+	}
+
 	if( $resultEventi == 0 ){ require( "components/error.component.php" ); require( "components/footer.component.php" ); exit(); } //errore con DB
+	if( isset($_POST['previous'])) { $template -> setContent( "ID_RICERCA", $_POST['indice']-9 ); $indicePagina -= 9; }
+	if( isset($_POST['next'])) { $template -> setContent( "ID_RICERCA", $_POST['indice']+9 ); $indicePagina += 9; }
+	if( $indicePagina == 0 ){ $template -> setContent( "FLAG_PREVIOUS", "d-none" ); }
 
 	if( empty($resultEventi) ){
 		$template -> setContent("FLAG_EVENTI","");
@@ -22,33 +36,37 @@
 		$template -> setContent("FLAG_EVENTI","d-none");
 		$template -> setContent("FLAG_EVENTI_PRESENTI","");
 
-		foreach($resultEventi as $rowEventi){
+		$i = 0;
+		while( $i < 9 AND isset($resultEventi[$indicePagina]) ){
 
-			$template -> setContent( "TITOLO", $rowEventi["nome_e"]);
-			$template -> setContent("DATA_EVENTO",$rowEventi['data_e']);
+			$template -> setContent( "TITOLO", $resultEventi[$indicePagina]["nome_e"]);
+			$template -> setContent("DATA_EVENTO",$resultEventi[$indicePagina]['data_e']);
 
-			if( file_exists($rowEventi["immagine_e"]) ){
-				$template -> setContent( "EVENTO_IMMAGINE", $rowEventi["immagine_e"]);
-			}else if(file_exists($rowEventi["immagine_e"])){
-				$template -> setContent( "EVENTO_IMMAGINE", $rowEventi["immagine_e"]);
+			if( file_exists($resultEventi[$indicePagina]["immagine_e"]) ){
+				$template -> setContent( "EVENTO_IMMAGINE", $resultEventi[$indicePagina]["immagine_e"]);
+			}else if(file_exists($resultEventi[$indicePagina]["immagine_e"])){
+				$template -> setContent( "EVENTO_IMMAGINE", $resultEventi[$indicePagina]["immagine_e"]);
 			} else {
 				$template -> setContent( "EVENTO_IMMAGINE", "image/error.png");
 			}
 
-			$template -> setContent( "DESCRIZIONE", $rowEventi["descrizione_e"]);
-			$template -> setContent( "POSTI", $rowEventi["posti_e"]);
-			$template -> setContent( "CATEGORIA", $rowEventi["catnome"]);
-			$template -> setContent( "LINK", "evento.php?id={$rowEventi['e_id']}");
+			$template -> setContent( "DESCRIZIONE", $resultEventi[$indicePagina]["descrizione_e"]);
+			$template -> setContent( "POSTI", $resultEventi[$indicePagina]["posti_e"]);
+			$template -> setContent( "CATEGORIA", $resultEventi[$indicePagina]["catnome"]);
+			$template -> setContent( "LINK", "evento.php?id={$resultEventi[$indicePagina]['e_id']}");
 
-			if($rowEventi["costo"] != "0"){
-				$template -> setContent( "COSTO", "Costo: ".$rowEventi["costo_e"]);
+			if($resultEventi[$indicePagina]["costo"] != "0"){
+				$template -> setContent( "COSTO", "Costo: ".$resultEventi[$indicePagina]["costo_e"]);
 				$template -> setContent( "variabile", "");
 			}else{
 				$template -> setContent( "COSTO", "GRATIS");
 				$template -> setContent( "variabile", "text-danger mt-2");
 			}
-			$template -> setContent( "CITTA", $rowEventi["citta_e"]);
+			$template -> setContent( "CITTA", $resultEventi[$indicePagina]["citta_e"]);
+			$i++;
+			$indicePagina++;
 		}
+		if( $indicePagina >= count( $resultEventi ) ){ $template -> setContent( "FLAG_NEXT", "d-none" ); }
 	}
 
 	$resultCommenti = getData("SELECT e.id as id_e, e.nome as nome_e, c.data as data_c, c.testo as testo_c, e.immagine as immagine_e FROM commento c JOIN evento e ON (e.id = c.id_evento) WHERE c.id_utente = {$_SESSION['id']}");
