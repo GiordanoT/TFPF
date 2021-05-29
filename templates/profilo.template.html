@@ -19,42 +19,120 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="card col-sm-7">
-          <div class="card-body">
-              <div class="tab-content">
-              <div class="tab-pane active" id="settings">
-                  <form class="form-horizontal">
-                  <div class="form-group row">
-                      <label for="inputName" class="col-sm-2 col-form-label">Nome</label>
-                      <div class="col-sm-10">
-                      <input disabled type="text" name="nome" class="form-control" value="<[nome]>" style="color:black;">
-                      </div>
-                  </div>
-                  <div class="form-group row">
-                      <label for="inputEmail" class="col-sm-2 col-form-label">Cognome</label>
-                      <div class="col-sm-10">
-                      <input disabled name="cognome" type="text" class="form-control" value="<[cognome]>" style="color:black;" >
-                      </div>
-                  </div>
-                  <div class="form-group row">
-                      <label for="inputName2" class="col-sm-2 col-form-label">Email</label>
-                      <div class="col-sm-10">
-                      <input disabled name="email" type="text" class="form-control" value="<[email]>" style="color:black;">
-                      </div>
-                  </div>
-                  </form>
+        <div class="col-11 mx-auto">
+          <!-- Widget: user widget style 1 -->
+          <div class="card card-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header text-white"
+                 style="background: url('image/Sports.jpg') center center;">
+
+            </div>
+            <div class="widget-user-image">
+              <img class="img-circle bg-white elevation-2" src="<[PROFILO_IMMAGINE]>" alt="User Avatar">
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <h2 class="mx-auto"><[nome]><[cognome]></h2>
               </div>
-              <!-- /.tab-pane -->
+              <div class="row">
+                <small class="mx-auto"><b><[email]></b></small>
+              </div>
+              <!-- /.row -->
+            </div>
+          
+          
+            <div class="col-sm-12">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills col-12 col-md-6">
+                  <li class="nav-item col-4" ><a class="nav-link active text-center" href="#storico" data-toggle="tab">Storico eventi</a></li>
+                  <li class="nav-item col-4"><a class="nav-link text-center" href="#commenti" data-toggle="tab">Commenti</a></li>
+                  <li class="nav-item col-4"><a class="nav-link text-center" href="#settings" data-toggle="tab">Metodi di pagamento</a></li>
+                </ul>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="active tab-pane" id="storico">
+                    <div class="row col-11 mx-auto g-3">
+                      <h2 class="mx-auto <[FLAG_EVENTI]>">NON HAI PARTECIPATO A NESSUN EVENTO!</h2>
+
+                      <[foreach]>
+                        <div class="col-md-4 col-12 <[FLAG_EVENTI_PRESENTI]>">
+                          <div class="card">
+                            <div class="card-header pb-0">
+                              <div class="row">
+                                <div class="col-10">
+                                  <h4 class="hidden-text card-text mb-0" style="text-transform: uppercase;"><a style="color:black;" href="<[LINK]>"><[TITOLO]></a></h4>
+                                  <small class="hidden-text" style="text-transform: uppercase;"><b><[CATEGORIA]></b></small>
+                                </div>
+                                <div class="col-2 float-right">
+                                  <button class="btn mx-auto <[variabile]>" style="background-color: #900909; color: white; border-radius: 100%;"><i class="fas fa-file-download"></i></button>
+                                </div>
+                              </div>
+                
+                            </div>
+                            <div class="d-flex">
+                              <a href="<[LINK]>" id="evento_img">
+                                <img class="p-2 m-2 img-circle" style="width: 8em; height: 8em;" src="<[EVENTO_IMMAGINE]>" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
+                              </a>
+                
+                              <div class="hidden-text card-body">
+                                <p class="mx-auto <[variabile]> hidden-text"><[CITTA]></p>
+                                <p class="mx-auto <[variabile]> hidden-text"><[DATA_EVENTO]></p>
+                                <p class="mx-auto <[variabile]> hidden-text"><[COSTO]> €</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      <[/foreach]>
+                    </div>
+                  </div> 
+
+
+
+                  <div class=" tab-pane" id="commenti">
+                    <h2 class="mx-auto <[FLAG_COMMENTI]>">NON SONO PRESENTI COMMENTI!</h2>
+
+                    <[foreach]>
+                      <!-- Post -->
+                      <div class="post clearfix <[FLAG_COMMENTI_PRESENTI]>">
+                        <div class="user-block">
+                          <img class="img-circle img-bordered-sm" src="<[IMMAGINE_EVENTO]>" alt="Immagine evento">
+                          <span class="username">
+                            <a href="<[LINK_EVENTO]>"><[NOME_EVENTO]></a>
+                          </span>
+                          <span class="description"><[DATA_COMMENTO]></span>
+                        </div>
+                        <!-- /.user-block -->
+                        <p><[TESTO_COMMENTO]></p>
+                        <hr>
+                      </div>
+                      <!-- /.post -->
+                    <[/foreach]>
+                  </div>
+                  <!-- /.tab-pane -->
+
+                </div>
+                <!-- /.tab-pane -->
               </div>
               <!-- /.tab-content -->
-
+              <div class="mt-4 row m-2 mb-4">
+                <form method="POST" action="<[LINK_FORM_PAGE]>" class="col-sm-12">
+                  <button class="button__page float-left btn btn px-3 py-2 <[FLAG_PREVIOUS]>" name="previous" type="submit"><i class="fa fa-angle-double-left" aria-hidden="true"></i></button>
+                  <input class="d-none" type="number" value="<[ID_RICERCA]>" name="indice" readonly>
+                  <button class="button__page float-right btn btn px-3 py-2 <[FLAG_NEXT]>"name="next" type="submit"><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+                </form>
+                </div>
+            </div>
+            </div><!-- /.card-body -->
+          
           </div>
-        </div>
-        <div class="col-sm-2"></div>
+          <!-- /.col -->
       </div>
-    </div><!-- /.container-fluid -->
-  </div>
-  <!-- /.content -->
+      <!-- /.widget-user -->
+    </div>
+    <!-- /.col -->
+
+  </div><!-- /.container-fluid -->
 </div>
-  <!-- /.content-wrapper -->
+<!-- /.content -->
+
