@@ -21,5 +21,4 @@ class CreaEventoTest extends TestCase{
       $this->assertEquals( 1, setData( $query ) );
     }
 }
-
 ?>
