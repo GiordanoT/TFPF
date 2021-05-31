@@ -32,13 +32,14 @@
 				$query = "SELECT data,ora_inizio FROM data_evento,evento WHERE id_evento = '{$resultEventiCreati[$indicePagina]['e_id']}' AND admin_evento = '{$_SESSION['id']}' AND data_evento.id_evento = evento.id";
 				$resultDateEvento = getData($query);
 				$data_odierna = date("Y-m-d");
+				date_default_timezone_set('Europe/Rome');
 				$ora_odierna = date("h:i");
 				$sem = 0;
 
 				foreach($resultDateEvento as $rowDataEvento){
 					$data_limite = date('Y-m-d', strtotime('-1 day', strtotime((string)$rowDataEvento['data'])));
 
-					if($data_odierna < $data_limite && $ora_odierna <= $rowDataEvento['ora_inizio'] )
+					if(($data_odierna < $data_limite) || ($data_odierna == $data_limite && $ora_odierna < $rowDataEvento['ora_inizio']) )
 						$sem = 1;
 				}
 

@@ -1,0 +1,71 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+                    <li class="breadcrumb-item active">Crea evento</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<div class="content bootstrap-iso">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="mx-auto col-sm-10">
+                <!-- /.login-logo -->
+                <div class="card rounded">
+                    <div class="card-body login-card-body">
+                        <p class="login-box-msg text-danger"><b> <[Messaggio_errore]> </b></p>
+                        <form action="include/modifica_date.inc.php" method="POST">
+                            <[foreach]>
+                                <div style="padding-bottom: 10px;" class="form-group mb-3 col-sm-10 mx-auto">
+                                    <h5 class="my-auto hidden-title separator" style="color:rgba(4, 15, 129, 0.815); padding-bottom: 15px;"><[numero_data]>° Data</b></h5>  
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <label>Giorno</label>
+                                            <input <[readonly]> value="<[value_giorno]>" required type="date" name="<[data]>" class="form-control" style="width: 170px;">
+                                        </div>
+                                        <div class="col-3">
+                                            <label >Ora inizio</label>
+                                            <input <[readonly]> value="<[value_inizio]>" required type="time" name="<[inizio]>" class="form-control" style="width: 100px;">
+                                        </div>
+                                        <div class="col-3">
+                                            <label >Ora fine</label>
+                                            <input <[readonly]> value="<[value_fine]>" required type="time" name="<[fine]>" class="form-control" style="width: 100px;">
+                                        </div>
+                                        <div>
+                                            <label <[readonly]> <[singolo_hidden]>>Prezzo (€)</label>
+                                            <input <[readonly]> value="<[value_prezzo]>"  <[singolo_hidden]> placeholder="0 €" <[singolo_required]> type="number" name="<[prezzo]>" class="form-control" style="width: 100px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            <[/foreach]>
+                            <hr class="col-10 mx-auto">
+                            <div class="row">
+                                <div class="col-1"></div>
+                                    <label style="padding-left:5 px; padding-right: 10px;"><[label_prezzo]></label>
+                                    <input <[totale_readonly]> value="<[prezzo_totale]>" required type="number" name="prezzo_totale" class="form-control" style="width: 100px;">
+                            </div>
+                            <hr class="col-10 mx-auto">
+                            <div class="row mx-auto">
+                                <button name="num_giorni" value="<[num_giorni]>" type="submit" class="btn btn-primary btn-block mx-auto col-10 col-sm-3">Conferma</button>
+                            </div>
+
+                        </form>
+                        <!-- /.social-auth-links -->
+                    </div>
+                    <!-- /.login-card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
