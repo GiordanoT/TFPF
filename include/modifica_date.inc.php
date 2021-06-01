@@ -87,7 +87,7 @@
                     $mail->Subject='Aggiornamento evento';
                     $mail->Body="Ciao {$rowUtente['intestatario']}, l'evento {$rowUtente['nome']} al quale 
                                  parteciperai in data {$rowUtente['data']} ha subito delle modifiche. Controlla
-                                 sul nostro portale le nuove informazioni.";
+                                 sul nostro portale le nuove informazioni. Cordiali saluti, Globex Corporation.";
 
                     $mail->send();
                 }

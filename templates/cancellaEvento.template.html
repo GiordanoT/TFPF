@@ -24,7 +24,7 @@
                 <div class="card rounded">
                     <div class="card-body login-card-body">
                         <div class="row mx-auto">
-                            <h2 class="col-12 text-center" style="color:rgba(4, 15, 129, 0.815); text-transform: uppercase;" ><[NOME_EVENTO]></h2>
+                            <h2 class="col-12 text-center hidden-title" style="color:rgba(4, 15, 129, 0.815); text-transform: uppercase;" ><[NOME_EVENTO]></h2>
                         </div>
                         <p class="login-box-msg text-danger"><b> <[Messaggio_errore]> </b></p>
                         <form action="include/cancellaData.inc.php" method="GET">
@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="my-auto mt-3 mr-3">
                                             <a href="<[LINK_CANCELLA_EVENTO]>" type="button" class="btn btn-tool <[FLAG_CESTINO]>" data-card-widget="cancella" title="Cancella" ><i class="fas fa-trash-alt fa-lg" style="color: #900909" ></i></a>
-                                            <a type="button" class="btn btn-tool <[FLAG_CESTINO_DIS]>" data-card-widget="cancella" title="Cancella" disabled ><i class="fas fa-trash-alt fa-lg"></i></a>
+                                            <button class="btn btn-tool <[FLAG_CESTINO_DIS]>" data-card-widget="cancella" title="Cancella" disabled ><i class="fas fa-trash-alt fa-lg"></i></button>
                                         </div>
                                     </div>
                                 </div>

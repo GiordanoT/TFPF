@@ -1,6 +1,26 @@
-<?php
+<?php 
+    
+    $id_evento = $_GET['id_evento'];
+	//----- controllo di sicurezza -------
+	$query = "SELECT data,ora_inizio FROM data_evento,evento WHERE id_evento = '{$id_evento}' AND admin_evento = '{$_SESSION['id']}' AND data_evento.id_evento = evento.id";
+	$resultDateEvento = getData($query);
+	$data_odierna = date("Y-m-d");
+	$ora_odierna = date("h:i");
+	$sem = 0;
+	$date_passate = 0;
 
-    if(isset($_SESSION['id'])){
+	foreach($resultDateEvento as $rowDataEvento){
+		$data_limite = date('Y-m-d', strtotime('-1 day', strtotime((string)$rowDataEvento['data'])));
+		
+		if(($data_odierna < $data_limite) || ($data_odierna == $data_limite && $ora_odierna <= $rowDataEvento['ora_inizio']) )
+			$sem = 1;
+		else $date_passate++;
+	}
+	//----- fine controllo -------
+
+    if(isset($_SESSION['id']) && $sem == 1){
+
+        $_SESSION['id_evento'] = $_GET['id_evento'];
 
         session_start();
 
@@ -12,6 +32,7 @@
             else 
                 $template -> setContent("Messaggio_errore", "Errore durante l'operazione, riprovare");
         }
+
         $query = "SELECT evento.nome as nome_evento, data,ora_inizio FROM data_evento,evento WHERE id_evento = '{$_GET['id_evento']}' AND admin_evento = '{$_SESSION['id']}' AND data_evento.id_evento = evento.id";
 
         $resultDateEvento = getData($query);
@@ -52,9 +73,12 @@
                 $template -> setContent("FLAG_CESTINO_DIS","");
                 $template -> setContent("DISABLED","disabled");
             }
+            else{
+                $template -> setContent("FLAG_CESTINO","");
+                $template -> setContent("FLAG_CESTINO_DIS","d-none");
+            }
+            
             $template -> setContent("LINK_CANCELLA_EVENTO", "include/cancellaData.inc.php?id_data={$resultDateEvento[$i-1]['id_data']}");
-            $template -> setContent("FLAG_CESTINO","");
-            $template -> setContent("FLAG_CESTINO_DIS","d-none");
             $template -> setContent("DATA_ID",$resultDateEvento[$i-1]['id_data']);
             $template -> setContent("value_giorno",$resultDateEvento[$i-1]['data']);
             $template -> setContent("value_inizio",$resultDateEvento[$i-1]['ora_inizio']);
