@@ -16,7 +16,7 @@ class TicketTest extends TestCase{
       $this->assertEquals( 0, VisualizzaBiglietto( "5678" ) );
       $this->assertEquals( 0, VisualizzaBiglietto( "1111" ) );
 
-      $result = VisualizzaBiglietto( "89778235119620683988" )
+      $result = VisualizzaBiglietto( "89778235119620683988" );
 
       $this->assertEquals( "89778235119620683988", $result[7] );
       $this->assertEquals( "Mario Gialli", $result[6] );
