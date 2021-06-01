@@ -61,11 +61,8 @@
 
 		$result_durata = getData("SELECT COUNT(id) AS 'durata' FROM data_evento WHERE id_evento = '{$_GET['id_evento']}'");
         $durata = $result_durata[0]['durata'];
-		if($date_passate == 0){
-			$i = 1;
-		}
-		else $i = $date_passate;
-		for($i; $i <= 7; $i++){
+		
+		for($i = $durata; $i <= 7; $i++){
 			$template -> setContent("giorno_value", $i);
 			if($i == 1)
 				$template -> setContent("giorno", $i." giorno");

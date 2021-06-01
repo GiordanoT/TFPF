@@ -2,7 +2,13 @@
 
     require_once("dbh.inc.php");
     require_once("functions/modifica_evento.fun.php");
+    require_once('SMTP.php');
+    require_once('PHPMailer.php');
+    require_once('Exception.php');
     session_start();
+
+    use \PHPMailer\PHPMailer\PHPMailer;
+    use \PHPMailer\PHPMailer\Exception;
 
     $durata = $_POST['num_giorni'];
     $prezzo_totale = $_POST['prezzo_totale'];
@@ -30,9 +36,7 @@
         if($durata > 1)
             array_push($prezzo_data, $_POST['prezzo_'.$i]);
     }   
-    
-   // echo var_dump($id_evento,$evento,$date_passate,$date_vecchie,$durata,$giorni,$ora_inizio,$ora_fine,$prezzo_data, $prezzo_totale);
-    
+
     $result = ModificaEvento($id_evento,$evento,$date_passate,$date_vecchie,$durata,$giorni,$ora_inizio,$ora_fine,$prezzo_data, $prezzo_totale);
 
     if($result == 0){
@@ -43,6 +47,56 @@
         header("Location: ../modificaDate.php?error=dbms_error");
         exit();
     }
-    else header("Location: ../eventoModificato.php");
+    else {
+
+        $mail=new PHPMailer(true); // Passing `true` enables exceptions
+
+        try {
+            //settings
+            $mail->isSMTP(); // Set mailer to use SMTP
+            $mail->Host='smtp.gmail.com';
+            $mail->SMTPAuth=true; // Enable SMTP authentication
+            $mail->Username='globexcorporation268@gmail.com'; // SMTP username
+            $mail->Password='agile123'; // SMTP password
+            $mail->SMTPSecure='ssl';
+            $mail->Port=465;
+
+            $resultUtenti = getData("SELECT nome,data,intestatario,email 
+                                     FROM evento,partecipazione,data_evento 
+                                     WHERE evento.id = data_evento.id_evento 
+                                     AND partecipazione.id_data = data_evento.id 
+                                     AND evento.id = {$id_evento}");
+
+            $data_odierna = date("Y-m-d");
+
+            foreach($resultUtenti as $rowUtente){
+
+                if($rowUtente['data'] > $data_odierna){
+
+                    $mail->ClearAddresses();
+                    $mail->ClearCCs();
+                    $mail->ClearBCCs();
+
+                    $mail->setFrom('globexcorporation@gmail.com', 'Globex Corporation');
+
+                    //recipient
+                    $mail->addAddress("{$rowUtente['email']}", "{$rowUtente['intestatario']}");     // Add a recipient
+
+                    //content
+                    $mail->isHTML(true); // Set email format to HTML
+                    $mail->Subject='Aggiornamento evento';
+                    $mail->Body="Ciao {$rowUtente['intestatario']}, l'evento {$rowUtente['nome']} al quale 
+                                 parteciperai in data {$rowUtente['data']} ha subito delle modifiche. Controlla
+                                 sul nostro portale le nuove informazioni.";
+
+                    $mail->send();
+                }
+            }
+            header("Location: ../eventoModificato.php");
+        } 
+        catch(Exception $e) {
+            header("Location: ../modificaDate.php?error=dbms_error");
+        }
+    }
     
 ?>
