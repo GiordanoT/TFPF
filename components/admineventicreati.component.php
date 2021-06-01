@@ -29,25 +29,34 @@
 		while( $i < 9 && isset( $resultEventiCreati[$indicePagina] ) ){
 				$template -> setContent( "TITOLO", $resultEventiCreati[$indicePagina]["nome"]);
 
-				$query = "SELECT data,ora_inizio FROM data_evento,evento WHERE id_evento = '{$resultEventiCreati[$indicePagina]['e_id']}' AND admin_evento = '{$_SESSION['id']}' AND data_evento.id_evento = evento.id";
+				$query = "SELECT d.data as data, d.ora_inizio as ora_inizio, d.costo as costo_data FROM data_evento d ,evento e WHERE d.id_evento = '{$resultEventiCreati[$indicePagina]['e_id']}' AND admin_evento = '{$_SESSION['id']}' AND d.id_evento = e.id";
 				$resultDateEvento = getData($query);
 				$data_odierna = date("Y-m-d");
 				date_default_timezone_set('Europe/Rome');
 				$ora_odierna = date("h:i");
 				$sem = 0;
+				$prezzoMin = 0;
+				$prezzoMax = 0;
+
 
 				foreach($resultDateEvento as $rowDataEvento){
+
+					if($rowDataEvento['costo_data'] > $prezzoMax ){ $prezzoMax =  $rowDataEvento['costo_data']; }
+					if($rowDataEvento['costo_data'] < $prezzoMin ){ $prezzoMin =  $rowDataEvento['costo_data']; }
+
 					$data_limite = date('Y-m-d', strtotime('-1 day', strtotime((string)$rowDataEvento['data'])));
 
 					if(($data_odierna < $data_limite) || ($data_odierna == $data_limite && $ora_odierna < $rowDataEvento['ora_inizio']) )
 						$sem = 1;
 				}
+				
 
 				if($sem == 0){
 					$template -> setContent("hidden_modifica","d-none");
 				}
 				else{
 					$template -> setContent("LINK_MODIFICA_EVENTO","modificaEvento.php?id_evento=".$resultEventiCreati[$indicePagina]['e_id']);
+					$template -> setContent("LINK_CANCELLA_EVENTO","cancellaEvento.php?id_evento=".$resultEventiCreati[$indicePagina]['e_id']);
 					$template -> setContent("hidden_modifica","");
 				}
 
@@ -64,7 +73,18 @@
 				$template -> setContent( "LINK", "evento.php?id={$resultEventiCreati[$indicePagina]['e_id']}");
 
 				if($resultEventiCreati[$indicePagina]["costo"] != "0"){
+					
+					if($prezzoMin == $prezzoMax){
+						$template -> setContent("COSTO1", "$prezzoMax");
+						$template -> setContent("COSTO2", "");
+					} else {
+						$template -> setContent("COSTO1", "$prezzoMin");
+						$template -> setContent("COSTO2", "- {$prezzoMax} €");
+					}
+
 					$template -> setContent( "COSTO", "Costo: ".$resultEventiCreati[$indicePagina]["costo"]);
+					$template -> setContent( "FLAG_COSTO_D", "d-none");
+					$template -> setContent( "FLAG_COSTO_T", "");
 					$template -> setContent( "variabile", "");
 				}else{
 					$template -> setContent( "COSTO", "GRATIS");

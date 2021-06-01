@@ -1,0 +1,68 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+                    <li class="breadcrumb-item active">Cancella date</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<div class="content bootstrap-iso">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="mx-auto col-sm-10">
+                <!-- /.login-logo -->
+                <div class="card rounded">
+                    <div class="card-body login-card-body">
+                        <div class="row mx-auto">
+                            <h2 class="col-12 text-center" style="color:rgba(4, 15, 129, 0.815); text-transform: uppercase;" ><[NOME_EVENTO]></h2>
+                        </div>
+                        <p class="login-box-msg text-danger"><b> <[Messaggio_errore]> </b></p>
+                        <form action="include/cancellaData.inc.php" method="GET">
+                            <[foreach]>
+                                <div style="padding-bottom: 10px;" class="form-group mb-3 col-sm-10 mx-auto">
+                                    <h5 class="my-auto hidden-title separator" style="color:rgba(4, 15, 129, 0.815); padding-bottom: 15px;"><[numero_data]>° Data</b></h5>  
+                                    <div class="row">
+                                        <div class="col-sm-3 mx-auto">
+                                            <label>Giorno</label>
+                                            <input value="<[value_giorno]>" required type="date" name="<[data]>" class="form-control text-center" style="width: 170px; background-color: transparent;" disabled>
+                                        </div>
+                                        <div class="col-sm-3 mx-auto">
+                                            <label >Ora inizio</label>
+                                            <input value="<[value_inizio]>" required type="time" name="<[inizio]>" class="form-control" style="width: 100px; background-color: transparent;" disabled>
+                                        </div>
+                                        <div class="col-sm-3 mx-auto">
+                                            <label >Ora fine</label>
+                                            <input value="<[value_fine]>" required type="time" name="<[fine]>" class="form-control" style="width: 100px; background-color: transparent;" disabled>
+                                        </div>
+                                        <div class="my-auto mt-3 mr-3">
+                                            <a href="<[LINK_CANCELLA_EVENTO]>" type="button" class="btn btn-tool <[FLAG_CESTINO]>" data-card-widget="cancella" title="Cancella" ><i class="fas fa-trash-alt fa-lg" style="color: #900909" ></i></a>
+                                            <a type="button" class="btn btn-tool <[FLAG_CESTINO_DIS]>" data-card-widget="cancella" title="Cancella" disabled ><i class="fas fa-trash-alt fa-lg"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <[/foreach]>
+                            <hr class="col-10 mx-auto">
+                            <div class="row mx-auto">
+                                <button name="id_data" value="0" type="submit" class="btn btn-block mx-auto col-10 col-sm-3" style="color:white; background-color: #900909;" <[DISABLED]> >Cancella tutte</button>
+                            </div>
+
+                        </form>
+                        <!-- /.social-auth-links -->
+                    </div>
+                    <!-- /.login-card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

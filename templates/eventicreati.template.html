@@ -35,9 +35,12 @@
           <div class="card shadow-sm">
             <div class="card-header pb-0">
               <div class="row">
-                <div class="col-sm-11 col-10">
+                <div class="col-sm-10 col-8">
                   <h4 class="hidden-text card-text" style="text-transform: uppercase;"><a style="color:black;" href="<[LINK]>"><[TITOLO]></a></h4>
                   <small class="hidden-text" style="text-transform: uppercase;"><b><[CATEGORIA]></b></small>
+                </div>
+                <div class="card-tools col-2 col-sm-1 float-right <[hidden_modifica]>" >
+                  <a href="<[LINK_CANCELLA_EVENTO]>" type="button" class="btn btn-tool" data-card-widget="modifica" title="Cancella"><i class="fas fa-trash-alt fa-lg" style="color: #900909;"></i></a>
                 </div>
                 <div class="card-tools col-2 col-sm-1 float-right <[hidden_modifica]>" >
                   <a href="<[LINK_MODIFICA_EVENTO]>" type="button" class="btn btn-tool" data-card-widget="modifica" title="Modifica"><i class="fas fa-pen"></i></a>
@@ -53,8 +56,8 @@
               <div class="hidden-text card-body">
                 <p class="hidden-text d-block"><[DESCRIZIONE]></p>
                 <p class="hidden-text d-block"><[CITTA]></p>
-                <p class="hidden-text d-block">Posti Disponibili: <[POSTI]></p>
-                <p class="mx-auto <[variabile]> hidden-text"><b><[COSTO]> €</b></p>
+                <p class="mx-auto <[FLAG_COSTO_D]> <[variabile]> hidden-text"><b><[COSTO1]> € <[COSTO2]></b></p>
+                <p class="mx-auto <[FLAG_COSTO_T]> <[variabile]> hidden-text"><b><[COSTO]> €</b></p>
               </div>
             </div>
           </div>
