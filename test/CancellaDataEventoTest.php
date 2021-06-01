@@ -13,8 +13,8 @@ class CancellaDataEventoTest extends TestCase{
 
     public function test_example(){
         
-        $this->assertEquals( 1, CancellaData(186,159));
-        $this->assertEquals( 2, CancellaData(0,159));
+        $this->assertEquals( 1, CancellaData(193,161));
+        $this->assertEquals( 2, CancellaData(0,161));
      
         $query = "DELETE FROM evento WHERE nome='Evento Test'";
         $this->assertEquals( 1, setData( $query ) );
