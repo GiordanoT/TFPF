@@ -19,7 +19,7 @@
   <!-- Main content -->
 
 
-  <div class="invoice p-3 mb-3">
+  <div class="invoice p-3 mb-3 mr-4 ml-4">
     <!-- title row -->
     <div class="row">
       <div class="col-12">
@@ -43,29 +43,29 @@
       </div>
       <!-- /.col -->
       <div class="col-sm-4 invoice-col">
-      <form action="#" method="POST">  
-        A 
+      <form action="include/checkout.inc.php" method="POST">
+        A
           <address>
             <table>
               <tr>
                 <th>
-                  Nome: 
+                  Nome:
                 </th>
                 <th>
-                  <input type="text" name="nome" placeholder="Inserisci il tuo nome" value="<[NOME_UTENTE]>" required <[Variabile]>><br>
-                </th>
-              </tr>
-              <tr>
-                <th>
-                  Cognome: 
-                </th>
-                <th>
-                  <input type="text" name="cognome" placeholder="Inserisci il tuo cognome" value="<[COGNOME_UTENTE]>" required <[Variabile]>><br>
+                  <input type="text" name="nome" placeholder="Inserisci il tuo nome" value="<[NOME_UTENTE]>" required ><br>
                 </th>
               </tr>
               <tr>
                 <th>
-                  Email:  
+                  Cognome:
+                </th>
+                <th>
+                  <input type="text" name="cognome" placeholder="Inserisci il tuo cognome" value="<[COGNOME_UTENTE]>" required ><br>
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  Email:
                 </th>
                 <th>
                   <input type="text" name="mail" placeholder="Inserisci la tua e-mail" value="<[EMAIL_UTENTE]>" required <[Variabile]>>
@@ -75,33 +75,29 @@
           </address>
         </div>
         <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-          <b>Codice Ordine: <[CODICE_ORDINE]></b><br>
-        </div>
-        <!-- /.col -->
       </div>
       <!-- /.row -->
 
       <!-- Table row -->
       <div class="row">
-        <div class="col-12 table-responsive">
+        <div class="col-sm table-responsive">
           <table class="table table-striped">
             <thead>
             <tr>
-              <th>Evento</th>
-              <th>Data</th>
-              <th>Descrizione</th>
-              <th>Subtotale</th>
+              <th class="text-center">Evento</th>
+              <th class="text-center">Data</th>
+              <th class="text-center">Descrizione</th>
+              <th class="text-center">Subtotale</th>
             </tr>
             </thead>
             <tbody>
-            
+
             <[foreach]>
               <tr>
-                <td><[NOME_EVENTO]></td>
-                <td><[DATA_EVENTO]></td>
-                <td><[DESCRIZIONE_EVENTO]></td>
-                <td><[PREZZO_EVENTO]> €</td>
+                <td class="text-center"><[NOME_EVENTO]><input class="d-none" type="text" name="<[NOME_INPUT_EVENTO]>" value="<[ID_DATA]>" readonly></input></td>
+                <td class="text-center"><[DATA_EVENTO]></td>
+                <td class="text-center"><[DESCRIZIONE_EVENTO]></td>
+                <td class="text-center"><[PREZZO_EVENTO]><input class="d-none" type="text" name="1<[NOME_INPUT_EVENTO]>" value="<[PREZZO_EVENTO]>" readonly></input> €</td>
               </tr>
             <[/foreach]>
 
@@ -113,16 +109,8 @@
       <!-- /.row -->
 
       <div class="row">
-        <!-- accepted payments column -->
-        <div class="col-6 mx-auto">
-
-          <p class="lead">Metodi di pagamento ammessi:</p>
-          <img src="image/visa.png" alt="Visa">
-          <img src="image/mastercard.png" alt="Mastercard">
-          <img src="image/paypal2.png" alt="Paypal">
-        </div>
         <!-- /.col -->
-        <div class="col-6">
+        <div class="col-sm-6">
 
           <div class="table-responsive">
             <table class="table">
@@ -142,13 +130,15 @@
       <!-- this row will not appear when printing -->
       <div class="row no-print">
         <div class="col-12">
-          <button type="submit" class="btn btn-success float-right" ><i class="far fa-credit-card"></i> 
+          <button name="checkout"type="submit" class="btn btn-success float-right" ><i class="far fa-credit-card"></i>
             Acquista ora
           </button>
+
         </div>
       </div>
     </div>
   </form>
+
 
 </section>
   <!-- /.content -->
