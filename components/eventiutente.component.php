@@ -23,7 +23,7 @@
 	}
 	if( empty( $result ) || $result == 0 ){
 		$template -> setContent( "flag", "d-none" );
-		$template -> setContent( "text_errore", "NON HAI PARTECIPATO ANCORA A NESSUN EVENTO" );
+		$template -> setContent( "text_errore", "NON CI SONO PROSSIMI EVENTI" );
 	}
 	$template -> close();
 ?>
