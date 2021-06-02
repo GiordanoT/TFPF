@@ -14,7 +14,7 @@
 
 	//STORICO EVENTI
 
-	$resultEventi = getData("SELECT e.id as e_id, d.data as data_e, e.citta as citta_e, e.costo as costo_e, c.nome as catnome, e.posti as posti_e, e.descrizione as descrizione_e, e.nome as nome_e, e.immagine as immagine_e FROM evento e JOIN data_evento d ON (d.id_evento = e.id) JOIN partecipazione p ON (p.id_data = d.id) JOIN categoria c ON (c.id = e.id_categoria) WHERE p.id_utente = ".$_SESSION['id']." ORDER BY e.id");
+	$resultEventi = getData("SELECT p.codice as id_d, d.data as data_e, e.citta as citta_e, e.costo as costo_e, c.nome as catnome, e.posti as posti_e, e.descrizione as descrizione_e, e.nome as nome_e, e.immagine as immagine_e FROM evento e JOIN data_evento d ON (d.id_evento = e.id) JOIN partecipazione p ON (p.id_data = d.id) JOIN categoria c ON (c.id = e.id_categoria) WHERE p.id_utente = ".$_SESSION['id']." ORDER BY e.id");
 	if( !isset($_POST['previous']) && !isset($_POST['next']) ) {
 		$template -> setContent( "ID_RICERCA", 0 );
 		$template -> setContent( "FLAG_PREVIOUS", "d-none" );
@@ -41,6 +41,7 @@
 
 			$template -> setContent( "TITOLO", $resultEventi[$indicePagina]["nome_e"]);
 			$template -> setContent("DATA_EVENTO",$resultEventi[$indicePagina]['data_e']);
+			$template -> setContent("ID_DATA_EVENTO",$resultEventi[$indicePagina]['id_d']);
 
 			if( file_exists($resultEventi[$indicePagina]["immagine_e"]) ){
 				$template -> setContent( "EVENTO_IMMAGINE", $resultEventi[$indicePagina]["immagine_e"]);
