@@ -44,10 +44,11 @@
             <div class="row col-10 mx-auto">
               <div class="col-sm-3 col-12">
                 <p class="h2 text-center"> <[GIORNO_DATA]> </p>
-                <p class="text-center"> <[MESE_DATA]> <[ANNO_DATA]> </p>
+                <p class="text-center"> <[MESE_DATA]> <br> <[ANNO_DATA]> </p>
               </div>
               <div class="col-sm-5 col-12 my-auto" >
-                <p class="text-center hidden-title"><[LUOGO_DATA]> </p>
+                <p class="text-center hidden-title"><[LUOGO_DATA]><br> Disponibili <b><[N_POSTI]></b> <[POSTI_TEXT]> </p>
+                <p class="<[SCONTO_FLAG]> <[hiddenpref]> text-center text-danger"><b>SCONTO DEL <[SCONTO]>%</b></p>
               </div>
               <div class="col-sm-4 text-center col-12">
                 <ul class="ks-cboxtags">
@@ -65,22 +66,22 @@
 
 
           <div class="py-2 px-3 mt-4">
-            <h2 class="mb-0">
-              TOTALE: <[PREZZO_TOTALE]>
-            </h2>
+            <h5 class=" <[FLAG_TOT]> mb-0">
+              IL PREZZO DEL PACCHETTO COMPLETO É DI <b> <[PREZZO_TOTALE]>€ </b>
+            </h5>
           </div>
 
           <div class="mt-4 row">
-            <button class="btn col-sm-12" type="submit" style="background-color: rgba(2, 8, 68, 0.815); color: white;" <[disabled]>>
+            <button  class="btn col-sm-12" type="submit" style="background-color: rgba(2, 8, 68, 0.815); color: white;" <[disabled]>>
               <i class="fas fa-cart-plus fa-lg mr-2"></i>
               Partecipa alle date selezionate
             </button>
           </div>
           <div class="mt-4 row <[FLAG]>">
             <input type="hidden" id="evento" name="evento" value="<[ID_EVENTO]>">
-            <button class="btn col-sm-12" style="background-color: #900909; color: white;" <[disabled]>>
+            <button name="button_all" class="btn col-sm-12" style="background-color: #900909; color: white;" <[disabled]> <[disabled_all]>>
               <i class="fas fa-cart-plus fa-lg mr-2"></i>
-              Partecipa a tutte le date
+              Acquista il pacchetto completo
             </button>
           </div>
 

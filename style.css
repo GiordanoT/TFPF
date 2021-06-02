@@ -227,7 +227,7 @@ border: 2px solid rgba(2, 8, 68, 0.815);
 {
   display: table-cell;
   width: 75%;
-  font-size: 85%;
+  font-size: 84%;
   padding: 10px 10px 30px 50px
 }
 
@@ -328,3 +328,14 @@ border: 2px solid rgba(2, 8, 68, 0.815);
     .no-print{ display: none !important; }
     .row{ padding: 2em; }
 }
+.inp {
+    border:none;
+    border-bottom: 1px solid #000000;
+    outline: none;
+ }
+
+[placeholder]:focus::-webkit-input-placeholder {
+    transition: text-indent 0.4s 0.4s ease;
+    text-indent: -100%;
+    opacity: 1;
+ }

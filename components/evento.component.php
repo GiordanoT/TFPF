@@ -41,12 +41,13 @@
 		$template -> setContent("NOME_CATEGORIA", strtoupper($rowEvento["nomecat"]) );
 		$template -> setContent("DESCRIZIONE_EVENTO", $rowEvento["descrizione"]);
 
+
 		$risultatocontaEvento = getData("SELECT count(*) as conta FROM evento as e JOIN data_evento as de on (e.id = de.id_evento) where e.id = '{$evento}'");
 		$rowConta = $risultatocontaEvento[0];
 		$conta = $rowConta["conta"];
 		$template -> setContent("NUMERO_EVENTI", "{$conta}");
 
-		$risultatodateEvento = getData("SELECT * FROM data_evento d WHERE d.id_evento = '{$evento}'");
+		$risultatodateEvento = getData("SELECT * FROM data_evento d WHERE d.id_evento = '{$evento}' ORDER BY data");
 		$i = 0;
 		$id= 0;
 		foreach($risultatodateEvento as $rowDateEvento){
@@ -101,29 +102,54 @@
 			$postiTotali -= $postiOccupati;
 
 
+
 			if( $postiTotali < 1 ){
 				$template -> setContent("PREZZO", "Non Disponibile");
 				$template -> setContent("readonly", "disabled");
 				$template -> setContent("hiddenpref", "d-none");
+				$template -> setContent("disabled_all", "disabled");
+				$template -> setContent("FLAG_TOT", "d-none");
 			}
 			else{
-				if($data > $now){
+				if($data >= $now){
+					$template -> setContent("N_POSTI", $postiTotali );
+					if( $postiTotali == 1 ) $template -> setContent("POSTI_TEXT", "posto" );
+					else $template -> setContent("POSTI_TEXT", "posti" );
 					$dateDisponibili++;
-					if($rowDateEvento["costo"]==0){
+
+					$query = "SELECT sconto FROM categoria WHERE id={$rowEvento['e_idc']}";
+					$sconto = getData( $query );
+					$scontoCategoria = $sconto[0]['sconto'];
+					$scontoEvento = $rowEvento['sconto'];
+					if( $scontoEvento > $scontoCategoria ) $sconto = $scontoEvento;
+					else $sconto = $scontoCategoria;
+					if ($sconto == 0) $template -> setContent("SCONTO_FLAG", "d-none");
+					else $template -> setContent("SCONTO", $sconto);
+
+					$newPrezzo = ( $rowDateEvento["costo"] * $sconto )/100;
+					$newPrezzo = $rowDateEvento["costo"] - $newPrezzo;
+
+
+
+					if( $newPrezzo == 0 ){
 						$template -> setContent("PREZZO", "GRATIS");
 						$template -> setContent("readonly", "");
 						$template -> setContent("hiddenpref", "");
 					}else{
-						$template -> setContent("PREZZO", "{$rowDateEvento["costo"]} €");
+						$template -> setContent("PREZZO", "{$newPrezzo} €");
 						$template -> setContent("readonly", "");
 						$template -> setContent("hiddenpref", "");
 					}
 				}else{
+					$template -> setContent("N_POSTI", "0" );
 					$template -> setContent("PREZZO", "Non Disponibile");
 					$template -> setContent("readonly", "disabled");
 					$template -> setContent("hiddenpref", "d-none");
+					$template -> setContent("disabled_all", "disabled");
+					$template -> setContent("FLAG_TOT", "d-none");
 				}
 			}
+
 
 
 
@@ -338,6 +364,9 @@
 	if( $dateDisponibili < 1 ){
 		$template -> setContent("disabled", "disabled");
 	}
+	$prezzoTot = ( $rowEvento["prezzo"] * $sconto )/100;
+	$prezzoTot = $rowEvento["prezzo"] - $prezzoTot;
+	$template -> setContent("PREZZO_TOTALE", $prezzoTot );
 
 	$template -> close();
 ?>
