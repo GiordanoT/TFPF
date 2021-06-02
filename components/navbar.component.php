@@ -21,6 +21,10 @@
 			$template -> setContent( "NOME_LINK", "Profilo" );
 			$template -> setContent( "LINK", "profilo.php" );
 			$template -> setContent( "ICON", "fa-user" );
+			//EVENTI DA APPROVARE
+			$template -> setContent( "NOME_LINK", "Eventi da approvare" );
+			$template -> setContent( "LINK", "approvaevento.php" );
+			$template -> setContent( "ICON", "fas fa-check" );
 		}
 		else{
 			// GESTIONE ADMIN EVENTO
