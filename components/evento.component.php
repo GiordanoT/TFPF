@@ -142,6 +142,7 @@
 					}
 				}else{
 					$template -> setContent("N_POSTI", "0" );
+					$template -> setContent("POSTI_TEXT", "posti" );
 					$template -> setContent("PREZZO", "Non Disponibile");
 					$template -> setContent("readonly", "disabled");
 					$template -> setContent("hiddenpref", "d-none");
