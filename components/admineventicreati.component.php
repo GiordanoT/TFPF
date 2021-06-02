@@ -4,7 +4,8 @@
 	session_start();
 
 	$resultEventiCreati = getData("SELECT e.id as e_id, e.nome as nome, e.descrizione as descrizione, c.nome as catnome, e.tipologia, e.posti as posti, e.costo as costo, e.immagine as e_immagine, e.citta as citta, c.immagine as c_immagine
-									FROM evento as e JOIN utente as u on(u.id = e.admin_evento ) JOIN categoria as c on(e.id_categoria = c.id) where u.email = '{$_SESSION['mail']}'");
+									FROM evento as e JOIN utente as u on(u.id = e.admin_evento ) JOIN categoria as c on(e.id_categoria = c.id) 
+									WHERE u.email = '{$_SESSION['mail']}'");
 
 	if(!($resultEventiCreati)){
 		$template -> setContent( "hidden", "" );
@@ -28,28 +29,26 @@
 		$i = 0;
 		while( $i < 9 && isset( $resultEventiCreati[$indicePagina] ) ){
 				$template -> setContent( "TITOLO", $resultEventiCreati[$indicePagina]["nome"]);
+				$prezzoMin = $resultEventiCreati[$indicePagina]["costo"];
 
-				$query = "SELECT d.data as data, d.ora_inizio as ora_inizio, d.costo as costo_data FROM data_evento d ,evento e WHERE d.id_evento = '{$resultEventiCreati[$indicePagina]['e_id']}' AND admin_evento = '{$_SESSION['id']}' AND d.id_evento = e.id";
+				$query = "SELECT d.data as data, d.ora_inizio as ora_inizio, d.costo as costo_data 
+						  FROM data_evento d, evento e 
+						  WHERE d.id_evento = '{$resultEventiCreati[$indicePagina]['e_id']}' AND admin_evento = '{$_SESSION['id']}' AND d.id_evento = e.id";
 				$resultDateEvento = getData($query);
 				$data_odierna = date("Y-m-d");
 				date_default_timezone_set('Europe/Rome');
 				$ora_odierna = date("h:i");
 				$sem = 0;
-				$prezzoMin = 0;
-				$prezzoMax = 0;
-
 
 				foreach($resultDateEvento as $rowDataEvento){
 
-					if($rowDataEvento['costo_data'] > $prezzoMax ){ $prezzoMax =  $rowDataEvento['costo_data']; }
-					if($rowDataEvento['costo_data'] < $prezzoMin ){ $prezzoMin =  $rowDataEvento['costo_data']; }
+					if( $prezzoMin > $rowDataEvento['costo_data'] ){ $prezzoMin =  $rowDataEvento['costo_data']; }
 
 					$data_limite = date('Y-m-d', strtotime('-1 day', strtotime((string)$rowDataEvento['data'])));
 
 					if(($data_odierna < $data_limite) || ($data_odierna == $data_limite && $ora_odierna < $rowDataEvento['ora_inizio']) )
 						$sem = 1;
 				}
-				
 
 				if($sem == 0){
 					$template -> setContent("hidden_modifica","d-none");
@@ -71,20 +70,11 @@
 				$template -> setContent( "POSTI", $resultEventiCreati[$indicePagina]["posti"]);
 				$template -> setContent( "CATEGORIA", $resultEventiCreati[$indicePagina]["catnome"]);
 				$template -> setContent( "LINK", "evento.php?id={$resultEventiCreati[$indicePagina]['e_id']}");
+				
 
-				if($resultEventiCreati[$indicePagina]["costo"] != "0"){
-					
-					if($prezzoMin == $prezzoMax){
-						$template -> setContent("COSTO1", "$prezzoMax");
-						$template -> setContent("COSTO2", "");
-					} else {
-						$template -> setContent("COSTO1", "$prezzoMin");
-						$template -> setContent("COSTO2", "- {$prezzoMax} €");
-					}
+				if($resultEventiCreati[$indicePagina]["costo"] != "0" && $prezzoMin != "0"){
 
-					$template -> setContent( "COSTO", "Costo: ".$resultEventiCreati[$indicePagina]["costo"]);
-					$template -> setContent( "FLAG_COSTO_D", "d-none");
-					$template -> setContent( "FLAG_COSTO_T", "");
+					$template -> setContent( "COSTO","DA: ". $prezzoMin."€");
 					$template -> setContent( "variabile", "");
 				}else{
 					$template -> setContent( "COSTO", "GRATIS");

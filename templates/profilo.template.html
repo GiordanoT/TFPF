@@ -27,13 +27,12 @@
                  style="background: url('image/Sports.jpg') center center;">
 
             </div>
-            <div class="widget-user-image">
-              <img class="img-circle bg-white elevation-2" src="<[PROFILO_IMMAGINE]>" alt="User Avatar">
-              <input required type="file" name="immagine" id="immagine" style="color: transparent;" accept=".jpg, .png">
-              <button  for="immagine" style="background-color: #900909; color: white;">Modifica</button>
+            <div class="row mx-auto">
+              <div class="widget-user-image col-1">
+                <img class="img-circle bg-white elevation-2" src="image/user.png" alt="User Avatar">
+              </div>
             </div>
-            <div class="form-group middle mt-3 mx-auto">
-            </div>
+
             <div class="card-footer">
               <div class="row">
                 <h2 class="mx-auto"><[nome]><[cognome]></h2>
@@ -48,9 +47,8 @@
             <div class="col-sm-12">
               <div class="card-header p-2">
                 <ul class="nav nav-pills col-12 col-md-6">
-                  <li class="nav-item col-4" ><a class="nav-link active text-center" href="#storico" data-toggle="tab">Storico eventi</a></li>
-                  <li class="nav-item col-4"><a class="nav-link text-center" href="#commenti" data-toggle="tab">Commenti</a></li>
-                  <li class="nav-item col-4"><a class="nav-link text-center" href="#settings" data-toggle="tab">Metodi di pagamento</a></li>
+                  <li class="nav-item col-6" ><a class="nav-link active text-center" href="#storico" data-toggle="tab">Storico eventi</a></li>
+                  <li class="nav-item col-6"><a class="nav-link text-center" href="#commenti" data-toggle="tab">Commenti</a></li>
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
@@ -64,11 +62,11 @@
                           <div class="card">
                             <div class="card-header pb-0">
                               <div class="row">
-                                <div class="col-10">
+                                <div class="col-9">
                                   <h4 class="hidden-text card-text mb-0" style="text-transform: uppercase;"><a style="color:black;" href="<[LINK]>"><[TITOLO]></a></h4>
                                   <small class="hidden-text" style="text-transform: uppercase;"><b><[CATEGORIA]></b></small>
                                 </div>
-                                <div class="col-2 float-right">
+                                <div class="col-3 float-right" style="text-align: end;">
                                   <button class="btn mx-auto <[variabile]>" style="background-color: #900909; color: white; border-radius: 100%;"><i class="fas fa-file-download"></i></button>
                                 </div>
                               </div>
@@ -76,13 +74,13 @@
                             </div>
                             <div class="d-flex">
                               <a href="<[LINK]>" id="evento_img">
-                                <img class="p-2 m-2 img-circle" style="width: 8em; height: 8em;" src="<[EVENTO_IMMAGINE]>" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
+                                <img class="p-2 m-2 img-circle" style="width: 6em; height: 6em;" src="<[EVENTO_IMMAGINE]>" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
                               </a>
                 
                               <div class="hidden-text card-body">
                                 <p class="mx-auto <[variabile]> hidden-text"><[CITTA]></p>
                                 <p class="mx-auto <[variabile]> hidden-text"><[DATA_EVENTO]></p>
-                                <p class="mx-auto <[variabile]> hidden-text"><[COSTO]> €</p>
+                                <p class="mx-auto <[variabile]> hidden-text"><[ORA_INIZIO_EVENTO]> - <[ORA_FINE_EVENTO]></p>
                               </div>
                             </div>
                           </div>
@@ -93,8 +91,8 @@
 
 
 
-                  <div class=" tab-pane" id="commenti">
-                    <h2 class="mx-auto <[FLAG_COMMENTI]>">NON SONO PRESENTI COMMENTI!</h2>
+                  <div class="tab-pane" id="commenti">
+                    <h2 class="text-center <[FLAG_COMMENTI]>">NON SONO PRESENTI COMMENTI!</h2>
 
                     <[foreach]>
                       <!-- Post -->
@@ -125,7 +123,7 @@
                   <input class="d-none" type="number" value="<[ID_RICERCA]>" name="indice" readonly>
                   <button class="button__page float-right btn btn px-3 py-2 <[FLAG_NEXT]>"name="next" type="submit"><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
                 </form>
-                </div>
+              </div>
             </div>
             </div><!-- /.card-body -->
           
