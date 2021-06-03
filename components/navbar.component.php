@@ -21,6 +21,10 @@
 			$template -> setContent( "NOME_LINK", "Profilo" );
 			$template -> setContent( "LINK", "profilo.php" );
 			$template -> setContent( "ICON", "fa-user" );
+			//EVENTI DA APPROVARE
+			$template -> setContent( "NOME_LINK", "Eventi da approvare" );
+			$template -> setContent( "LINK", "approvaevento.php" );
+			$template -> setContent( "ICON", "fas fa-check" );
 		}
 		else{
 			// GESTIONE ADMIN EVENTO
@@ -47,6 +51,10 @@
 				$template -> setContent( "NOME_LINK", "Profilo" );
 				$template -> setContent( "LINK", "profilo.php" );
 				$template -> setContent( "ICON", "fa-user" );
+				//I MIEI EVENTI
+				$template -> setContent( "NOME_LINK", "I miei prossimi Eventi" );
+				$template -> setContent( "LINK", "eventiutente.php" );
+				$template -> setContent( "ICON", "far fa-calendar-check" );
 				//TASTO ADMIN
 				$template -> setContent( "NOME_LINK", "Passa ad ADMIN" );
 				$template -> setContent( "LINK", "include/adminevento.inc.php" );
@@ -74,6 +82,10 @@
 				$template -> setContent( "NOME_LINK", "Profilo" );
 				$template -> setContent( "LINK", "profilo.php" );
 				$template -> setContent( "ICON", "fa-user" );
+				//I MIEI EVENTI
+				$template -> setContent( "NOME_LINK", "I miei prossimi Eventi" );
+				$template -> setContent( "LINK", "eventiutente.php" );
+				$template -> setContent( "ICON", "far fa-calendar-check" );
 				//TASTO UTENTE
 				$template -> setContent( "NOME_LINK", "Passa ad UTENTE" );
 				$template -> setContent( "LINK", "include/adminevento.inc.php" );

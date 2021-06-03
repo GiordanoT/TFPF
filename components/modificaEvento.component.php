@@ -3,9 +3,7 @@
 	require_once('include/dbh.inc.php');
 	session_start();
 
-	if(isset($_SESSION['id_evento']))
-		$id_evento = $_SESSION['id_evento'];
-	else $id_evento = $_GET['id_evento'];
+	$id_evento = $_GET['id_evento'];
 
 	//----- controllo di sicurezza -------
 	$query = "SELECT data,ora_inizio FROM data_evento,evento WHERE id_evento = '{$id_evento}' AND admin_evento = '{$_SESSION['id']}' AND data_evento.id_evento = evento.id";
