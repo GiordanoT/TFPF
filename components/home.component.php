@@ -3,6 +3,24 @@
 
 	require_once('include/dbh.inc.php');
 	$template = new Template( 'templates/home.template.html' );
+	
+	$dataOdierna = date('Y-m-d');
+	date_default_timezone_set('Europe/Rome');
+	$oggi_ora = date("h:i");
+
+	$result_ev = getData("SELECT * FROM evento");
+	foreach($result_ev as $row_ev){
+		$result_d = getData("SELECT * FROM data_evento d where d.id_evento = {$row_ev['id']} ");
+		$sem = 0;
+		foreach($result_d as $row_d){
+			if($row_d['data'] > $dataOdierna || ($row_d['data'] == $dataOdierna && $row_d['ora_inizio'] > $oggi_ora) ){ $sem=1;}
+		}
+		if($sem == 0){
+			$setta_concluso = setData("UPDATE evento SET concluso = 1 WHERE id = {$row_ev['id']} ");
+		}
+
+	}
+	
 	$template -> setContent( "IMMAGINE_CAROUSEL","image/carousel.jpg" );
 
 	function alert($msg) {
@@ -15,17 +33,20 @@
 		alert("Ora sei in modalità utente");
 	
 
+
+
 	//EVENTI RECENTI	
-	$result_recenti = getData("SELECT DISTINCT d.data, e.id as evento_id, e.citta, e.immagine as immagine_e, e.nome as nome_e, e.posti, e.costo, c.nome as nome_c, c.immagine as immagine_c 
-								FROM evento e JOIN data_evento d ON (e.id = d.id_evento) JOIN categoria c ON (c.id = e.id_categoria) 
-								WHERE e.concluso=0 AND e.approvato=1 ORDER BY d.data ASC LIMIT 10 ");
-	if($result_recenti == 0){
+	$eventi_recenti = getData("SELECT DISTINCT e.id as evento_id, e.citta, e.immagine as immagine_e, e.nome as nome_e, e.posti, e.costo as costo_e, c.nome as nome_c, c.immagine as immagine_c FROM evento e JOIN categoria c ON (c.id = e.id_categoria) JOIN data_evento d ON (d.id_evento = e.id) WHERE e.concluso = 0 AND e.approvato = 1 AND d.data > '{$dataOdierna}' ORDER BY d.data DESC LIMIT 10");
+
+	if($eventi_recenti == 0){
 		require( "components/error.component.php" );
 		require( "components/footer.component.php" );
 		exit();
 	}
 
-	foreach( $result_recenti as $row_recenti ){
+	foreach( $eventi_recenti as $row_recenti ){
+
+
 		if( file_exists($row_recenti['immagine_e']) ){
 			$template -> setContent( "EVENTO_IMMAGINE_RECENTE", $row_recenti['immagine_e'] );
 		} else {
@@ -39,21 +60,27 @@
 		$template -> setContent("EVENTO_NOME_RECENTE", $row_recenti["nome_e"]);
 		$template -> setContent( "CATEGORIA_EVENTO_RECENTE", $row_recenti['nome_c'] );
 		$template -> setContent( "EVENTO_CITTA_RECENTE", $row_recenti['citta'] );
-		$posti = $row_recenti['posti'];
-		$queryData = getData("SELECT * FROM data_evento d WHERE d.id_evento = {$row_recenti['evento_id']} ");
-		$count = 0;
-		foreach( $queryData as $rowData ){
-			$query = "SELECT count(*) as n FROM partecipazione p WHERE p.id_data = {$rowData['id']} ";
-			$resultPartecipazioni = getData( $query );
-			if($resultPartecipazioni == 0){
-				require( "components/error.component.php" );
-				require( "components/footer.component.php" );
-				exit();
+
+		$prezzoMin = $row_recenti['costo_e'];
+
+
+		$result_prezzo = getData("SELECT MIN(costo) as costoMin FROM data_evento WHERE id_evento = {$row_recenti['evento_id']} AND data > '{$dataOdierna}'");
+		$row_prezzo = $result_prezzo[0]['costoMin'];
+		
+		if($row_prezzo == "0" || $prezzoMin == "0"){
+			$template -> setContent( "EVENTO_COSTO_RECENTE", "GRATIS" );
+			$template -> setContent( "VARIABILE_COSTO_RECENTE", 'style="color: red;"' );
+		} else {
+			if( $prezzoMin < $row_prezzo){
+				$template -> setContent( "VARIABILE_COSTO_RECENTE", "" );
+				$template -> setContent( "EVENTO_COSTO_RECENTE", "DA: {$prezzoMin} €" );
+			} else {
+				$template -> setContent( "VARIABILE_COSTO_RECENTE", "" );
+				$template -> setContent( "EVENTO_COSTO_RECENTE", "DA: {$row_prezzo} €" );
 			}
-			$count += $resultPartecipazioni[0]['n'];
+
 		}
-		$posti -= $count;
-		$template -> setContent("EVENTO_POSTI_RECENTE", $posti);
+		
 	}
 
 	//EVENTI PER CATEGORIA
@@ -82,6 +109,7 @@
 		}
 
 		foreach( $result_eventi as $row_eventi ){
+
 			if( file_exists($row_eventi['immagine']) ){
 				$template -> setContent( "EVENTO_IMMAGINE", $row_eventi['immagine'] );
 			} else {
@@ -95,22 +123,25 @@
 			$template -> setContent( "LINK_EVENTO", "evento.php?id=".$row_eventi['id'] );
 			$template -> setContent( "EVENTO_NOME", $row_eventi['nome'] );
 
-			$posti = $row_eventi['posti'];
-			$queryData = getData("SELECT * FROM data_evento d WHERE d.id_evento = {$row_eventi['id']} ");
-			$count = 0;
-			foreach( $queryData as $rowData ){
-				$query = "SELECT count(*) as n FROM partecipazione p WHERE p.id_data = {$rowData['id']} ";
-				$resultPartecipazioni = getData( $query );
-				if($resultPartecipazioni == 0){
-					require( "components/error.component.php" );
-					require( "components/footer.component.php" );
-					exit();
-				}
-				$count += $resultPartecipazioni[0]['n'];
-			}
-			$posti -= $count;	
-			$template -> setContent("EVENTO_POSTI", $posti);
+			$prezzoMin = $row_eventi['costo'];
 
+			$result_prezzo = getData("SELECT MIN(costo) as costoMin FROM data_evento WHERE id_evento = {$row_eventi['id']} AND data > '{$dataOdierna}'");
+			$row_prezzo = $result_prezzo[0]['costoMin'];
+			
+			if($row_prezzo == "0" || $prezzoMin == "0"){
+				$template -> setContent( "EVENTO_COSTO", "GRATIS" );
+				$template -> setContent( "VARIABILE_COSTO", 'style="color: red;"' );
+			} else {
+				if( $prezzoMin < $row_prezzo){
+					$template -> setContent( "VARIABILE_COSTO", "" );
+					$template -> setContent( "EVENTO_COSTO", "DA: {$prezzoMin} €" );
+				} else {
+					$template -> setContent( "VARIABILE_COSTO", "" );
+					$template -> setContent( "EVENTO_COSTO", "DA: {$row_prezzo} €" );
+				}
+	
+			}
+	
 			$template -> setContent( "CATEGORIA_EVENTO", $row['nome'] );
 		}
 	}
@@ -129,7 +160,7 @@
 			$template -> setContent("FLAG_PR","d-none");
 		}
 		foreach( $result_pref as $row_pref ){
-			$result_eventi_pref = getData(" SELECT * FROM evento e WHERE e.id_categoria = {$row_pref["id"]} AND e.concluso=0 ORDER BY rand() LIMIT 8 ");
+			$result_eventi_pref = getData(" SELECT * FROM evento e WHERE e.id_categoria = {$row_pref["id"]} AND e.concluso=0 AND e.approvato = 1 ORDER BY rand() LIMIT 10 ");
 			if($result_eventi_pref == 0){
 				require( "components/error.component.php" );
 				require( "components/footer.component.php" );
@@ -152,22 +183,29 @@
 				$template -> setContent("EVENTO_NOME_PREF", $row_eventi_pref["nome"]);
 				$template -> setContent("EVENTO_CITTA_PREF", $row_eventi_pref["citta"]);
 
-				$posti = $row_eventi_pref['posti'];
-				$queryDataPref = getData("SELECT * FROM data_evento d WHERE d.id_evento = {$row_eventi_pref['id']} ");
-				$count = 0;
-				foreach($queryDataPref as $rowDataPref){
-					$queryPref = "SELECT count(*) as n FROM partecipazione p WHERE p.id_data = {$rowDataPref['id']} ";
-					$resultPartecipazioniPref = getData( $queryPref );
-					if($resultPartecipazioniPref == 0){
-						require( "components/error.component.php" );
-						require( "components/footer.component.php" );
-						exit();
+			
+				$prezzoMin = $row_eventi_pref['costo'];
+
+
+				$result_prezzo = getData("SELECT MIN(costo) as costoMin FROM data_evento WHERE id_evento = {$row_eventi_pref['id']} AND data > '{$dataOdierna}'");
+				$row_prezzo = $result_prezzo[0]['costoMin'];
+				
+				if($row_prezzo == "0" || $prezzoMin == "0"){
+					$template -> setContent( "EVENTO_COSTO_PREF", "GRATIS" );
+					$template -> setContent( "VARIABILE_COSTO_PREF", 'style="color: red;"' );
+				} else {
+					if( $prezzoMin < $row_prezzo){
+						$template -> setContent( "VARIABILE_COSTO_PREF", "" );
+						$template -> setContent( "EVENTO_COSTO_PREF", "DA: {$prezzoMin} €" );
+					} else {
+						$template -> setContent( "VARIABILE_COSTO_PREF", "" );
+						$template -> setContent( "EVENTO_COSTO_PREF", "DA: {$row_prezzo} €" );
 					}
-					$count += $resultPartecipazioniPref[0]['n'];
+		
 				}
-				$posti -= $count;	
-				$template -> setContent("EVENTO_POSTI_PREF", $posti);
+			
 			}
+
 		}
 	} else	{
 		$template -> setContent("FLAG_PR","d-none");

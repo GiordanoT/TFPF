@@ -35,14 +35,19 @@
         exit();
     }
     else{
-
-        $query = "UPDATE evento  
-                  SET nome = '{$nome}', descrizione = '{$descrizione}', tipologia = '{$tipologia}', id_categoria = '{$categoria}', 
-                  posti = '{$posti}', immagine = '{$path_immagine}', citta = '{$citta}' 
-                  WHERE id = '{$id_evento}' ";
-        
+        if( $immagine != NULL ){
+            $query = "UPDATE evento  
+            SET nome = '{$nome}', descrizione = '{$descrizione}', tipologia = '{$tipologia}', id_categoria = '{$categoria}', 
+            posti = '{$posti}', immagine = '{$path_immagine}', citta = '{$citta}' 
+            WHERE id = '{$id_evento}' ";
+            
+        } else {
+            $query = "UPDATE evento  
+            SET nome = '{$nome}', descrizione = '{$descrizione}', tipologia = '{$tipologia}', id_categoria = '{$categoria}', 
+            posti = '{$posti}', citta = '{$citta}' 
+            WHERE id = '{$id_evento}' ";
+        }
         $_SESSION['query_evento'] = $query;
-
         move_uploaded_file($_FILES['immagine']['tmp_name'], "../".$path_immagine);
         header("Location: ../modificaDate.php");
     }

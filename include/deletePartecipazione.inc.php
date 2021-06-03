@@ -8,10 +8,10 @@
 
     $result = DeletePartecipazione($id);
     if($result == 1){
-        header("Location: eventiutente.php?id={$_SESSION["id"]}");
+        header("Location: ../eventiutente.php?id={$_SESSION["id"]}");
         exit();
     }else{
-        header("Location: error.php");
+        header("Location: ../error.php");
         exit();
     }
 ?>
