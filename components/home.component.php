@@ -57,7 +57,7 @@
 	}
 
 	//EVENTI PER CATEGORIA
-	$result = getData("SELECT DISTINCT c.* FROM categoria c JOIN evento e ON (c.id = e.id_categoria) ORDER BY c.nome LIMIT 3");
+	$result = getData("SELECT DISTINCT c.* FROM categoria c JOIN evento e ON (c.id = e.id_categoria) WHERE e.approvato=1 ORDER BY c.nome LIMIT 3");
 	if($result == 0){
 		require( "components/error.component.php" );
 		require( "components/footer.component.php" );
@@ -67,7 +67,7 @@
 		$template -> setContent("FLAG_CAT","d-none");
 	}
 	foreach( $result as $row ){
-		$result_eventi = getData("SELECT * FROM evento e WHERE e.id_categoria = {$row["id"]} AND e.concluso=0 ORDER BY e.costo LIMIT 10");
+		$result_eventi = getData("SELECT * FROM evento e WHERE e.id_categoria = {$row["id"]} AND e.concluso=0 AND e.approvato=1 ORDER BY e.costo LIMIT 10");
 		if($result_eventi == 0){
 			require( "components/error.component.php" );
 			require( "components/footer.component.php" );

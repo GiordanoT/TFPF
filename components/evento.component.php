@@ -27,6 +27,21 @@
 			exit();
 		}
 
+		if($rowEvento["approvato"] == 0){
+			$template -> setContent( "hidden", "" );
+			$template -> setContent( "COLORE_APPROVAZIONE", "danger" );
+			$template -> setContent( "MESSAGGIO_APPROVAZIONE", "L'Evento non è stato approvato" );
+		}elseif($rowEvento["approvato"] == 2){
+			$template -> setContent( "hidden", "" );
+			$template -> setContent( "COLORE_APPROVAZIONE", "warning" );
+			$template -> setContent( "MESSAGGIO_APPROVAZIONE", "L'Evento è in fase di approvazione" );
+		}elseif($rowEvento["approvato"] == 0){
+			$template -> setContent( "hidden", "hidden" );
+			$template -> setContent( "COLORE_APPROVAZIONE", "" );
+			$template -> setContent( "MESSAGGIO_APPROVAZIONE", "" );
+		
+		}
+
 		if( file_exists($rowEvento['eveimmagine']) ){
 			$template -> setContent( "IMMAGINE_EVENTO", $rowEvento['eveimmagine'] );
 		} else {
