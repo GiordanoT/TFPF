@@ -14,14 +14,14 @@
 
     $id_data = $_GET['id_data'];
 
-    $resultUtenti = getData("SELECT nome,data,intestatario,email 
-                             FROM evento,partecipazione,data_evento 
+    $resultUtenti = getData("SELECT nome,data,intestatario,email,partecipazione.id_utente 
+                             FROM evento,partecipazione,data_evento
                              WHERE evento.id = data_evento.id_evento 
                              AND partecipazione.id_data = data_evento.id 
                              AND evento.id = {$id_evento} 
                              AND partecipazione.id_data = {$id_data}");
 
-    $resultUtenti_1 = getData("SELECT nome,data,intestatario,email 
+    $resultUtenti_1 = getData("SELECT nome,data,intestatario,email,partecipazione.id_utente
                             FROM evento,partecipazione,data_evento 
                             WHERE evento.id = data_evento.id_evento 
                             AND partecipazione.id_data = data_evento.id 
@@ -50,8 +50,18 @@
 
                 $mail->setFrom('globexcorporation@gmail.com', 'Globex Corporation');
 
-                //recipient
-                $mail->addAddress("{$rowUtente['email']}", "{$rowUtente['intestatario']}");     // Add a recipient
+                if($rowUtente['email'] == NULL){
+                    $resultEmail = getData("SELECT email 
+                                                FROM utente
+                                                WHERE id = {$rowUtente['id_utente']}");
+                    $emailUtente = $resultEmail[0]['email'];
+                    //recipient
+                    $mail->addAddress("{$emailUtente}", "{$rowUtente['intestatario']}");     // Add a recipient
+                }
+                else{
+                    //recipient
+                    $mail->addAddress("{$rowUtente['email']}", "{$rowUtente['intestatario']}");     // Add a recipient
+                }
 
                 //content
                 $mail->isHTML(true); // Set email format to HTML
@@ -66,11 +76,10 @@
             header("Location: ../cancellaEvento.php?id_evento={$id_evento}");
         } 
         catch(Exception $e) {
-            header("Location: ../modificaDate.php?error=dbms_error");
         }
         exit();
-    }
-    if($result == 2){
+    } 
+    else if($result == 2){
         $mail=new PHPMailer(true); // Passing `true` enables exceptions
 
         try {
@@ -91,8 +100,18 @@
 
                 $mail->setFrom('globexcorporation@gmail.com', 'Globex Corporation');
 
-                //recipient
-                $mail->addAddress("{$rowUtente['email']}", "{$rowUtente['intestatario']}");     // Add a recipient
+                if($rowUtente['email'] == NULL){
+                    $resultEmail = getData("SELECT email 
+                                                FROM utente
+                                                WHERE id = {$rowUtente['id_utente']}");
+                    $emailUtente = $resultEmail[0]['email'];
+                    //recipient
+                    $mail->addAddress("{$emailUtente}", "{$rowUtente['intestatario']}");     // Add a recipient
+                }
+                else{
+                    //recipient
+                    $mail->addAddress("{$rowUtente['email']}", "{$rowUtente['intestatario']}");     // Add a recipient
+                }
 
                 //content
                 $mail->isHTML(true); // Set email format to HTML
@@ -109,7 +128,6 @@
             header("Location: ../eventicreati.php");
         } 
         catch(Exception $e) {
-            header("Location: ../modificaDate.php?error=dbms_error");
         }
         exit();
     }

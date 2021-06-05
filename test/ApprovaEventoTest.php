@@ -8,7 +8,7 @@ require_once './vendor/autoload.php';
 require_once 'include/dbh.inc.php';
 
 require_once 'include/functions/ApprovaEvento.fun.php';
-class ApprovaEvento extends TestCase{
+class ApprovaEventoTest extends TestCase{
   
     public function test_example(){
 

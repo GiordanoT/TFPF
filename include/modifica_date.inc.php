@@ -38,7 +38,7 @@
     }   
 
     $result = ModificaEvento($id_evento,$evento,$date_passate,$date_vecchie,$durata,$giorni,$ora_inizio,$ora_fine,$prezzo_data, $prezzo_totale);
-
+   
     if($result == 0){
         header("Location: ../modificaDate.php?error=bad_data");
         exit();
@@ -61,7 +61,7 @@
             $mail->SMTPSecure='ssl';
             $mail->Port=465;
 
-            $resultUtenti = getData("SELECT nome,data,intestatario,email 
+            $resultUtenti = getData("SELECT nome,data,intestatario,email,partecipazione.id_utente
                                      FROM evento,partecipazione,data_evento 
                                      WHERE evento.id = data_evento.id_evento 
                                      AND partecipazione.id_data = data_evento.id 
@@ -79,8 +79,18 @@
 
                     $mail->setFrom('globexcorporation@gmail.com', 'Globex Corporation');
 
-                    //recipient
-                    $mail->addAddress("{$rowUtente['email']}", "{$rowUtente['intestatario']}");     // Add a recipient
+                    if($rowUtente['email'] == NULL){
+                        $resultEmail = getData("SELECT email 
+                                                FROM utente
+                                                WHERE id = {$rowUtente['id_utente']}");
+                        $emailUtente = $resultEmail[0]['email'];
+                        //recipient
+                        $mail->addAddress("{$emailUtente}", "{$rowUtente['intestatario']}");     // Add a recipient
+                    }
+                    else{
+                        //recipient
+                        $mail->addAddress("{$rowUtente['email']}", "{$rowUtente['intestatario']}");     // Add a recipient
+                    }
 
                     //content
                     $mail->isHTML(true); // Set email format to HTML
@@ -95,7 +105,7 @@
             header("Location: ../eventoModificato.php");
         } 
         catch(Exception $e) {
-            header("Location: ../modificaDate.php?error=dbms_error");
+            header("Location: ../error.php");
         }
     }
     

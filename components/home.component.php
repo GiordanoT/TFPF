@@ -84,7 +84,7 @@
 	}
 
 	//EVENTI PER CATEGORIA
-	$result = getData("SELECT DISTINCT c.* FROM categoria c JOIN evento e ON (c.id = e.id_categoria) WHERE e.approvato=1 ORDER BY c.nome LIMIT 3");
+	$result = getData("SELECT DISTINCT c.* FROM categoria c JOIN evento e ON (c.id = e.id_categoria) WHERE e.approvato=1 AND e.concluso=0 ORDER BY c.nome LIMIT 3");
 	if($result == 0){
 		require( "components/error.component.php" );
 		require( "components/footer.component.php" );
@@ -168,6 +168,8 @@
 			}
 			if( empty($result_eventi_pref) ){
 				$template -> setContent("FLAG_EVENTI_PR","d-none");
+				$template -> setContent("FLAG_PR","d-none");
+
 			}
 			foreach( $result_eventi_pref as $row_eventi_pref ){
 				if( file_exists($row_eventi_pref['immagine']) ){
