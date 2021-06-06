@@ -47,18 +47,18 @@
 				$template -> setContent( "NOME_LINK", "Categorie Preferite" );
 				$template -> setContent( "LINK", "gestionePreferiti.php" );
 				$template -> setContent( "ICON", "fa-heart" );
-				//PROFILO
-				$template -> setContent( "NOME_LINK", "Profilo" );
-				$template -> setContent( "LINK", "profilo.php" );
-				$template -> setContent( "ICON", "fa-user" );
 				//I MIEI EVENTI
-				$template -> setContent( "NOME_LINK", "I miei prossimi Eventi" );
+				$template -> setContent( "NOME_LINK", "Annulla Prenotazione" );
 				$template -> setContent( "LINK", "eventiutente.php" );
-				$template -> setContent( "ICON", "far fa-calendar-check" );
+				$template -> setContent( "ICON", "far fa-calendar-times" );
 				//TASTO ADMIN
 				$template -> setContent( "NOME_LINK", "Passa ad ADMIN" );
 				$template -> setContent( "LINK", "include/adminevento.inc.php" );
 				$template -> setContent( "ICON", "fas fa-users-cog" );
+				//PROFILO
+				$template -> setContent( "NOME_LINK", "Profilo" );
+				$template -> setContent( "LINK", "profilo.php" );
+				$template -> setContent( "ICON", "fa-user" );
 			}
 			else{
 				$template -> setContent( "NAVBAR_EVENTI_FLAG", "d-none" );
@@ -78,18 +78,14 @@
 				$template -> setContent( "NOME_LINK", "Elenco Sconti" );
 				$template -> setContent( "LINK", "elencoScontiUtente.php" );
 				$template -> setContent( "ICON", "fa-tags" );
-				//PROFILO
-				$template -> setContent( "NOME_LINK", "Profilo" );
-				$template -> setContent( "LINK", "profilo.php" );
-				$template -> setContent( "ICON", "fa-user" );
-				//I MIEI EVENTI
-				$template -> setContent( "NOME_LINK", "I miei prossimi Eventi" );
-				$template -> setContent( "LINK", "eventiutente.php" );
-				$template -> setContent( "ICON", "far fa-calendar-check" );
 				//TASTO UTENTE
 				$template -> setContent( "NOME_LINK", "Passa ad UTENTE" );
 				$template -> setContent( "LINK", "include/adminevento.inc.php" );
 				$template -> setContent( "ICON", "fas fa-users-cog" );
+				//PROFILO
+				$template -> setContent( "NOME_LINK", "Profilo" );
+				$template -> setContent( "LINK", "profilo.php" );
+				$template -> setContent( "ICON", "fa-user" );
 			}
 		}
 		//LOGOUT

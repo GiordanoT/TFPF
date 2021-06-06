@@ -17,8 +17,10 @@
 
   $loggato=0;
 
-  if(isset($nomeutente))
+  if(isset($nomeutente)) {
     $loggato=1;
+    $template -> setContent( "FLAG_EMAIL", "d-none" );
+  }
 
 
   if($loggato==1)

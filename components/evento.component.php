@@ -42,7 +42,7 @@
 			$template -> setContent( "FLAG_APPROVATO", "d-none" );
 			$template -> setContent( "COLORE_APPROVAZIONE", "" );
 			$template -> setContent( "MESSAGGIO_APPROVAZIONE", "" );
-		
+
 		}
 
 		if( file_exists($rowEvento['eveimmagine']) ){
@@ -64,6 +64,7 @@
 		$rowConta = $risultatocontaEvento[0];
 		$conta = $rowConta["conta"];
 		$template -> setContent("NUMERO_EVENTI", "{$conta}");
+		if( $conta <= 1 ) $template -> setContent("FLAG_TOT", "d-none");
 
 		$risultatodateEvento = getData("SELECT * FROM data_evento d WHERE d.id_evento = '{$evento}' ORDER BY data");
 		$i = 0;
@@ -151,6 +152,7 @@
 
 					if( $newPrezzo == 0 ){
 						$template -> setContent("PREZZO", "GRATIS");
+						$template -> setContent("SCONTO_FLAG", "d-none");		
 						$template -> setContent("readonly", "");
 						$template -> setContent("hiddenpref", "");
 					}else{
@@ -236,7 +238,7 @@
 		}
 
 
-		//EVENTI RECENTI	
+		//EVENTI RECENTI
 		$eventi_recenti = getData("SELECT DISTINCT e.id as evento_id, e.citta, e.immagine as immagine_e, e.nome as nome_e, e.posti, e.costo as costo_e, c.nome as nome_c, c.immagine as immagine_c FROM evento e JOIN categoria c ON (c.id = e.id_categoria) JOIN data_evento d ON (d.id_evento = e.id) WHERE e.concluso = 0 AND e.approvato = 1 AND d.data > '{$dataOdierna}' ORDER BY d.data DESC LIMIT 10");
 
 		if($eventi_recenti == 0){
@@ -244,7 +246,7 @@
 			require( "components/footer.component.php" );
 			exit();
 		}
-		if(empty($eventi_recenti) ){ 
+		if(empty($eventi_recenti) ){
 			$template -> setContent("FLAG_RECENTI","d-none");
 			//EVENTI SCELTI PER L'UTENTE
 
@@ -282,13 +284,13 @@
 						$template -> setContent("EVENTO_NOME_PREF", $row_eventi_pref["nome"]);
 						$template -> setContent("EVENTO_CITTA_PREF", $row_eventi_pref["citta"]);
 
-					
+
 						$prezzoMin = $row_eventi_pref['costo'];
 
 
 						$result_prezzo = getData("SELECT MIN(costo) as costoMin FROM data_evento WHERE id_evento = {$row_eventi_pref['id']} AND data > '{$dataOdierna}'");
 						$row_prezzo = $result_prezzo[0]['costoMin'];
-						
+
 						if($row_prezzo == "0" || $prezzoMin == "0"){
 							$template -> setContent( "EVENTO_COSTO_PREF", "GRATIS" );
 							$template -> setContent( "VARIABILE_COSTO_PREF", 'style="color: red;"' );
@@ -300,9 +302,9 @@
 								$template -> setContent( "VARIABILE_COSTO_PREF", "" );
 								$template -> setContent( "EVENTO_COSTO_PREF", "DA: {$row_prezzo} €" );
 							}
-				
+
 						}
-					
+
 					}
 
 				}
@@ -334,7 +336,7 @@
 
 				$result_prezzo = getData("SELECT MIN(costo) as costoMin FROM data_evento WHERE id_evento = {$row_recenti['evento_id']} AND data > '{$dataOdierna}'");
 				$row_prezzo = $result_prezzo[0]['costoMin'];
-				
+
 				if($row_prezzo == "0" || $prezzoMin == "0"){
 					$template -> setContent( "EVENTO_COSTO_RECENTE", "GRATIS" );
 					$template -> setContent( "VARIABILE_COSTO_RECENTE", 'style="color: red;"' );
@@ -348,7 +350,7 @@
 					}
 
 				}
-			
+
 			}
 		}
 	}

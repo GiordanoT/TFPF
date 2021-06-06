@@ -78,7 +78,9 @@
       else{
         $query = "INSERT INTO partecipazione(id_utente,id_data,codice,intestatario) VALUES ({$_SESSION['id']},{$row[0]},{$codice},'{$intestatario}')";
         $result = setData( $query );
-        if( $result == 0 ){
+        $query = "DELETE FROM preferito WHERE id_utente = {$_SESSION['id']} AND id_data = {$row[0]}";
+        $resultQ = setData( $query );
+        if( $result == 0 || $resultQ == 0 ){
           header( "Location: ../error.php" );
           exit();
         }
