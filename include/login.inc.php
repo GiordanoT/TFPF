@@ -12,7 +12,7 @@
     $password = $_POST['password'];
     $result = Login( $email, $password );
     if( $result == 0 ){
-      header("Location: error.php");
+      header("Location: ../error.php");
       exit();
     }
     if( $result == 1 ) {
