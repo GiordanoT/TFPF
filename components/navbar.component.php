@@ -9,8 +9,16 @@
 		$template -> setContent( "COGNOME", $_SESSION['cognome'] );
 		if( $_SESSION['ruolo'] == 1 ){
 			$template -> setContent( "NAVBAR_EVENTI_FLAG", "d-none" );
+			//AGGIUNGI CATEGORIA
+			$template -> setContent( "NOME_LINK", "Aggiungi Categoria" );
+			$template -> setContent( "LINK", "addCategoria.php" );
+			$template -> setContent( "ICON", "fa-plus-circle" );
+			//MODIFICA CATEGORIA
+			$template -> setContent( "NOME_LINK", "Modifica Categoria" );
+			$template -> setContent( "LINK", "editCategoria.php" );
+			$template -> setContent( "ICON", "fa-pencil-alt" );
 			//AGGIUNGI SCONTO
-			$template -> setContent( "NOME_LINK", "Sconti" );
+			$template -> setContent( "NOME_LINK", "Aggiungi Sconto" );
 			$template -> setContent( "LINK", "adminSconto.php" );
 			$template -> setContent( "ICON", "fa-tag" );
 			//ELENCO SCONTI
