@@ -160,17 +160,18 @@
 			$template -> setContent("FLAG_PR","d-none");
 		}
 		foreach( $result_pref as $row_pref ){
-			$result_eventi_pref = getData(" SELECT * FROM evento e WHERE e.id_categoria = {$row_pref["id"]} AND e.concluso=0 AND e.approvato = 1 ORDER BY rand() LIMIT 10 ");
+			$result_eventi_pref = getData(" SELECT * FROM evento e WHERE e.id_categoria = {$row_pref["id"]} AND e.concluso=0 AND e.approvato=1 ORDER BY rand() LIMIT 10 ");
 			if($result_eventi_pref == 0){
 				require( "components/error.component.php" );
 				require( "components/footer.component.php" );
 				exit();
 			}
-			if( empty($result_eventi_pref) ){
+			$evento_pref = $result_pref[0];
+			if( $evento_pref == null ){ 
 				$template -> setContent("FLAG_EVENTI_PR","d-none");
 				$template -> setContent("FLAG_PR","d-none");
-
 			}
+
 			foreach( $result_eventi_pref as $row_eventi_pref ){
 				if( file_exists($row_eventi_pref['immagine']) ){
 					$template -> setContent( "EVENTO_IMMAGINE_PREF", $row_eventi_pref['immagine'] );
