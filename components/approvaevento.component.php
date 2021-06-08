@@ -23,7 +23,7 @@
 	}
 	if( empty( $result ) || $result == 0 ){
 		$template -> setContent( "flag", "d-none" );
-		$template -> setContent( "text_errore", "NON CI SONO EVENTI DA APPROVARE" );
+		$template -> setContent( "text_errore", "NON CI SONO EVENTI DA APPROVARE!" );
 	}
 
 

@@ -185,6 +185,7 @@
 				if( $rowPref == null) {
 					$template -> setContent("CUORE", "far fa-heart");
 					$template -> setContent("OPERAZIONE", "agg");
+					$template -> setContent("COLORE", "#900909;");
 				} else {
 					$template -> setContent("CUORE", "fas fa-heart");
 					$template -> setContent("OPERAZIONE", "del");

@@ -3,7 +3,6 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0">Preferiti</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -19,20 +18,21 @@
 <!-- Main content -->
 <div class="content">
   <div class="container-fluid">
+    <h2 class="hidden-title separator mb-4 mt-2">CATEGORIE PREFERITE</b></h2>
 
-
-    <div class="row">
-
+    <div class="row mx-auto">
 
       <[foreach]>
-      <div class=" col-sm ">
+      <div class=" col-md-3 col-12">
         <div class="info-box">
-          <img class="img-circle" src="<[percorso]>" height="100" width="100">
+          <img class="img-circle" src="<[percorso]>" height="80" width="80">
+          <!--<img class="img-circle" src="<[percorso]>" height="100" width="100">-->
           <div class="info-box-content">
-            <h3 class="info-box-text mx-auto"><[nome_categoria]></h3>
-            <span class="info-box-number ">
+            <h3 class="info-box-text hidden-text text-center"><[nome_categoria]></h3>
+
+            <span class="mx-auto">
               <form method="POST" action="include/modifica_preferiti.inc.php">
-                <button name="preferiti" type="submit" class="btn btn-block btn-<[variabile]> btn-lg"><[bottone]></button>
+                <button name="preferiti" type="submit" class="btn btn-<[variabile]>" style="border-radius: 100%; background-color: transparent; border-color: transparent;"><[bottone]></button>
                 <input class="d-none" name="cat" type="text" value="<[id_categoria]>">
                 <input class="d-none" name="del" type="text" value="<[elimina]>">
               </form>
