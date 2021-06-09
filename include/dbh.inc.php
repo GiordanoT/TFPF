@@ -1,7 +1,7 @@
 <?php
   error_reporting(E_ALL ^ (E_NOTICE | E_WARNING) );
   $db = 1;
-  if( $db == 0 ){
+  if( $db == 1 ){
     //DB ONLINE
     $servername = "sql11.freesqldatabase.com";
     $dBUsername = "sql11417527";
