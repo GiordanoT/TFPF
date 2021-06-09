@@ -13,7 +13,7 @@ class DeletePartecipazioneTest extends TestCase{
 
     public function test_example(){
 
-      //$this->assertEquals( 0, DeletePartecipazione( 1000 ) );
+      $this->assertEquals( 0, DeletePartecipazione( 1000 ) );
 
     }
 }
