@@ -9,7 +9,7 @@ require_once './vendor/autoload.php';
 require_once 'include/dbh.inc.php';
 require_once 'include/functions/EsistenzaDate.fun.php';
 
-class EsistenzaDate extends TestCase{
+class EsistenzaData extends TestCase{
 
 
 
