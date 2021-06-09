@@ -7,7 +7,7 @@
 		require( "components/footer.component.php" );
 		exit();
 	}
-	$result = getData( "SELECT * FROM evento WHERE sconto = 0 AND admin_evento={$_SESSION['id']}" );
+	$result = getData( "SELECT * FROM evento WHERE sconto = 0 AND admin_evento='{$_SESSION['id']}' AND concluso = '0'" );
 	foreach( $result as $row ){
 		$template -> setContent( "evento", $row['nome'] );
 		$template -> setContent( "evento_value", $row['id'] );
