@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	require_once("include/functions/VisualizzazioneEvento.fun.php");
-	require_once("include/functions/EsistenzaDate.fun.php");
+	require_once("include/functions/EsistenzaData.fun.php");
 
 	$template = new Template( 'templates/evento.template.html' );
 
@@ -14,7 +14,7 @@
 		alert("Per inserire un evento nei preferiti devi prima accedere");
 
 	$evento=$_GET["id"];
-	$risultatesistenzadate = EsistenzaDate($evento);
+	$risultatesistenzadate = EsistenzaData($evento);
 	if($risultatesistenzadate == '0'){
 		require( "components/error.component.php" );
 		require( "components/footer.component.php" );

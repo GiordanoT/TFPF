@@ -20,9 +20,17 @@
 		}
 
 	}
-	
-	$template -> setContent( "IMMAGINE_CAROUSEL","image/carousel.jpg" );
 
+	$result_Numero = getData("SELECT count(*) as n_eventi FROM evento WHERE concluso=0 AND approvato=1");
+	$row_numero = $result_Numero[0]["n_eventi"];
+	if ($row_numero == 0){
+		require( "components/error.component.php" );
+		require( "components/footer.component.php" );
+		exit();
+	}
+
+	$template -> setContent( "IMMAGINE_CAROUSEL","image/carousel.jpg" );
+	
 	function alert($msg) {
 		echo "<script type='text/javascript'>alert('$msg');</script>";
 	}
@@ -105,7 +113,7 @@
 		if( file_exists($row['immagine']) ){
 			$template -> setContent( "CATEGORIA_IMMAGINE", $row['immagine'] );
 		} else {
-			$template -> setContent( "CATEGORIA_IMMAGINE","immagini_categoria/error.png");
+			$template -> setContent( "CATEGORIA_IMMAGINE","image/error.png");
 		}
 
 		foreach( $result_eventi as $row_eventi ){
