@@ -82,7 +82,7 @@
 
 			$giorno=date("d",strtotime($data));
 			$mese=date("m",strtotime($data));
-			$anno=date("y",strtotime($data));
+			$anno=date("Y",strtotime($data));
 			$template -> setContent("GIORNO_DATA", $giorno);
 
 			if(!strcmp($mese,"01"))
@@ -111,7 +111,7 @@
 				$template -> setContent("MESE_DATA", "Dicembre");
 
 
-			$template -> setContent("ANNO_DATA", "20{$anno}");
+			$template -> setContent("ANNO_DATA", "{$anno}");
 
 			$data= $rowDateEvento["data"];
 			$template -> setContent( "ID_DATA", $rowDateEvento['id'] );

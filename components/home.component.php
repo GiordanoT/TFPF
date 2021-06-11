@@ -44,7 +44,7 @@
 
 
 	//EVENTI RECENTI	
-	$eventi_recenti = getData("SELECT DISTINCT e.id as evento_id, e.citta, e.immagine as immagine_e, e.nome as nome_e, e.posti, e.costo as costo_e, c.nome as nome_c, c.immagine as immagine_c, c.sconto as c_sconto FROM evento e JOIN categoria c ON (c.id = e.id_categoria) JOIN data_evento d ON (d.id_evento = e.id) WHERE e.concluso = 0 AND e.approvato = 1 AND d.data > '{$dataOdierna}' ORDER BY d.data DESC LIMIT 10");
+	$eventi_recenti = getData("SELECT DISTINCT e.id as evento_id, e.citta, e.immagine as immagine_e, e.nome as nome_e, e.posti, e.costo as costo_e, c.nome as nome_c, c.immagine as immagine_c, c.sconto as c_sconto FROM evento e JOIN categoria c ON (c.id = e.id_categoria) JOIN data_evento d ON (d.id_evento = e.id) WHERE e.concluso = 0 AND e.approvato = 1 AND d.data > '{$dataOdierna}' ORDER BY d.data ASC LIMIT 10");
 
 	if($eventi_recenti == 0){
 		require( "components/error.component.php" );
