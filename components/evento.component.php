@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	require_once("include/functions/VisualizzazioneEvento.fun.php");
+	require_once("include/functions/EsistenzaData.fun.php");
 
 	$template = new Template( 'templates/evento.template.html' );
 
@@ -13,7 +14,13 @@
 		alert("Per inserire un evento nei preferiti devi prima accedere");
 
 	$evento=$_GET["id"];
-	if( ! is_numeric($evento) ){
+	$risultatesistenzadate = EsistenzaData($evento);
+	if($risultatesistenzadate == '0'){
+		require( "components/error.component.php" );
+		require( "components/footer.component.php" );
+		exit();
+	}
+	if( ! is_numeric($evento)){
 		require( "components/error.component.php" );
 		require( "components/footer.component.php" );
 		exit();
@@ -142,7 +149,7 @@
 					$scontoEvento = $rowEvento['sconto'];
 					if( $scontoEvento > $scontoCategoria ) $sconto = $scontoEvento;
 					else $sconto = $scontoCategoria;
-					if ($sconto == 0) $template -> setContent("SCONTO_FLAG", "d-none");
+					if ($sconto == 0) $template -> setContent("SCONTO_FLAG_1", "d-none");
 					else $template -> setContent("SCONTO", $sconto);
 
 					$newPrezzo = ( $rowDateEvento["costo"] * $sconto )/100;
@@ -152,7 +159,7 @@
 
 					if( $newPrezzo == 0 ){
 						$template -> setContent("PREZZO", "GRATIS");
-						$template -> setContent("SCONTO_FLAG", "d-none");		
+						$template -> setContent("SCONTO_FLAG_2", "d-none");		
 						$template -> setContent("readonly", "");
 						$template -> setContent("hiddenpref", "");
 					}else{

@@ -20,9 +20,17 @@
 		}
 
 	}
-	
-	$template -> setContent( "IMMAGINE_CAROUSEL","image/carousel.jpg" );
 
+	$result_Numero = getData("SELECT count(*) as n_eventi FROM evento WHERE concluso=0 AND approvato=1");
+	$row_numero = $result_Numero[0]["n_eventi"];
+	if ($row_numero == 0){
+		require( "components/error.component.php" );
+		require( "components/footer.component.php" );
+		exit();
+	}
+
+	$template -> setContent( "IMMAGINE_CAROUSEL","image/carousel.jpg" );
+	
 	function alert($msg) {
 		echo "<script type='text/javascript'>alert('$msg');</script>";
 	}
@@ -36,7 +44,7 @@
 
 
 	//EVENTI RECENTI	
-	$eventi_recenti = getData("SELECT DISTINCT e.id as evento_id, e.citta, e.immagine as immagine_e, e.nome as nome_e, e.posti, e.costo as costo_e, c.nome as nome_c, c.immagine as immagine_c FROM evento e JOIN categoria c ON (c.id = e.id_categoria) JOIN data_evento d ON (d.id_evento = e.id) WHERE e.concluso = 0 AND e.approvato = 1 AND d.data > '{$dataOdierna}' ORDER BY d.data DESC LIMIT 10");
+	$eventi_recenti = getData("SELECT DISTINCT e.id as evento_id, e.citta, e.immagine as immagine_e, e.nome as nome_e, e.posti, e.costo as costo_e, c.nome as nome_c, c.immagine as immagine_c, c.sconto as c_sconto FROM evento e JOIN categoria c ON (c.id = e.id_categoria) JOIN data_evento d ON (d.id_evento = e.id) WHERE e.concluso = 0 AND e.approvato = 1 AND d.data > '{$dataOdierna}' ORDER BY d.data DESC LIMIT 10");
 
 	if($eventi_recenti == 0){
 		require( "components/error.component.php" );
@@ -105,7 +113,7 @@
 		if( file_exists($row['immagine']) ){
 			$template -> setContent( "CATEGORIA_IMMAGINE", $row['immagine'] );
 		} else {
-			$template -> setContent( "CATEGORIA_IMMAGINE","immagini_categoria/error.png");
+			$template -> setContent( "CATEGORIA_IMMAGINE","image/error.png");
 		}
 
 		foreach( $result_eventi as $row_eventi ){
