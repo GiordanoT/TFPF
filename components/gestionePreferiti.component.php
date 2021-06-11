@@ -28,12 +28,12 @@
 		}
 			if(!empty($resultPref)) {
 				$template -> setContent( "variabile", "danger" );
-				$template -> setContent( "bottone", "Rimuovi" );
+				$template -> setContent( "bottone", '<i class="far fa-times-circle fa-2x" style="color:#ca0a21;"></i>' );
 				$template -> setContent( "elimina", "1" );
 
 			}else{
 				$template -> setContent( "variabile", "primary" );
-				$template -> setContent( "bottone", "Preferiti" );
+				$template -> setContent( "bottone", '<i class="fas fa-plus-circle fa-2x" style="color:rgba(4, 15, 129, 0.815);"></i>' );
 				$template -> setContent( "elimina", "0" );
 
 			}
