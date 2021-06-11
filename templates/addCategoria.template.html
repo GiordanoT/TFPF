@@ -1,0 +1,60 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0"></h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="home.php">Home</a></li>
+            <li class="breadcrumb-item active"><[BUTTON]> Categoria</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="mx-auto col-sm-8">
+          <!-- /.login-logo -->
+          <div class="card rounded">
+            <div class="card-body login-card-body">
+              <p class="login-box-msg text-danger"><b> <[messaggio_errore]> </b></p>
+
+              <form action="include/<[LINK]>" method="POST" enctype="multipart/form-data">
+
+                <div class="form-group mb-3 col-sm-8 mx-auto">
+                    <input  type="text" name="id" class="d-none form-control" value="<[ID]>" readonly>
+                </div>
+
+                  <div class="form-group mb-3 col-sm-8 mx-auto">
+                      <label>Nome:</label>
+                      <input required type="text" name="nome" value="<[NOME]>" class="form-control">
+                  </div>
+
+                  <div class="form-group mb-3 col-sm-8 mx-auto">
+                      <label>Immagine della Categoria:</label>
+                      <input <[REQUIRED]> type="file" name="immagine" id="immagine" accept=".jpg, .png">
+                  </div>
+
+                  <div class="row mx-auto">
+                      <button name="aggiungi" type="submit" class="btn btn-primary btn-block mx-auto col-10 col-sm-5"><[BUTTON]></button>
+                  </div>
+              </form>
+
+              <div class="social-auth-links text-center mb-3"></div>
+            </div>
+            <!-- /.login-card-body -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->

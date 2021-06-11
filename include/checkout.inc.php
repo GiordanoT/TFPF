@@ -58,7 +58,7 @@
             $mail->setFrom('globexcorporation@gmail.com', 'Globex Corporation');
 
             //recipient
-            $mail->addAddress($email, 'optional recipient name');     // Add a recipient
+            $mail->addAddress($email, $intestatario);     // Add a recipient
 
             //content
             $mail->isHTML(true); // Set email format to HTML
@@ -76,6 +76,39 @@
         $totale += $row[1];
       }
       else{
+        $resultEmail = getData("SELECT email 
+                                                FROM utente
+                                                WHERE id = {$_SESSION['id']}");
+        $email = $resultEmail[0]['email'];
+        $mail=new PHPMailer(true);
+        try {
+            //settings
+            //$mail->SMTPDebug=2; // Enable verbose debug output
+            $mail->isSMTP(); // Set mailer to use SMTP
+            $mail->Host='smtp.gmail.com';
+            $mail->SMTPAuth=true; // Enable SMTP authentication
+            $mail->Username='globexcorporation268@gmail.com'; // SMTP username
+            $mail->Password='agile123'; // SMTP password
+            $mail->SMTPSecure='ssl';
+            $mail->Port=465;
+
+            $mail->setFrom('globexcorporation@gmail.com', 'Globex Corporation');
+
+            //recipient
+            $mail->addAddress($email, $intestatario);     // Add a recipient
+
+            //content
+            $mail->isHTML(true); // Set email format to HTML
+            $mail->Subject='Biglietto';
+            $mail->Body="Grazie per aver acquistato un biglietto da noi; \npotrai accedere al biglietto tramite il seguente link: \nhttp://localhost/TFPF/ticket.php?id={$codice}";
+            $mail->AltBody="Grazie per aver acquistato un biglietto da noi; \npotrai accedere al biglietto tramite il seguente link: \nhttp://localhost/TFPF/ticket.php?id={$codice}";
+
+            $mail->send();
+          }
+          catch(Exception $e) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: '.$mail->ErrorInfo;
+        }
         $query = "INSERT INTO partecipazione(id_utente,id_data,codice,intestatario) VALUES ({$_SESSION['id']},{$row[0]},{$codice},'{$intestatario}')";
         $result = setData( $query );
         $query = "DELETE FROM preferito WHERE id_utente = {$_SESSION['id']} AND id_data = {$row[0]}";

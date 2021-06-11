@@ -12,7 +12,7 @@ class ApprovaEventoTest extends TestCase{
   
     public function test_example(){
 
-      $this->assertEquals( 1, ApprovaEvento( "23", 1 ) );
+      $this->assertEquals( 2, ApprovaEvento( "23", 1 ) );
       $this->assertEquals( 1, ApprovaEvento( "23", 0 ) );
       $this->assertEquals( 0, ApprovaEvento( "23", 5 ) );
 
