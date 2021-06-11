@@ -62,7 +62,7 @@
     $i++;
   }
     if( $indicePagina >= count( $resultEvento ) ){ $template -> setContent( "FLAG_NEXT", "d-none" );  }
-    $query = "SELECT count(*) as n FROM evento WHERE concluso=0 AND nome LIKE '%{$search}%'";
+    $query = "SELECT count(*) as n FROM evento WHERE concluso=0 AND approvato=1 AND nome LIKE '%{$search}%'";
     $resultEvento = getData( $query );
     if( $resultEvento == 0 ){
       require( "components/error.component.php" );
