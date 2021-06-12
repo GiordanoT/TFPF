@@ -196,6 +196,7 @@
 				} else {
 					$template -> setContent("CUORE", "fas fa-heart");
 					$template -> setContent("OPERAZIONE", "del");
+					$template -> setContent("COLORE", "#900909;");
 				}
 
 //FIN QUA
