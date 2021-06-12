@@ -15,51 +15,51 @@
 	$monthNumber = $data[5].$data[6];
 	$giorno = $data[8].$data[9];
 	switch ( $monthNumber ) {
-		case 0:
+		case 1:
 				$mese = "Gennaio";
 				$meseTitle ="Jan";
 			break;
-			case 1:
+			case 2:
 				$mese = "Febbraio";
 				$meseTitle ="Feb";
 			break;
-			case 2:
+			case 3:
 				$mese = "Marzo";
 				$meseTitle ="Mar";
 			break;
-			case 3:
+			case 4:
 				$mese = "Aprile";
 				$meseTitle ="Apr";
 			break;
-			case 4:
+			case 5:
 				$mese = "Maggio";
 				$meseTitle ="May";
 			break;
-			case 5:
+			case 6:
 				$mese = "Giugno";
 				$meseTitle ="Jun";
 			break;
-			case 6:
+			case 7:
 				$mese = "Luglio";
 				$meseTitle ="Jul";
 			break;
-			case 7:
+			case 8:
 				$mese = "Agosto";
 				$meseTitle ="Aug";
 			break;
-			case 8:
+			case 9:
 				$mese = "Settembre";
 				$meseTitle ="Sep";
 			break;
-			case 9:
+			case 10:
 				$mese = "Ottobre";
 				$meseTitle ="Oct";
 			break;
-			case 10:
+			case 11:
 				$mese = "Novembre";
 				$meseTitle ="Nov";
 			break;
-			case 11:
+			case 12:
 				$mese = "Dicembre";
 				$meseTitle ="Dec";
 			break;
