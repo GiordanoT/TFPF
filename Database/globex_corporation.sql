@@ -1,21 +1,11 @@
 -- phpMyAdmin SQL Dump
-<<<<<<< HEAD
--- version 5.1.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Creato il: Giu 10, 2021 alle 16:14
--- Versione del server: 10.4.19-MariaDB
--- Versione PHP: 7.3.28
-=======
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 11, 2021 alle 14:41
+-- Creato il: Giu 16, 2021 alle 18:54
 -- Versione del server: 10.4.13-MariaDB
 -- Versione PHP: 7.4.7
->>>>>>> GianlucaDM
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,12 +41,8 @@ CREATE TABLE `categoria` (
 INSERT INTO `categoria` (`id`, `nome`, `immagine`, `sconto`) VALUES
 (6, 'Calcio', 'image\\categoria\\calcio.jpg', 0),
 (7, 'Tennis', 'image\\categoria\\Tennis.jpg', 0),
-<<<<<<< HEAD
-(8, 'Basket', 'image\\categoria\\basket.jpg', 0);
-=======
 (8, 'Basket', 'image\\categoria\\basket.jpg', 0),
 (9, 'Hockey', 'image/categoria/hockey.jpg', 0);
->>>>>>> GianlucaDM
 
 -- --------------------------------------------------------
 
@@ -69,6 +55,14 @@ CREATE TABLE `categoria_preferita` (
   `id_utente` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `categoria_preferita`
+--
+
+INSERT INTO `categoria_preferita` (`id`, `id_utente`, `id_categoria`) VALUES
+(24, 20, 7),
+(25, 20, 6);
 
 -- --------------------------------------------------------
 
@@ -122,9 +116,6 @@ INSERT INTO `data_evento` (`id`, `id_evento`, `data`, `ora_inizio`, `ora_fine`, 
 (378, 219, '2022-02-15', '20:00:00', '21:00:00', 100),
 (379, 219, '2022-02-17', '19:00:00', '22:00:00', 100),
 (380, 220, '2022-01-01', '15:00:00', '20:00:00', 40),
-<<<<<<< HEAD
-(381, 221, '2021-06-30', '20:10:00', '22:30:00', 40);
-=======
 (381, 221, '2021-06-30', '20:10:00', '22:30:00', 40),
 (382, 222, '2021-10-24', '18:00:00', '20:45:00', 20),
 (383, 223, '2021-10-03', '20:45:00', '22:30:00', 25),
@@ -142,7 +133,6 @@ INSERT INTO `data_evento` (`id`, `id_evento`, `data`, `ora_inizio`, `ora_fine`, 
 (395, 234, '2021-10-06', '12:00:00', '14:00:00', 20),
 (396, 235, '2022-02-12', '16:30:00', '19:00:00', 30),
 (397, 235, '2022-03-06', '16:00:00', '18:30:00', 30);
->>>>>>> GianlucaDM
 
 -- --------------------------------------------------------
 
@@ -174,11 +164,7 @@ INSERT INTO `evento` (`id`, `nome`, `descrizione`, `id_categoria`, `tipologia`, 
 (209, 'Atalanta - Juve', '1° Giornata di Serie A.', 6, 1, 25000, 22, 45, 'image/evento/atalanta_juve_calcio.jpg', 'Bergamo', 0, 1, 0),
 (210, 'Atalanta -Napoli', '2° Giornata di Serie A.', 6, 1, 25000, 22, 50, 'image/evento/atalanta_napoli_calcio.jpg', 'Bergamo', 0, 1, 0),
 (211, 'Fiorentina-Atalanta', '3° Giornata di Serie A.', 6, 1, 45000, 22, 65, 'image/evento/fiorentina_atalanta_calcio.jpg', 'Firenze', 0, 1, 0),
-<<<<<<< HEAD
-(212, 'Aalanta-Roma', '4° Giornata di Serie A.', 6, 1, 25000, 22, 70, 'image/evento/atalanta_roma_calcio.jpg', 'Bergamo', 0, 1, 0),
-=======
 (212, 'Atalanta-Roma', '4° Giornata di Serie A.', 6, 1, 25000, 22, 70, 'image/evento/atalanta_roma_calcio.jpg', 'Bergamo', 0, 1, 0),
->>>>>>> GianlucaDM
 (213, 'Aukland-Djokovic', 'Evento Amichevole.', 7, 1, 15000, 20, 25, 'image/evento/aukland_djokovic_tennis.jpg', 'Roma', 0, 1, 0),
 (214, 'Aukland-Federer', 'Partita del Roland Garros, open di Francia.', 7, 1, 20000, 20, 55, 'image/evento/aukland_federer_tennis.jpg', 'Parigi', 0, 1, 0),
 (215, 'Federer-Fognini', 'Partita valida per il torneo di Wimbledon.', 7, 1, 32000, 20, 120, 'image/evento/federer_fognini_tennis.jpg', 'Wimbledon', 0, 1, 0),
@@ -187,9 +173,6 @@ INSERT INTO `evento` (`id`, `nome`, `descrizione`, `id_categoria`, `tipologia`, 
 (218, 'Barcellona-PSG', 'Finale di Champions League 2022/2023.', 6, 1, 85000, 22, 220, 'image/evento/barca_psg_calcio.jpg', 'Milano', 0, 1, 0),
 (219, 'Chicago Bulls - San Antonio Spurs', '1° turno dei playoff di NBA.', 8, 1, 40000, 19, 650, 'image/evento/bulls_spurs_basket.jpg', 'Chicago-San Antonio', 0, 1, 0),
 (220, 'Virtus Bologna-Lakers', 'Partita di Beneficenza', 8, 1, 20000, 19, 40, 'image/evento/bologna_lakers_basket.jpg', 'Bologna', 0, 1, 0),
-<<<<<<< HEAD
-(221, 'Olimpia Milano-Virtus Bologna', 'Finale Scudetto Serie A basket.', 8, 1, 20000, 19, 40, 'image/evento/milano_bologna_basket.jpg', 'Milano', 0, 1, 0);
-=======
 (221, 'Olimpia Milano-Virtus Bologna', 'Finale Scudetto Serie A basket.', 8, 1, 20000, 19, 40, 'image/evento/milano_bologna_basket.jpg', 'Milano', 0, 1, 0),
 (222, 'Napoli - Juventus', '5° Giornata di Serie A', 6, 1, 1000, 20, 20, 'image/evento/napoli_juve_calcio.jpg', 'Napoli', 0, 1, 0),
 (223, 'Fiorentina - Juventus', '2° Giornata di Serie A', 6, 1, 1000, 20, 25, 'image/evento/fiorenttina_juve_calcio.jpg', 'Firenze', 0, 1, 0),
@@ -205,7 +188,6 @@ INSERT INTO `evento` (`id`, `nome`, `descrizione`, `id_categoria`, `tipologia`, 
 (233, 'Bolzano - Philadelphia Flyers', 'Partita amichevole andata e ritorno. Il ricavato andrà all\'associazione WeWorld', 9, 1, 500, 20, 25, 'image/evento/bolzano_philadelphia_hockey.jpg', 'Bolzano', 0, 1, 0),
 (234, 'Detroit Red Wings - Milano', 'Partita di Champions League', 9, 1, 5000, 20, 30, 'image/evento/detroit_milano_hockey.jpg', 'Detroit', 0, 1, 0),
 (235, 'Detroit Red Wings - Boston Bruins', 'Amichevole tra le squadre del campionato di NHL', 9, 1, 4000, 20, 50, 'image/evento/detroit_boston_hockey.jpg', 'Detroit', 0, 1, 0);
->>>>>>> GianlucaDM
 
 -- --------------------------------------------------------
 
@@ -233,6 +215,14 @@ CREATE TABLE `preferito` (
   `id_utente` int(11) NOT NULL,
   `id_data` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `preferito`
+--
+
+INSERT INTO `preferito` (`id`, `id_utente`, `id_data`) VALUES
+(41, 20, 368),
+(42, 20, 397);
 
 -- --------------------------------------------------------
 
@@ -332,17 +322,13 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `categoria`
 --
 ALTER TABLE `categoria`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
->>>>>>> GianlucaDM
 
 --
 -- AUTO_INCREMENT per la tabella `categoria_preferita`
 --
 ALTER TABLE `categoria_preferita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT per la tabella `commento`
@@ -354,21 +340,13 @@ ALTER TABLE `commento`
 -- AUTO_INCREMENT per la tabella `data_evento`
 --
 ALTER TABLE `data_evento`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=382;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=398;
->>>>>>> GianlucaDM
 
 --
 -- AUTO_INCREMENT per la tabella `evento`
 --
 ALTER TABLE `evento`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
->>>>>>> GianlucaDM
 
 --
 -- AUTO_INCREMENT per la tabella `partecipazione`
@@ -380,7 +358,7 @@ ALTER TABLE `partecipazione`
 -- AUTO_INCREMENT per la tabella `preferito`
 --
 ALTER TABLE `preferito`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT per la tabella `utente`
